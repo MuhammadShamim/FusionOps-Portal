@@ -2,8 +2,6 @@
 
 **FusionOps Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
 
----
-
 ## 🚀 Features
 
 - 🔐 Auth0 Microsoft SSO authentication
@@ -16,8 +14,6 @@
 - 📬 Contact page
 - 📊 Dashboard with operational insights
 
----
-
 ## 🛠️ Tech Stack
 
 - **Frontend Framework:** Angular 17+
@@ -27,8 +23,6 @@
 - **State Management:** RxJS
 - **API Integration:** RESTful services (MuleSoft, PagerDuty, GitHub)
 - **Icons & Styling:** FontAwesome, SCSS
-
----
 
 ## 🧑‍💻 Development Setup
 
