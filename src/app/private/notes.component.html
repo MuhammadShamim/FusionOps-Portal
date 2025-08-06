@@ -42,12 +42,12 @@
           </ng-container>
         </tr>
         <ng-template #editRowBlock>
-          <tr>
+          <tr *ngIf="editingNote as edit">
             <td colspan="2">
-              <input type="text" class="form-control mb-2" [(ngModel)]="editingNote.title">
-              <input type="text" class="form-control" [(ngModel)]="editingNote.content">
+              <input type="text" class="form-control mb-2" [(ngModel)]="edit.title">
+              <input type="text" class="form-control" [(ngModel)]="edit.content">
             </td>
-            <td>{{ editingNote.created | date:'short' }}</td>
+            <td>{{ edit.created | date:'short' }}</td>
             <td>
               <button class="btn btn-sm btn-success me-2" (click)="updateNote()"><i class="fas fa-save"></i></button>
               <button class="btn btn-sm btn-secondary" (click)="editingNote = null"><i class="fas fa-times"></i></button>
