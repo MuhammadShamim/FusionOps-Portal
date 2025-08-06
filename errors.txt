@@ -1,15 +1,16 @@
-NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+S2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { status: string; message: any; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
+  Type '{ status: "success" | "error"; message: string; } | { status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+    Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+      Types of property 'status' are incompatible.
+        Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
 
-    src/app/private/dashboard.component.html:26:18:
-      26 │             <div *ngIf="carrierProfileError" class="alert alert-wa...
-         ╵                   ~~~~
-
-  Warning occurs in the template of component DashboardComponent.
-
-    src/app/private/dashboard.component.ts:8:15:
-      8 │   templateUrl: './dashboard.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+    src/app/api-status.service.ts:20:4:
+      20 │     return this.http.get<any>(url, { params }).pipe(
+         ╵     ~~~~~~
+Muhammads-MBP:FusionOps-Portal star$ ng merge
+Error: Unknown argument: merge
+Muhammads-MBP:FusionOps-Portal star$ ng serve
+Application bundle generation failed. [2.228 seconds]
 
 ✘ [ERROR] TS2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { status: string; message: any; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
   Type '{ status: "success" | "error"; message: string; } | { status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
@@ -30,43 +31,3 @@ NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` d
     src/app/api-status.service.ts:21:6:
       21 │       map(res => {
          ╵       ~~~~~~~~~~~~
-
-
-✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
-
-    src/app/private/dashboard.component.html:16:105:
-      16 │ ...e (e.g. uni_fxfe)" [(ngModel)]="carrierName" name="carrierName"...
-         ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component DashboardComponent.
-
-    src/app/private/dashboard.component.ts:8:15:
-      8 │   templateUrl: './dashboard.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG8004: No pipe found with name 'json'.
-To fix this, import the "JsonPipe" class from "@angular/common" and add it to the "imports" array of the component. [plugin angular-compiler]
-
-    src/app/private/dashboard.component.html:24:127:
-      24 │ ...auto" style="max-height: 300px;">{{ carrierProfile | json }}</pre>
-         ╵                                                         ~~~~
-
-  Error occurs in the template of component DashboardComponent.
-
-    src/app/private/dashboard.component.ts:8:15:
-      8 │   templateUrl: './dashboard.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG8002: Can't bind to 'ngClass' since it isn't a known property of 'div'. [plugin angular-compiler]
-
-    src/app/private/dashboard.component.html:60:13:
-      60 │              [ngClass]="{
-         ╵              ~~~~~~~~~~~~
-
-  Error occurs in the template of component DashboardComponent.
-
-    src/app/private/dashboard.component.ts:8:15:
-      8 │   templateUrl: './dashboard.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
