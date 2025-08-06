@@ -19,13 +19,13 @@ export class ApiStatusService {
     };
     return this.http.get<any>(url, { params }).pipe(
       map(res => {
-        if (res && res.status === 'success') {
-          return { status: 'success', message: 'API is healthy' };
+        if (res && typeof res.status === 'string' && res.status.toLowerCase() === 'success') {
+          return { status: 'success' as const, message: 'API is healthy' };
         } else {
-          return { status: 'error', message: res?.message || 'Unknown error' };
+          return { status: 'error' as const, message: (res && typeof res.message === 'string') ? res.message : 'Unknown error' };
         }
       }),
-      catchError(err => of({ status: 'error', message: err?.error?.message || 'API unreachable' }))
+      catchError(err => of({ status: 'error' as const, message: (err?.error && typeof err.error.message === 'string') ? err.error.message : 'API unreachable' }))
     );
   }
 }
