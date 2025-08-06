@@ -2,8 +2,7 @@
   <div class="app-body d-flex">
     <app-sidebar
       [isAuthenticated]="isAuthenticated"
-      [onSignIn]="onSignIn"
-      [onSignOut]="onSignOut"
+      (signOut)="onSignOut()"
     ></app-sidebar>
     <main class="main-content flex-grow-1">
       <router-outlet></router-outlet>
