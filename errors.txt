@@ -1,72 +1,72 @@
-[ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler]
+NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
 
-    src/app/private/notes.component.ts:113:2:
-      113 │   get filteredNotes() {
-          ╵   ~~~
+    src/app/private/dashboard.component.html:26:18:
+      26 │             <div *ngIf="carrierProfileError" class="alert alert-wa...
+         ╵                   ~~~~
 
+  Warning occurs in the template of component DashboardComponent.
 
-✘ [ERROR] TS2304: Cannot find name 'get'. [plugin angular-compiler]
-
-    src/app/private/notes.component.ts:113:2:
-      113 │   get filteredNotes() {
-          ╵   ~~~
-
-
-✘ [ERROR] TS2304: Cannot find name 'filteredNotes'. [plugin angular-compiler]
-
-    src/app/private/notes.component.ts:113:6:
-      113 │   get filteredNotes() {
-          ╵       ~~~~~~~~~~~~~
+    src/app/private/dashboard.component.ts:8:15:
+      8 │   templateUrl: './dashboard.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] TS1005: ';' expected. [plugin angular-compiler]
+✘ [ERROR] TS2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { status: string; message: any; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
+  Type '{ status: "success" | "error"; message: string; } | { status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+    Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+      Types of property 'status' are incompatible.
+        Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
 
-    src/app/private/notes.component.ts:113:22:
-      113 │   get filteredNotes() {
-          ╵                       ^
-
-
-✘ [ERROR] TS2532: Object is possibly 'undefined'. [plugin angular-compiler]
-
-    src/app/private/notes.component.ts:114:9:
-      114 │     if (!this.search.trim()) return this.notes;
-          ╵          ~~~~
+    src/app/api-status.service.ts:20:4:
+      20 │     return this.http.get<any>(url, { params }).pipe(
+         ╵     ~~~~~~
 
 
-✘ [ERROR] TS2532: Object is possibly 'undefined'. [plugin angular-compiler]
+✘ [ERROR] TS2345: Argument of type 'OperatorFunction<any, { status: string; message: any; }>' is not assignable to parameter of type 'OperatorFunction<any, { status: "success" | "error"; message: string; }>'.
+  Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+    Types of property 'status' are incompatible.
+      Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
 
-    src/app/private/notes.component.ts:115:14:
-      115 │     const s = this.search.toLowerCase();
-          ╵               ~~~~
-
-
-✘ [ERROR] TS1128: Declaration or statement expected. [plugin angular-compiler]
-
-    src/app/private/notes.component.ts:122:0:
-      122 │ }
-          ╵ ^
+    src/app/api-status.service.ts:21:6:
+      21 │       map(res => {
+         ╵       ~~~~~~~~~~~~
 
 
-✘ [ERROR] Top-level return cannot be used inside an ECMAScript module
+✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
 
-    src/app/private/notes.component.ts:272:8:
-      272 │         return this.notes;
-          ╵         ~~~~~~
+    src/app/private/dashboard.component.html:16:105:
+      16 │ ...e (e.g. uni_fxfe)" [(ngModel)]="carrierName" name="carrierName"...
+         ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  This file is considered to be an ECMAScript module because of the "export" keyword here:
+  Error occurs in the template of component DashboardComponent.
 
-    src/app/private/notes.component.ts:127:0:
-      127 │ export class NotesComponent {
-          ╵ ~~~~~~
+    src/app/private/dashboard.component.ts:8:15:
+      8 │   templateUrl: './dashboard.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] Top-level return cannot be used inside an ECMAScript module
+✘ [ERROR] NG8004: No pipe found with name 'json'.
+To fix this, import the "JsonPipe" class from "@angular/common" and add it to the "imports" array of the component. [plugin angular-compiler]
 
-    src/app/private/notes.component.ts:274:4:
-      274 │     return this.notes.filter(n => n.title.toLowerCase().includes(...
-          ╵     ~~~~~~
+    src/app/private/dashboard.component.html:24:127:
+      24 │ ...auto" style="max-height: 300px;">{{ carrierProfile | json }}</pre>
+         ╵                                                         ~~~~
 
-  This file is considered to be an ECMAScript module because of the "export" keyword here:
+  Error occurs in the template of component DashboardComponent.
 
-    src/app/private/notes.component.ts:127:0:
-      127 │ export class NotesComponent {
+    src/app/private/dashboard.component.ts:8:15:
+      8 │   templateUrl: './dashboard.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG8002: Can't bind to 'ngClass' since it isn't a known property of 'div'. [plugin angular-compiler]
+
+    src/app/private/dashboard.component.html:60:13:
+      60 │              [ngClass]="{
+         ╵              ~~~~~~~~~~~~
+
+  Error occurs in the template of component DashboardComponent.
+
+    src/app/private/dashboard.component.ts:8:15:
+      8 │   templateUrl: './dashboard.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
