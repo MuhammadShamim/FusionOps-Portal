@@ -1,28 +1,48 @@
-.notes-page {
-  padding: 2rem 0;
-  color: #fff;
+
+/* FusionOps reusable styles for cards, forms, and tables */
+.fusionops-notes-bg {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
 }
 
-.notes-page h1 {
-  text-align: center;
+.fusionops-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
   margin-bottom: 2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
 }
 
-.form-control {
-  background: #23272b;
-  color: #fff;
-  border: 1px solid #3b82f6;
-  border-radius: 8px;
-}
-.form-control:focus {
-  background: #23272b;
-  color: #fff;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 2px #6366f1;
+.fusionops-form {
+  background: #f8fafc;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
 }
 
+.fusionops-table {
+  background: #fff;
+  color: #23272b;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.fusionops-table th, .fusionops-table td {
+  border-color: #e5e7eb;
+  vertical-align: middle;
+}
+.fusionops-table thead th {
+  background: #f8fafc;
+  color: #6366f1;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid #e5e7eb;
+}
+.fusionops-table tbody tr:hover {
+  background: #f3f4f6;
+}
+.fusionops-th {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 .btn-gradient-primary {
   background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
   color: #fff;
@@ -36,31 +56,33 @@
   background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
   color: #fff;
 }
-
-.card-section {
-  background: #23272b;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
-  padding: 2rem;
-  margin-bottom: 2rem;
+.btn-outline-primary {
+  border-color: #6366f1;
+  color: #6366f1;
 }
-
-.table-dark {
-  background: #181c24;
+.btn-outline-primary:hover {
+  background: #6366f1;
   color: #fff;
 }
-.table-dark th, .table-dark td {
-  border-color: #23272b;
+.btn-outline-danger {
+  border-color: #ef4444;
+  color: #ef4444;
 }
-.table-dark thead th {
-  background: #23272b;
-  color: #a5b4fc;
-  font-weight: 600;
-  cursor: pointer;
+.btn-outline-danger:hover {
+  background: #ef4444;
+  color: #fff;
 }
-.table-dark tbody tr:hover {
-  background: #23272b;
+.btn-success {
+  background: #10b981;
+  border: none;
 }
-.btn-outline-info, .btn-outline-danger, .btn-outline-secondary, .btn-success {
-  border-radius: 6px;
+.btn-success:hover {
+  background: #059669;
+}
+.btn-secondary {
+  background: #64748b;
+  border: none;
+}
+.btn-secondary:hover {
+  background: #334155;
 }
