@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 interface Note {
   id: number;
@@ -11,7 +13,8 @@ interface Note {
   selector: 'app-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [FormsModule, CommonModule]
 })
 export class NotesComponent {
   notes: Note[] = [];
