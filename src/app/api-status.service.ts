@@ -12,7 +12,7 @@ export class ApiStatusService {
     const baseUrl = this.env.get('API_BASE_URL');
     const clientId = this.env.get('API_CLIENT_ID');
     const clientSecret = this.env.get('API_CLIENT_SECRET');
-    const url = `${baseUrl}/api/statuscheck`;
+    const url = `${baseUrl}/statuscheck`;
     const params = {
       client_id: clientId,
       client_secret: clientSecret
