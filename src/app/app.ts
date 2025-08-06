@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
+import { AuthService } from './auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +11,29 @@ import { SidebarComponent } from './sidebar.component';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  isAuthenticated = localStorage.getItem('fusionops_isAuthenticated') === 'true';
+export class App implements OnInit, OnDestroy {
+  isAuthenticated = false;
   router = inject(Router);
+  auth = inject(AuthService);
+  private authSub?: Subscription;
+
+  ngOnInit() {
+    this.authSub = this.auth.auth$.subscribe(val => {
+      this.isAuthenticated = val;
+    });
+  }
+
+  ngOnDestroy() {
+    this.authSub?.unsubscribe();
+  }
 
   onSignIn = () => {
-    localStorage.setItem('fusionops_isAuthenticated', 'true');
-    this.isAuthenticated = true;
+    this.auth.signIn();
     this.router.navigate(['/dashboard']);
   };
 
   onSignOut = () => {
-    localStorage.removeItem('fusionops_isAuthenticated');
-    this.isAuthenticated = false;
+    this.auth.signOut();
     this.router.navigate(['/']);
   };
 }
