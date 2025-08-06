@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
 
@@ -10,18 +10,18 @@ import { SidebarComponent } from './sidebar.component';
   styleUrl: './app.css'
 })
 export class App {
-  isAuthenticated = signal(localStorage.getItem('fusionops_isAuthenticated') === 'true');
+  isAuthenticated = localStorage.getItem('fusionops_isAuthenticated') === 'true';
   router = inject(Router);
 
   onSignIn = () => {
     localStorage.setItem('fusionops_isAuthenticated', 'true');
-    this.isAuthenticated.set(true);
+    this.isAuthenticated = true;
     this.router.navigate(['/dashboard']);
   };
 
   onSignOut = () => {
     localStorage.removeItem('fusionops_isAuthenticated');
-    this.isAuthenticated.set(false);
+    this.isAuthenticated = false;
     this.router.navigate(['/']);
   };
 }
