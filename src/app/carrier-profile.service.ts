@@ -13,11 +13,12 @@ export class CarrierProfileService {
     const clientId = this.env.get('API_CLIENT_ID');
     const clientSecret = this.env.get('API_CLIENT_SECRET');
     const url = `${baseUrl}/carrierprofile/${encodeURIComponent(name)}`;
-    const params = {
-      client_id: clientId,
-      client_secret: clientSecret
+    const headers = {
+      'client_id': clientId,
+      'client_secret': clientSecret,
+      'Content-Type': 'text/plain'
     };
-    return this.http.get<any>(url, { params }).pipe(
+    return this.http.get<any>(url, { headers }).pipe(
       catchError(err => of({ error: err?.error || 'API unreachable' }))
     );
   }
