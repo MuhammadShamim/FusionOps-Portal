@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -9,8 +9,16 @@ import { NgIf } from '@angular/common';
   standalone: true,
   imports: [RouterLink, NgIf]
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnChanges {
   @Input() isAuthenticated = false;
   @Input() onSignIn?: () => void;
   @Input() onSignOut?: () => void;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['isAuthenticated']) {
+      this.cdr.detectChanges();
+    }
+  }
 }
