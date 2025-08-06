@@ -1,7 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ApiStatusService } from '../api-status.service';
 import { CarrierProfileService } from '../carrier-profile.service';
@@ -11,7 +10,7 @@ import { CarrierProfileService } from '../carrier-profile.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule]
+  imports: [CommonModule, FormsModule]
 })
 export class DashboardComponent implements OnInit {
   apiStatus: { status: 'success' | 'error', message: string } | null = null;
