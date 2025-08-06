@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -7,7 +7,8 @@ import { NgIf } from '@angular/common';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
   standalone: true,
-  imports: [RouterLink, NgIf]
+  imports: [RouterLink, NgIf],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent implements OnChanges {
   @Input() isAuthenticated = false;
@@ -18,7 +19,7 @@ export class SidebarComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['isAuthenticated']) {
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     }
   }
 }
