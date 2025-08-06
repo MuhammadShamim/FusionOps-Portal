@@ -3,10 +3,11 @@
 **FusionOps Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
 
 ## Latest Screenshot
-![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/v0.0.4/screenshots/v0.0.4.png?raw=)
-![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/v0.0.4/screenshots/v0.0.4%20signin.png?raw=)
-![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/v0.0.4/screenshots/v0.0.4%20dashboard.png?raw=)
-![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/v0.0.4/screenshots/v0.0.4%20notes.png?raw=)
+![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4.png?raw=)
+rtal
+![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4%20signin.png?raw=)
+![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4%20dashboard.png?raw=)
+![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4%20notes.png?raw=)
 
 ## 🚀 Features
 
