@@ -1,23 +1,46 @@
-import { Component, signal } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { Component, inject, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
+import { AuthService } from './auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, NgIf, SidebarComponent],
+  imports: [RouterModule, RouterOutlet, SidebarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  isAuthenticated = signal(false);
+export class App implements OnInit, OnDestroy {
+  isAuthenticated = false;
+  private authSub?: Subscription;
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private zone: NgZone
+  ) {}
+
+  ngOnInit() {
+    this.authSub = this.auth.auth$.subscribe((val: boolean) => {
+      this.isAuthenticated = val;
+    });
+  }
+
+  ngOnDestroy() {
+    this.authSub?.unsubscribe();
+  }
 
   onSignIn() {
-    this.isAuthenticated.set(true);
+    this.auth.signIn();
+    this.router.navigate(['/dashboard']).then(() => {
+      this.zone.run(() => {
+        this.isAuthenticated = true;
+      });
+    });
   }
 
   onSignOut() {
-    this.isAuthenticated.set(false);
+    this.auth.signOut();
+    this.router.navigate(['/']);
   }
 }

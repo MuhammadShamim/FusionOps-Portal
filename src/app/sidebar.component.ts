@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -11,4 +11,9 @@ import { NgIf } from '@angular/common';
 })
 export class SidebarComponent {
   @Input() isAuthenticated = false;
+  @Output() signOut = new EventEmitter<void>();
+
+  onSignOutClick() {
+    this.signOut.emit();
+  }
 }

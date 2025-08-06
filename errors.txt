@@ -1,0 +1,72 @@
+[ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:113:2:
+      113 │   get filteredNotes() {
+          ╵   ~~~
+
+
+✘ [ERROR] TS2304: Cannot find name 'get'. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:113:2:
+      113 │   get filteredNotes() {
+          ╵   ~~~
+
+
+✘ [ERROR] TS2304: Cannot find name 'filteredNotes'. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:113:6:
+      113 │   get filteredNotes() {
+          ╵       ~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS1005: ';' expected. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:113:22:
+      113 │   get filteredNotes() {
+          ╵                       ^
+
+
+✘ [ERROR] TS2532: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:114:9:
+      114 │     if (!this.search.trim()) return this.notes;
+          ╵          ~~~~
+
+
+✘ [ERROR] TS2532: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:115:14:
+      115 │     const s = this.search.toLowerCase();
+          ╵               ~~~~
+
+
+✘ [ERROR] TS1128: Declaration or statement expected. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:122:0:
+      122 │ }
+          ╵ ^
+
+
+✘ [ERROR] Top-level return cannot be used inside an ECMAScript module
+
+    src/app/private/notes.component.ts:272:8:
+      272 │         return this.notes;
+          ╵         ~~~~~~
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/private/notes.component.ts:127:0:
+      127 │ export class NotesComponent {
+          ╵ ~~~~~~
+
+
+✘ [ERROR] Top-level return cannot be used inside an ECMAScript module
+
+    src/app/private/notes.component.ts:274:4:
+      274 │     return this.notes.filter(n => n.title.toLowerCase().includes(...
+          ╵     ~~~~~~
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/private/notes.component.ts:127:0:
+      127 │ export class NotesComponent {

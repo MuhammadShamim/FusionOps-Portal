@@ -1,3 +1,94 @@
+/* FusionOps reusable styles for cards, forms, and tables */
+.fusionops-notes-bg {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.fusionops-card {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  margin-bottom: 2rem;
+  border-radius: 0;
+}
+
+.fusionops-form {
+  background: #f8fafc;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  border-radius: 0;
+}
+
+.fusionops-table {
+  background: #fff;
+  color: #23272b;
+  border-radius: 0;
+  overflow: hidden;
+}
+.fusionops-table th, .fusionops-table td {
+  border-color: #e5e7eb;
+  vertical-align: middle;
+}
+.fusionops-table thead th {
+  background: #f8fafc;
+  color: #6366f1;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid #e5e7eb;
+}
+.fusionops-table tbody tr:hover {
+  background: #f3f4f6;
+}
+.fusionops-th {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.btn-gradient-primary {
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-gradient-primary:hover {
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+  color: #fff;
+}
+.btn-outline-primary {
+  border-color: #6366f1;
+  color: #6366f1;
+  border-radius: 0;
+}
+.btn-outline-primary:hover {
+  background: #6366f1;
+  color: #fff;
+}
+.btn-outline-danger {
+  border-color: #ef4444;
+  color: #ef4444;
+  border-radius: 0;
+}
+.btn-outline-danger:hover {
+  background: #ef4444;
+  color: #fff;
+}
+.btn-success {
+  background: #10b981;
+  border: none;
+  border-radius: 0;
+}
+.btn-success:hover {
+  background: #059669;
+}
+.btn-secondary {
+  background: #64748b;
+  border: none;
+  border-radius: 0;
+}
+.btn-secondary:hover {
+  background: #334155;
+}
 /* You can add global styles to this file, and also import other style files */
 
 /* Bootstrap 5 is included globally via angular.json */
@@ -7,7 +98,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  background: #00a6f8;
+  background: #181c24;
   color: #fff;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
@@ -16,7 +107,7 @@ html, body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #54c3fb;
+  background: #181c24;
 }
 
 .app-body {
