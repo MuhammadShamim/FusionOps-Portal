@@ -22,8 +22,9 @@ export class NotesComponent {
   sortColumn: keyof Note = 'created';
   sortAsc = false;
   editingNote: Note | null = null;
-  newTitle = '';
-  newContent = '';
+  showModal = false;
+  modalTitle = '';
+  modalContent = '';
 
   constructor() {
     this.loadNotes();
@@ -40,18 +41,19 @@ export class NotesComponent {
     this.sortNotes();
   }
 
-  addNote() {
-    if (!this.newTitle.trim() && !this.newContent.trim()) return;
+  addNoteFromModal() {
+    if (!this.modalTitle.trim() && !this.modalContent.trim()) return;
     const note: Note = {
       id: Date.now(),
-      title: this.newTitle.trim(),
-      content: this.newContent.trim(),
+      title: this.modalTitle.trim(),
+      content: this.modalContent.trim(),
       created: new Date().toISOString()
     };
     this.notes.push(note);
-    this.newTitle = '';
-    this.newContent = '';
     this.saveNotes();
+    this.modalTitle = '';
+    this.modalContent = '';
+    this.showModal = false;
   }
 
   editNote(note: Note) {
@@ -96,6 +98,17 @@ export class NotesComponent {
       return 0;
     });
   }
+
+  get filteredNotes() {
+    if (!this.search.trim()) return this.notes;
+    const s = this.search.toLowerCase();
+    return this.notes.filter(n =>
+      n.title.toLowerCase().includes(s) ||
+      n.content.toLowerCase().includes(s) ||
+      n.created.toLowerCase().includes(s)
+    );
+  }
+}
 
   get filteredNotes() {
     if (!this.search.trim()) return this.notes;
