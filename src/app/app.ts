@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
 import { AuthService } from './auth.service';
@@ -11,11 +11,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit, OnDestroy {
   isAuthenticated = false;
   router = inject(Router);
   auth = inject(AuthService);
-  cdr = inject(ChangeDetectorRef);
+  zone = inject(NgZone);
   private authSub?: Subscription;
 
   ngOnInit() {
@@ -31,7 +30,10 @@ export class App implements OnInit, OnDestroy {
   onSignIn = () => {
     this.auth.signIn();
     this.router.navigate(['/dashboard']).then(() => {
-      this.cdr.detectChanges();
+      this.zone.run(() => {
+        // This will force Angular to run change detection
+        this.isAuthenticated = true;
+      });
     });
   };
 
