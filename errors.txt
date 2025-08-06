@@ -1,33 +1,72 @@
-S2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { status: string; message: any; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
-  Type '{ status: "success" | "error"; message: string; } | { status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-    Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-      Types of property 'status' are incompatible.
-        Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
-
-    src/app/api-status.service.ts:20:4:
-      20 │     return this.http.get<any>(url, { params }).pipe(
-         ╵     ~~~~~~
-Muhammads-MBP:FusionOps-Portal star$ ng merge
-Error: Unknown argument: merge
-Muhammads-MBP:FusionOps-Portal star$ ng serve
-Application bundle generation failed. [2.228 seconds]
-
-✘ [ERROR] TS2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { status: string; message: any; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
-  Type '{ status: "success" | "error"; message: string; } | { status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-    Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-      Types of property 'status' are incompatible.
-        Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
-
-    src/app/api-status.service.ts:20:4:
-      20 │     return this.http.get<any>(url, { params }).pipe(
-         ╵     ~~~~~~
-
-
-✘ [ERROR] TS2345: Argument of type 'OperatorFunction<any, { status: string; message: any; }>' is not assignable to parameter of type 'OperatorFunction<any, { status: "success" | "error"; message: string; }>'.
-  Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-    Types of property 'status' are incompatible.
-      Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
-
-    src/app/api-status.service.ts:21:6:
-      21 │       map(res => {
-         ╵       ~~~~~~~~~~~~
+[Error] ERROR – ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[_DashboardComponent]. Path: _ApiStatusService -> _HttpClient. Find more at https://angular.dev/errors/NG0201
+ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[_DashboardComponent]. Path: _ApiStatusService -> _HttpClient. Find more at https://angular.dev/errors/NG0201
+	handleError (chunk-DMSQSH77.js:2627)
+	(anonymous function) (chunk-DMSQSH77.js:21444)
+	run (zone__js.js:103)
+	(anonymous function) (chunk-DMSQSH77.js:21437)
+	(anonymous function) (@angular_router.js:5002)
+	onInvoke (chunk-DMSQSH77.js:13430)
+	run (zone__js.js:103)
+	(anonymous function) (zone__js.js:2016)
+	onInvokeTask (chunk-DMSQSH77.js:13217)
+	onInvokeTask (chunk-DMSQSH77.js:13419)
+	runTask (zone__js.js:141)
+	drainMicroTaskQueue (zone__js.js:520)
+	invokeTask (zone__js.js:440)
+	invokeTask (zone__js.js:938)
+	globalCallback (zone__js.js:959)
+[Error] ERROR – Error: NG0200: Circular dependency detected for `_ApiStatusService`. Source: Standalone[_DashboardComponent]. Find more at https://angular.dev/errors/NG0200
+Error: NG0200: Circular dependency detected for `_ApiStatusService`. Source: Standalone[_DashboardComponent]. Find more at https://angular.dev/errors/NG0200
+	handleError (chunk-DMSQSH77.js:2627)
+	(anonymous function) (chunk-DMSQSH77.js:21444)
+	run (zone__js.js:103)
+	(anonymous function) (chunk-DMSQSH77.js:21437)
+	(anonymous function) (chunk-RTGP7ALM.js:556)
+	(anonymous function) (chunk-RTGP7ALM.js:526)
+	(anonymous function) (chunk-RTGP7ALM.js:499)
+	(anonymous function) (chunk-RTGP7ALM.js:960)
+	errorContext (chunk-RTGP7ALM.js:466)
+	(anonymous function) (chunk-RTGP7ALM.js:950)
+	emit (chunk-DMSQSH77.js:13121)
+	run (zone__js.js:103)
+	onHandleError (chunk-DMSQSH77.js:13461)
+	runGuarded (zone__js.js:114)
+	(anonymous function) (zone__js.js:1848)
+	drainMicroTaskQueue (zone__js.js:526)
+	invokeTask (zone__js.js:440)
+	invokeTask (zone__js.js:938)
+	globalCallback (zone__js.js:959)
+[Error] ERROR – Error: NG0200: Circular dependency detected for `_ApiStatusService`. Source: Standalone[_DashboardComponent]. Find more at https://angular.dev/errors/NG0200
+Error: NG0200: Circular dependency detected for `_ApiStatusService`. Source: Standalone[_DashboardComponent]. Find more at https://angular.dev/errors/NG0200
+	handleError (chunk-DMSQSH77.js:2627)
+	(anonymous function) (chunk-DMSQSH77.js:21444)
+	run (zone__js.js:103)
+	(anonymous function) (chunk-DMSQSH77.js:21437)
+	(anonymous function) (@angular_router.js:5002)
+	onInvoke (chunk-DMSQSH77.js:13430)
+	run (zone__js.js:103)
+	(anonymous function) (zone__js.js:2016)
+	onInvokeTask (chunk-DMSQSH77.js:13217)
+	onInvokeTask (chunk-DMSQSH77.js:13419)
+	runTask (zone__js.js:141)
+	drainMicroTaskQueue (zone__js.js:520)
+	invokeTask (zone__js.js:440)
+	invokeTask (zone__js.js:938)
+	globalCallback (zone__js.js:959)
+[Error] ERROR – Error: NG0200: Circular dependency detected for `_ApiStatusService`. Source: Standalone[_DashboardComponent]. Find more at https://angular.dev/errors/NG0200
+Error: NG0200: Circular dependency detected for `_ApiStatusService`. Source: Standalone[_DashboardComponent]. Find more at https://angular.dev/errors/NG0200
+	handleError (chunk-DMSQSH77.js:2627)
+	(anonymous function) (chunk-DMSQSH77.js:21444)
+	run (zone__js.js:103)
+	(anonymous function) (chunk-DMSQSH77.js:21437)
+	(anonymous function) (@angular_router.js:5002)
+	onInvoke (chunk-DMSQSH77.js:13430)
+	run (zone__js.js:103)
+	(anonymous function) (zone__js.js:2016)
+	onInvokeTask (chunk-DMSQSH77.js:13217)
+	onInvokeTask (chunk-DMSQSH77.js:13419)
+	runTask (zone__js.js:141)
+	drainMicroTaskQueue (zone__js.js:520)
+	invokeTask (zone__js.js:440)
+	invokeTask (zone__js.js:938)
+	globalCallback (zone__js.js:959)
