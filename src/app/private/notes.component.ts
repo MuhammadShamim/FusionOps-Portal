@@ -109,14 +109,3 @@ export class NotesComponent {
     );
   }
 }
-
-  get filteredNotes() {
-    if (!this.search.trim()) return this.notes;
-    const s = this.search.toLowerCase();
-    return this.notes.filter(n =>
-      n.title.toLowerCase().includes(s) ||
-      n.content.toLowerCase().includes(s) ||
-      n.created.toLowerCase().includes(s)
-    );
-  }
-}
