@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
 import { AuthService } from './auth.service';
@@ -15,6 +15,7 @@ export class App implements OnInit, OnDestroy {
   isAuthenticated = false;
   router = inject(Router);
   auth = inject(AuthService);
+  cdr = inject(ChangeDetectorRef);
   private authSub?: Subscription;
 
   ngOnInit() {
@@ -29,7 +30,9 @@ export class App implements OnInit, OnDestroy {
 
   onSignIn = () => {
     this.auth.signIn();
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard']).then(() => {
+      this.cdr.detectChanges();
+    });
   };
 
   onSignOut = () => {
