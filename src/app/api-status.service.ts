@@ -15,12 +15,11 @@ export class ApiStatusService {
     const url = `${baseUrl}/statuscheck`;
     const headers = {
       'client_id': clientId,
-      'client_secret': clientSecret,
-      'Content-Type': 'text/plain'
+      'client_secret': clientSecret
     };
     return this.http.get<any>(url, { headers }).pipe(
       map(res => {
-        if (res && typeof res.status === 'string' && res.status.toLowerCase() === 'success') {
+        if (res && res.success === true && res.status === 200) {
           return { status: 'success' as const, message: 'API is healthy' };
         } else {
           return { status: 'error' as const, message: (res && typeof res.message === 'string') ? res.message : 'Unknown error' };
