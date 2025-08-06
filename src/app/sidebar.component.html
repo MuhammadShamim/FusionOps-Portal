@@ -34,7 +34,7 @@
   </ul>
   <div class="mt-auto pt-4">
     <div *ngIf="!isAuthenticated">
-      <button class="btn btn-gradient-primary w-100 py-2 rounded-pill" (click)="onSignIn && onSignIn()">
+      <button class="btn btn-gradient-primary w-100 py-2 rounded-pill" routerLink="/signin">
         <i class="fas fa-sign-in-alt me-2"></i> Sign In
       </button>
     </div>

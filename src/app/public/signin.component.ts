@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class SigninComponent {
-  // Add sign-in logic here
+  router = inject(Router);
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+    localStorage.setItem('fusionops_isAuthenticated', 'true');
+    this.router.navigate(['/dashboard']);
+  }
 }

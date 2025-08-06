@@ -5,7 +5,7 @@
       <h2 class="fw-bold mb-0">Sign In</h2>
       <p class="text-muted">Access your FusionOps Portal account</p>
     </div>
-    <form>
+    <form (submit)="onSubmit($event)">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter your email" required>
