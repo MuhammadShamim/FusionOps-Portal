@@ -1,0 +1,68 @@
+Application bundle generation failed. [1.946 seconds]
+
+✘ [ERROR] TS2531: Object is possibly 'null'. [plugin angular-compiler]
+
+    src/app/private/notes.component.html:47:84:
+      47 │ ...="text" class="form-control mb-2" [(ngModel)]="editingNote.title">
+         ╵                                                               ~~~~~
+
+  Error occurs in the template of component NotesComponent.
+
+    src/app/private/notes.component.ts:14:15:
+      14 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2531: Object is possibly 'null'. [plugin angular-compiler]
+
+    src/app/private/notes.component.html:47:84:
+      47 │ ...="text" class="form-control mb-2" [(ngModel)]="editingNote.title">
+         ╵                                                               ~~~~~
+
+  Error occurs in the template of component NotesComponent.
+
+    src/app/private/notes.component.ts:14:15:
+      14 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2531: Object is possibly 'null'. [plugin angular-compiler]
+
+    src/app/private/notes.component.html:48:79:
+      48 │ ...ype="text" class="form-control" [(ngModel)]="editingNote.content">
+         ╵                                                             ~~~~~~~
+
+  Error occurs in the template of component NotesComponent.
+
+    src/app/private/notes.component.ts:14:15:
+      14 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2531: Object is possibly 'null'. [plugin angular-compiler]
+
+    src/app/private/notes.component.html:48:79:
+      48 │ ...ype="text" class="form-control" [(ngModel)]="editingNote.content">
+         ╵                                                             ~~~~~~~
+
+  Error occurs in the template of component NotesComponent.
+
+    src/app/private/notes.component.ts:14:15:
+      14 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2531: Object is possibly 'null'. [plugin angular-compiler]
+
+    src/app/private/notes.component.html:50:31:
+      50 │             <td>{{ editingNote.created | date:'short' }}</td>
+         ╵                                ~~~~~~~
+
+  Error occurs in the template of component NotesComponent.
+
+    src/app/private/notes.component.ts:14:15:
+      14 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Watch mode enabled. Watching for file changes...
