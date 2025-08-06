@@ -41,6 +41,7 @@ export class NotesComponent {
     this.sortNotes();
   }
 
+
   addNoteFromModal() {
     if (!this.modalTitle.trim() && !this.modalContent.trim()) return;
     const note: Note = {
@@ -51,23 +52,35 @@ export class NotesComponent {
     };
     this.notes.push(note);
     this.saveNotes();
-    this.modalTitle = '';
-    this.modalContent = '';
-    this.showModal = false;
+    this.closeModal();
   }
 
-  editNote(note: Note) {
+  openEditModal(note: Note) {
     this.editingNote = { ...note };
+    this.modalTitle = note.title;
+    this.modalContent = note.content;
+    this.showModal = true;
   }
 
-  updateNote() {
+  updateNoteFromModal() {
     if (!this.editingNote) return;
     const idx = this.notes.findIndex(n => n.id === this.editingNote!.id);
     if (idx > -1) {
-      this.notes[idx] = { ...this.editingNote };
+      this.notes[idx] = {
+        ...this.editingNote,
+        title: this.modalTitle.trim(),
+        content: this.modalContent.trim()
+      };
       this.saveNotes();
     }
+    this.closeModal();
+  }
+
+  closeModal() {
+    this.showModal = false;
     this.editingNote = null;
+    this.modalTitle = '';
+    this.modalContent = '';
   }
 
   deleteNote(id: number) {

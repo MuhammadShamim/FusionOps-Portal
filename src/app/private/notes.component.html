@@ -32,29 +32,14 @@
               </thead>
               <tbody>
                 <tr *ngFor="let note of filteredNotes">
-                  <ng-container *ngIf="editingNote?.id !== note.id; else editRowBlock">
-                    <td class="fw-semibold">{{ note.title }}</td>
-                    <td class="text-secondary">{{ note.content }}</td>
-                    <td class="text-secondary">{{ note.created | date:'short' }}</td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-primary me-2" (click)="editNote(note)"><i class="fas fa-edit"></i></button>
-                      <button class="btn btn-sm btn-outline-danger" (click)="deleteNote(note.id)"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </ng-container>
+                  <td class="fw-semibold">{{ note.title }}</td>
+                  <td class="text-secondary">{{ note.content }}</td>
+                  <td class="text-secondary">{{ note.created | date:'short' }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary me-2" (click)="openEditModal(note)"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteNote(note.id)"><i class="fas fa-trash"></i></button>
+                  </td>
                 </tr>
-                <ng-template #editRowBlock>
-                  <tr *ngIf="editingNote as edit">
-                    <td colspan="2">
-                      <input type="text" class="form-control mb-2" [(ngModel)]="edit.title">
-                      <input type="text" class="form-control" [(ngModel)]="edit.content">
-                    </td>
-                    <td class="text-secondary">{{ edit.created | date:'short' }}</td>
-                    <td>
-                      <button class="btn btn-sm btn-success me-2" (click)="updateNote()"><i class="fas fa-save"></i></button>
-                      <button class="btn btn-sm btn-secondary" (click)="editingNote = null"><i class="fas fa-times"></i></button>
-                    </td>
-                  </tr>
-                </ng-template>
                 <tr *ngIf="filteredNotes.length === 0">
                   <td colspan="4" class="text-center text-muted">No notes found.</td>
                 </tr>
@@ -66,15 +51,15 @@
     </div>
   </div>
 
-  <!-- Modal for creating a note -->
+  <!-- Modal for creating or editing a note -->
   <div class="modal fade show" tabindex="-1" [ngStyle]="{display: showModal ? 'block' : 'none', background: 'rgba(0,0,0,0.5)'}" *ngIf="showModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-white text-dark rounded-4">
         <div class="modal-header border-0">
-          <h5 class="modal-title">Create Note</h5>
-          <button type="button" class="btn-close" (click)="showModal = false"></button>
+          <h5 class="modal-title">{{ editingNote ? 'Edit Note' : 'Create Note' }}</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
         </div>
-        <form (ngSubmit)="addNoteFromModal()">
+        <form (ngSubmit)="editingNote ? updateNoteFromModal() : addNoteFromModal()">
           <div class="modal-body">
             <div class="mb-3">
               <label class="form-label">Title</label>
@@ -86,8 +71,8 @@
             </div>
           </div>
           <div class="modal-footer border-0">
-            <button type="button" class="btn btn-secondary" (click)="showModal = false">Cancel</button>
-            <button type="submit" class="btn btn-gradient-primary">Create</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="btn btn-gradient-primary">{{ editingNote ? 'Update' : 'Create' }}</button>
           </div>
         </form>
       </div>
