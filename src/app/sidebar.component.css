@@ -2,8 +2,9 @@
   min-width: 250px;
   max-width: 250px;
   height: 100vh;
-  background: #fff;
-  border-right: 1px solid #e5e7eb;
+  background: #23272b;
+  color: #fff;
+  border-right: 1px solid #23272b;
   box-shadow: 2px 0 24px 0 rgba(31, 38, 135, 0.08);
   border-radius: 0; /* No rounded corners */
   padding: 2rem 1rem 1rem 1rem;

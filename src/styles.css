@@ -7,7 +7,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  background: #00a6f8;
+  background: #181c24;
   color: #fff;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
@@ -16,7 +16,7 @@ html, body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #54c3fb;
+  background: #181c24;
 }
 
 .app-body {
