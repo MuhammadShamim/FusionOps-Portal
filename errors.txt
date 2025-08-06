@@ -70,3 +70,4 @@ Error: NG0200: Circular dependency detected for `_ApiStatusService`. Source: Sta
 	invokeTask (zone__js.js:440)
 	invokeTask (zone__js.js:938)
 	globalCallback (zone__js.js:959)
+  npm install @angular/common @angular/common/http
