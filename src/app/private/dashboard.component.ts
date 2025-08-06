@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+import { ApiStatusService } from '../api-status.service';
+import { CarrierProfileService } from '../carrier-profile.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,4 +9,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css'],
   standalone: true
 })
-export class DashboardComponent {}
+export class DashboardComponent implements OnInit {
+  apiStatus: { status: 'success' | 'error', message: string } | null = null;
+  carrierName = '';
+  carrierProfile: any = null;
+  carrierProfileError: string | null = null;
+
+  constructor(
+    private apiStatusService: ApiStatusService,
+    private carrierProfileService: CarrierProfileService
+  ) {}
+
+  ngOnInit() {
+    this.apiStatusService.getStatus().subscribe(status => {
+      this.apiStatus = status;
+    });
+  }
+
+  getCarrierProfile() {
+    this.carrierProfile = null;
+    this.carrierProfileError = null;
+    if (!this.carrierName.trim()) return;
+    this.carrierProfileService.getCarrierProfile(this.carrierName.trim()).subscribe(result => {
+      if (result && !result.error) {
+        this.carrierProfile = result;
+      } else {
+        this.carrierProfileError = result?.error?.message || result?.error || 'No profile found or API error.';
+      }
+    });
+  }
+}
