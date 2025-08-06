@@ -33,9 +33,6 @@ li {
   background: linear-gradient(120deg, #10b981 0%, #06b6d4 100%);
 }
 
-.card, .card-body {
-  border-radius: 1.5rem !important;
-}
 
 .list-unstyled li a {
   font-size: 1.1rem;
