@@ -1,11 +1,12 @@
 <div class="app-layout">
   <div class="app-body d-flex">
-    <app-sidebar [isAuthenticated]="isAuthenticated()"></app-sidebar>
+    <app-sidebar
+      [isAuthenticated]="isAuthenticated()"
+      [onSignIn]="onSignIn"
+      [onSignOut]="onSignOut"
+    ></app-sidebar>
     <main class="main-content flex-grow-1">
-      <router-outlet *ngIf="isAuthenticated()"></router-outlet>
-      <ng-container *ngIf="!isAuthenticated()">
-        <router-outlet></router-outlet>
-      </ng-container>
+      <router-outlet></router-outlet>
     </main>
   </div>
 </div>

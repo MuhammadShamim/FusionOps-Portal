@@ -5,14 +5,14 @@
   background: #fff;
   border-right: 1px solid #e5e7eb;
   box-shadow: 2px 0 24px 0 rgba(31, 38, 135, 0.08);
-  border-radius: 0 2rem 2rem 0;
+  border-radius: 0; /* No rounded corners */
   padding: 2rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
 }
 
 .fusionops-sidebar .sidebar-logo {
-  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  background: #6366f1; /* Solid accent color, not gradient */
 }
 
 .fusionops-nav-link {
