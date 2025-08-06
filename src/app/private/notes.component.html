@@ -31,7 +31,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let note of filteredNotes">
-          <ng-container *ngIf="editingNote?.id !== note.id; else editRow">
+          <ng-container *ngIf="editingNote?.id !== note.id; else editRowBlock">
             <td>{{ note.title }}</td>
             <td>{{ note.content }}</td>
             <td>{{ note.created | date:'short' }}</td>
@@ -40,18 +40,20 @@
               <button class="btn btn-sm btn-outline-danger" (click)="deleteNote(note.id)"><i class="fas fa-trash"></i></button>
             </td>
           </ng-container>
-          <ng-template #editRow>
+        </tr>
+        <ng-template #editRowBlock>
+          <tr>
             <td colspan="2">
               <input type="text" class="form-control mb-2" [(ngModel)]="editingNote.title">
               <input type="text" class="form-control" [(ngModel)]="editingNote.content">
             </td>
-            <td>{{ editingNote?.created | date:'short' }}</td>
+            <td>{{ editingNote.created | date:'short' }}</td>
             <td>
               <button class="btn btn-sm btn-success me-2" (click)="updateNote()"><i class="fas fa-save"></i></button>
               <button class="btn btn-sm btn-secondary" (click)="editingNote = null"><i class="fas fa-times"></i></button>
             </td>
-          </ng-template>
-        </tr>
+          </tr>
+        </ng-template>
         <tr *ngIf="filteredNotes.length === 0">
           <td colspan="4" class="text-center text-muted">No notes found.</td>
         </tr>
