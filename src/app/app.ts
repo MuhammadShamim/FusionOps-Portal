@@ -11,14 +11,17 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
+export class App implements OnInit, OnDestroy {
   isAuthenticated = false;
-  router = inject(Router);
-  auth = inject(AuthService);
-  zone = inject(NgZone);
   private authSub?: Subscription;
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private zone: NgZone
+  ) {}
 
   ngOnInit() {
-    this.authSub = this.auth.auth$.subscribe(val => {
+    this.authSub = this.auth.auth$.subscribe((val: boolean) => {
       this.isAuthenticated = val;
     });
   }
@@ -27,18 +30,17 @@ import { Subscription } from 'rxjs';
     this.authSub?.unsubscribe();
   }
 
-  onSignIn = () => {
+  onSignIn() {
     this.auth.signIn();
     this.router.navigate(['/dashboard']).then(() => {
       this.zone.run(() => {
-        // This will force Angular to run change detection
         this.isAuthenticated = true;
       });
     });
-  };
+  }
 
-  onSignOut = () => {
+  onSignOut() {
     this.auth.signOut();
     this.router.navigate(['/']);
-  };
+  }
 }
