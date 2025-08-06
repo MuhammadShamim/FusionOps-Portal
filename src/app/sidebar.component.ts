@@ -11,4 +11,6 @@ import { NgIf } from '@angular/common';
 })
 export class SidebarComponent {
   @Input() isAuthenticated = false;
+  @Input() onSignIn?: () => void;
+  @Input() onSignOut?: () => void;
 }

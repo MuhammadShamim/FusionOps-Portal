@@ -1,47 +1,54 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-light sidebar" style="width: 220px;">
-  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-    <i class="fas fa-cubes fa-lg me-2"></i>
-    <span class="fs-4">FusionOps</span>
-  </a>
-  <hr>
+<div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3 bg-white shadow-lg rounded-end-4" style="width: 250px; min-height: 100vh;">
+  <div class="d-flex align-items-center mb-4">
+    <div class="sidebar-logo bg-primary bg-gradient rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 48px; height: 48px;">
+      <i class="fas fa-cubes fa-2x text-white"></i>
+    </div>
+    <span class="fs-3 fw-bold text-primary">FusionOps</span>
+  </div>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item" *ngIf="!isAuthenticated">
-      <a routerLink="/" class="nav-link link-dark d-flex align-items-center">
+      <a routerLink="/" class="nav-link d-flex align-items-center fusionops-nav-link">
         <i class="fas fa-home me-2"></i> Home
       </a>
     </li>
     <li *ngIf="!isAuthenticated">
-      <a routerLink="/features" class="nav-link link-dark d-flex align-items-center">
+      <a routerLink="/features" class="nav-link d-flex align-items-center fusionops-nav-link">
         <i class="fas fa-star me-2"></i> Features
       </a>
     </li>
     <li *ngIf="!isAuthenticated">
-      <a routerLink="/contact" class="nav-link link-dark d-flex align-items-center">
+      <a routerLink="/contact" class="nav-link d-flex align-items-center fusionops-nav-link">
         <i class="fas fa-envelope me-2"></i> Contact
       </a>
     </li>
     <li *ngIf="isAuthenticated">
-      <a routerLink="/dashboard" class="nav-link link-dark d-flex align-items-center">
+      <a routerLink="/dashboard" class="nav-link d-flex align-items-center fusionops-nav-link">
         <i class="fas fa-tachometer-alt me-2"></i> Dashboard
       </a>
     </li>
     <li *ngIf="isAuthenticated">
-      <a routerLink="/notes" class="nav-link link-dark d-flex align-items-center">
+      <a routerLink="/notes" class="nav-link d-flex align-items-center fusionops-nav-link">
         <i class="fas fa-sticky-note me-2"></i> Notes
       </a>
     </li>
   </ul>
-  <hr>
-  <div class="dropdown">
-    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="fas fa-user-circle fa-lg me-2"></i>
-      <strong>User</strong>
-    </a>
-    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
-    </ul>
+  <div class="mt-auto pt-4">
+    <div *ngIf="!isAuthenticated">
+      <button class="btn btn-gradient-primary w-100 py-2 rounded-pill" (click)="onSignIn && onSignIn()">
+        <i class="fas fa-sign-in-alt me-2"></i> Sign In
+      </button>
+    </div>
+    <div class="dropdown" *ngIf="isAuthenticated">
+      <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle fusionops-user-dropdown" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="user" class="rounded-circle me-2" width="40" height="40">
+        <span class="fw-semibold">User</span>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#" (click)="onSignOut && onSignOut()">Sign out</a></li>
+      </ul>
+    </div>
   </div>
 </div>

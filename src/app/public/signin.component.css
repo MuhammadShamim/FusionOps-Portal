@@ -1,0 +1,14 @@
+.container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.card {
+  border: none;
+  border-radius: 1rem;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  border: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+}
