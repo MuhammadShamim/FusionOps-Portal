@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  width: 100%;
+}
+
+.features-page {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.features-page h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.features-page ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.features-page li {
+  margin-bottom: 0.5rem;
+}

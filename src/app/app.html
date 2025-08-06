@@ -1,7 +1,11 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-
-<div class="project-info">
-  <h2>FusionOps Portal</h2>
-  <p>Your one-stop solution for managing and collaborating with your team efficiently. Streamline operations, enhance productivity, and foster seamless communication within your organization.</p>
+<div class="app-layout">
+  <div class="app-body d-flex">
+    <app-sidebar [isAuthenticated]="isAuthenticated()"></app-sidebar>
+    <main class="main-content flex-grow-1">
+      <router-outlet *ngIf="isAuthenticated()"></router-outlet>
+      <ng-container *ngIf="!isAuthenticated()">
+        <router-outlet></router-outlet>
+      </ng-container>
+    </main>
+  </div>
 </div>

@@ -3,3 +3,98 @@
 /* Bootstrap 5 is included globally via angular.json */
 
 /* Add any custom global styles or overrides below */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #00a6f8;
+  color: #fff;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #54c3fb;
+}
+
+.app-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.sidebar {
+  min-width: 220px;
+  max-width: 220px;
+  height: 100vh;
+  background: #007dfa;
+  color: #fff;
+  border-right: 1px solid #88b2dd;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1020;
+  box-shadow: 2px 0 8px rgba(205, 212, 226, 0.08);
+  border-radius: 0 0px 0px 0;
+  padding-top: 1rem;
+}
+
+.sidebar .nav-link {
+  color: #adb5bd;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+  background: linear-gradient(90deg, #4f8cff 0%, #a259ff 100%);
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.12);
+}
+
+.sidebar .nav-link i {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background: #23272b;
+  min-width: 0;
+  overflow-y: auto;
+  border-left: 1px solid #23272b;
+  border-radius: 0px 0 0 0;
+}
+
+.card-section {
+  background: #23272b;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .app-body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #0a75e0;
+    border-radius: 0 0 16px 16px;
+  }
+  .main-content {
+    border-left: none;
+    border-radius: 0;
+  }
+}
