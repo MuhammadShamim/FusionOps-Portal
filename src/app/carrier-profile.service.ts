@@ -14,7 +14,8 @@ export class CarrierProfileService {
     const clientSecret = this.env.get('API_CLIENT_SECRET');
 
     // Check for missing or placeholder credentials/URL
-    if (!baseUrl || baseUrl === '/api' || baseUrl.startsWith('http') === false) {
+    // Allow '/api' for local dev with proxy, or any http/https URL
+    if (!baseUrl || !(baseUrl === '/api' || baseUrl.startsWith('http://') || baseUrl.startsWith('https://'))) {
       return of({ error: { status: 'Config', message: 'API_BASE_URL is missing or not set to a valid URL.' } });
     }
     if (!clientId || clientId === 'your_client_id_here') {
