@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from '../layout.component';
 import { ApiStatusService } from '../services/api-status.service';
-import { CarrierProfileService } from '../carrier-profile.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,31 +14,15 @@ import { CarrierProfileService } from '../carrier-profile.service';
 })
 export class DashboardComponent implements OnInit {
   apiStatus: { status: 'success' | 'error', message: string } | null = null;
-  carrierName = '';
-  carrierProfile: any = null;
-  carrierProfileError: string | null = null;
 
   constructor(
     private apiStatusService: ApiStatusService,
-    private carrierProfileService: CarrierProfileService
   ) {}
 
   ngOnInit() {
-    this.apiStatusService.getStatus().subscribe(status => {
+    this.apiStatusService.getStatus().subscribe((status: { status: 'success' | 'error', message: string }) => {
       this.apiStatus = status;
     });
   }
 
-  getCarrierProfile() {
-    this.carrierProfile = null;
-    this.carrierProfileError = null;
-    if (!this.carrierName.trim()) return;
-    this.carrierProfileService.getCarrierProfile(this.carrierName.trim()).subscribe(result => {
-      if (result && !result.error) {
-        this.carrierProfile = result;
-      } else {
-        this.carrierProfileError = result?.error?.message || result?.error || 'No profile found or API error.';
-      }
-    });
-  }
 }
