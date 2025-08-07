@@ -1,1 +1,247 @@
-         ╵                ~~~~~~~~~~~~
+Application bundle generation complete. [0.159 seconds]
+
+Page reload sent to client(s).
+Application bundle generation failed. [0.163 seconds]
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/private/carrier-profile.component.ts:4:9:
+      4 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/private/carrier-profile.component.ts:12:39:
+      12 │   imports: [CommonModule, FormsModule, LayoutComponent]
+         ╵                                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/private/carrier-profile.component.ts:12:39:
+      12 │   imports: [CommonModule, FormsModule, LayoutComponent]
+         ╵                                        ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/private/dashboard.component.ts:5:9:
+      5 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/private/dashboard.component.ts:13:39:
+      13 │   imports: [CommonModule, FormsModule, LayoutComponent]
+         ╵                                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/private/dashboard.component.ts:13:39:
+      13 │   imports: [CommonModule, FormsModule, LayoutComponent]
+         ╵                                        ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/private/kanban.component.ts:4:9:
+      4 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/private/kanban.component.ts:21:39:
+      21 │   imports: [CommonModule, FormsModule, LayoutComponent],
+         ╵                                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/private/kanban.component.ts:21:39:
+      21 │   imports: [CommonModule, FormsModule, LayoutComponent],
+         ╵                                        ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:4:9:
+      4 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/private/notes.component.ts:18:39:
+      18 │   imports: [FormsModule, CommonModule, LayoutComponent]
+         ╵                                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/private/notes.component.ts:18:39:
+      18 │   imports: [FormsModule, CommonModule, LayoutComponent]
+         ╵                                        ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/public/contact.component.ts:2:9:
+      2 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/public/contact.component.ts:9:12:
+      9 │   imports: [LayoutComponent]
+        ╵             ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/public/contact.component.ts:9:12:
+      9 │   imports: [LayoutComponent]
+        ╵             ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/public/cover.component.ts:3:9:
+      3 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/public/cover.component.ts:10:24:
+      10 │   imports: [RouterLink, LayoutComponent]
+         ╵                         ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/public/cover.component.ts:10:24:
+      10 │   imports: [RouterLink, LayoutComponent]
+         ╵                         ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/public/features.component.ts:2:9:
+      2 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/public/features.component.ts:9:12:
+      9 │   imports: [LayoutComponent]
+        ╵             ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/public/features.component.ts:9:12:
+      9 │   imports: [LayoutComponent]
+        ╵             ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2305: Module '"../shared/layout.component"' has no exported member 'LayoutComponent'. [plugin angular-compiler]
+
+    src/app/public/team.component.ts:2:9:
+      2 │ import { LayoutComponent } from '../shared/layout.component';
+        ╵          ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/public/team.component.ts:9:12:
+      9 │   imports: [LayoutComponent]
+        ╵             ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/public/team.component.ts:9:12:
+      9 │   imports: [LayoutComponent]
+        ╵             ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS1146: Declaration expected. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:11:10:
+      11 │   @Input() title = '';
+         ╵           ^
+
+
+✘ [ERROR] TS2304: Cannot find name 'title'. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:11:11:
+      11 │   @Input() title = '';
+         ╵            ~~~~~
+
+
+✘ [ERROR] TS1146: Declaration expected. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:12:10:
+      12 │   @Input() isAuthenticated = false;
+         ╵           ^
+
+
+✘ [ERROR] TS2304: Cannot find name 'isAuthenticated'. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:12:11:
+      12 │   @Input() isAuthenticated = false;
+         ╵            ~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS1146: Declaration expected. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:13:11:
+      13 │   @Output() signOut = new EventEmitter<void>();
+         ╵            ^
+
+
+✘ [ERROR] TS2304: Cannot find name 'signOut'. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:13:12:
+      13 │   @Output() signOut = new EventEmitter<void>();
+         ╵             ~~~~~~~
+
+
+✘ [ERROR] TS2304: Cannot find name 'year'. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:14:2:
+      14 │   year = new Date().getFullYear();
+         ╵   ~~~~
+
+
+✘ [ERROR] TS2304: Cannot find name 'onSignOut'. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:15:2:
+      15 │   onSignOut() {
+         ╵   ~~~~~~~~~
+
+
+✘ [ERROR] TS1005: ';' expected. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:15:14:
+      15 │   onSignOut() {
+         ╵               ^
+
+
+✘ [ERROR] TS2532: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:16:4:
+      16 │     this.signOut.emit();
+         ╵     ~~~~
+
+
+✘ [ERROR] TS1128: Declaration or statement expected. [plugin angular-compiler]
+
+    src/app/shared/layout.component.ts:18:0:
+      18 │ }
