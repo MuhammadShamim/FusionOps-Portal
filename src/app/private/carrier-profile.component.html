@@ -1,11 +1,13 @@
 <fusionops-layout [title]="'Carrier Profile'">
-  <form class="d-flex align-items-center gap-2" header-actions (ngSubmit)="getCarrierProfile()">
-    <input type="text" class="form-control" style="max-width: 400px;" placeholder="Enter carrier name (e.g. uni_fxfe)" [(ngModel)]="carrierName" name="carrierName" required>
-    <button type="submit" class="btn btn-gradient-primary d-flex align-items-center px-3 ms-2">
-      <i class="fas fa-search me-1"></i>
-      <span>Get Profile</span>
-    </button>
-  </form>
+  <div class="d-flex align-items-center gap-2" header-actions>
+    <form class="d-flex align-items-center gap-2" (ngSubmit)="getCarrierProfile()">
+      <input type="text" class="form-control" style="max-width: 320px;" placeholder="Enter carrier name (e.g. uni_fxfe)" [(ngModel)]="carrierName" name="carrierName" required>
+      <button type="submit" class="btn btn-primary d-flex align-items-center px-3 ms-2" style="border-radius: 2rem; font-weight: 600;">
+        <i class="fas fa-search me-1"></i>
+        <span>Get Profile</span>
+      </button>
+    </form>
+  </div>
   <div class="flex-fill d-flex flex-column w-100">
     <div *ngIf="carrierProfileError" class="alert alert-warning mb-3">
       {{ carrierProfileError }}
