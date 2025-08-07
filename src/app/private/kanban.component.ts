@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface KanbanTask {
   id: number;
@@ -16,7 +17,7 @@ interface KanbanColumn {
 @Component({
   selector: 'app-kanban',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './kanban.component.html',
   styleUrls: ['./kanban.component.css']
 })
