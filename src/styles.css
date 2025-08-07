@@ -95,11 +95,12 @@
 
 /* Add any custom global styles or overrides below */
 
+
 html, body {
   height: 100%;
   margin: 0;
-  background: #181c24;
-  color: #fff;
+  background: #f8fafc;
+  color: #23272b;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
 
@@ -107,7 +108,7 @@ html, body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #181c24;
+  background: #f8fafc;
 }
 
 .app-body {
