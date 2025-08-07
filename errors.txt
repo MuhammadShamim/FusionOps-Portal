@@ -1,26 +1,57 @@
-Application bundle generation failed. [2.303 seconds]
+Application bundle generation failed. [0.191 seconds]
 
-✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
+✘ [ERROR] TS2307: Cannot find module 'ngx-monaco-editor' or its corresponding type declarations. [plugin angular-compiler]
 
-    src/app/private/kanban.component.html:9:75:
-      9 │ ...older="Task title" [(ngModel)]="newTaskTitle" name="newTaskTitle...
-        ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component KanbanComponent.
-
-    src/app/private/kanban.component.ts:20:15:
-      20 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/carrier-profile.component.ts:5:35:
+      5 │ import { MonacoEditorModule } from 'ngx-monaco-editor';
+        ╵                                    ~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
 
-    src/app/private/kanban.component.html:12:87:
-      12 │ ...ion (optional)" [(ngModel)]="newTaskDescription" name="newTaskD...
-         ╵                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/carrier-profile.component.ts:13:56:
+      13 │ ...: [CommonModule, FormsModule, LayoutComponent, MonacoEditorModule]
+         ╵                                                   ~~~~~~~~~~~~~~~~~~
 
-  Error occurs in the template of component KanbanComponent.
+  Unknown reference.
 
-    src/app/private/kanban.component.ts:20:15:
-      20 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/carrier-profile.component.ts:13:56:
+      13 │ ...: [CommonModule, FormsModule, LayoutComponent, MonacoEditorModule]
+         ╵                                                   ~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2307: Cannot find module 'ngx-monaco-editor' or its corresponding type declarations. [plugin angular-compiler]
+
+    src/app/private/carrier-profile.monaco.ts:2:35:
+      2 │ import { MonacoEditorModule } from 'ngx-monaco-editor';
+        ╵                                    ~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG1010: Value at position 0 in the NgModule.imports of CarrierProfileMonacoModule is not a reference
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/private/carrier-profile.monaco.ts:5:11:
+      5 │   imports: [MonacoEditorModule.forRoot()],
+        ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Unable to evaluate this expression statically.
+
+    src/app/private/carrier-profile.monaco.ts:5:12:
+Muhammads-MBP:FusionOps-Portal star$ npm install ngx-monaco-editor
+npm error code ERESOLVE
+npm error ERESOLVE unable to resolve dependency tree
+npm error
+npm error While resolving: fusion-ops-portal@0.0.0
+npm error Found: @angular/common@20.1.6
+npm error node_modules/@angular/common
+npm error   @angular/common@"^20.1.6" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peer @angular/common@"^12.0.0" from ngx-monaco-editor@12.0.0
+npm error node_modules/ngx-monaco-editor
+npm error   ngx-monaco-editor@"*" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
