@@ -20,6 +20,7 @@ interface KanbanColumn {
   templateUrl: './kanban.component.html',
   styleUrls: ['./kanban.component.css']
 })
+export class KanbanComponent {
   columns: KanbanColumn[] = [
     { name: 'To Do', color: 'bg-light', tasks: [] },
     { name: 'In Progress', color: 'bg-primary text-white', tasks: [] },
@@ -91,9 +92,5 @@ interface KanbanColumn {
         }
       } catch {}
     }
-  }
-
-  deleteTask(task: KanbanTask, colIdx: number) {
-    this.columns[colIdx].tasks = this.columns[colIdx].tasks.filter(t => t.id !== task.id);
   }
 }
