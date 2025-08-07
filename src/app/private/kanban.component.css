@@ -1,16 +1,13 @@
 
-body, .kanban-bg {
-  background: #f4f5fa;
-}
+
 
 .kanban-board {
   min-height: 400px;
-  background: #f4f5fa;
+  background: #f8fafc;
   padding-bottom: 2rem;
 }
 
 .kanban-column .card {
-  border-radius: 1.25rem;
   box-shadow: 0 4px 24px rgba(99,102,241,0.07);
   background: #fff;
   border: none;
@@ -18,7 +15,6 @@ body, .kanban-bg {
 }
 
 .card-header {
-  border-radius: 1.25rem 1.25rem 0 0;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -45,7 +41,6 @@ body, .kanban-bg {
 
 .kanban-task {
   border-left: 5px solid #6366f1;
-  border-radius: 1rem;
   background: #f8fafc;
   box-shadow: 0 2px 8px rgba(99,102,241,0.08);
   margin-bottom: 1rem;
@@ -71,7 +66,7 @@ body, .kanban-bg {
   color: #fff;
   border: none;
   font-weight: 600;
-  border-radius: 0.5rem;
+  border-radius: 0;
   box-shadow: 0 2px 8px rgba(99,102,241,0.10);
   transition: background 0.2s, color 0.2s;
 }
@@ -88,7 +83,7 @@ body, .kanban-bg {
   color: #94a3b8 !important;
 }
 .kanban-task .btn {
-  border-radius: 0.4rem;
+  border-radius: 0;
 }
 .kanban-task .btn-outline-primary {
   border-color: #6366f1;
@@ -113,5 +108,5 @@ body, .kanban-bg {
 
 .text-center.text-muted.small.py-3 {
   background: #f1f5f9;
-  border-radius: 0.75rem;
+  border-radius: 0;
 }
