@@ -4,7 +4,7 @@
       <h2 class="fw-bold text-primary">Kanban Board</h2>
     </div>
     <div class="col-md-8">
-      <form class="row g-2 justify-content-end" (ngSubmit)="addTask()">
+      <form class="row g-2 justify-content-end fusionops-form" (ngSubmit)="addTask()">
         <div class="col-auto">
           <input type="text" class="form-control" placeholder="Task title" [(ngModel)]="newTaskTitle" name="newTaskTitle" required>
         </div>
@@ -19,11 +19,11 @@
   </div>
   <div class="row kanban-board g-3">
     <div class="col-md-3" *ngFor="let col of columns; let colIdx = index">
-      <div class="card h-100 shadow-sm">
+      <div class="fusionops-card h-100">
         <div class="card-header {{col.color}} fw-semibold text-center">{{ col.name }}</div>
         <div class="card-body p-2" style="min-height: 200px;"
              (dragover)="onDragOver($event)" (drop)="onDrop(colIdx)">
-          <div *ngFor="let task of col.tasks" class="kanban-task card mb-2"
+          <div *ngFor="let task of col.tasks" class="kanban-task fusionops-card mb-2"
                draggable="true"
                (dragstart)="onDragStart(task, colIdx)">
             <div class="card-body p-2">
