@@ -17,6 +17,8 @@ export class ApiStatusService {
       'client_id': clientId,
       'client_secret': clientSecret
     };
+    // Debug logging
+    console.log('[ApiStatusService] Status Check:', { url, headers });
     return this.http.get<any>(url, { headers }).pipe(
       map(res => {
         if (res && res.success === true && res.status === 200) {
