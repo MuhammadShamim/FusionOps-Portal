@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LayoutComponent } from '../layout.component';
+import { LayoutComponent } from '../shared/layout.component';
 import { ApiStatusService } from '../services/api-status.service';
 
 @Component({

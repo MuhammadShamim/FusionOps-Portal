@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { RouterModule, RouterOutlet, Router } from '@angular/router';
-import { SidebarComponent } from './sidebar.component';
+import { SidebarComponent } from './shared/sidebar.component';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
 

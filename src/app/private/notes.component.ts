@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from '../layout.component';
+import { LayoutComponent } from '../shared/layout.component';
 
 interface Note {
   id: number;
