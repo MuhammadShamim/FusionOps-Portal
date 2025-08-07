@@ -28,8 +28,7 @@ export class CarrierProfileService {
     const url = `${baseUrl}/carrierprofile/${encodeURIComponent(name)}`;
     const headers = {
       'client_id': clientId,
-      'client_secret': clientSecret,
-      'Content-Type': 'text/plain'
+      'client_secret': clientSecret
     };
     // Debug logging
     console.log('[CarrierProfileService] Lookup:', { url, headers, carrierName: name });
