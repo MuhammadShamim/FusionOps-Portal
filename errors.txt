@@ -1,27 +1,27 @@
-Application bundle generation failed. [2.416 seconds]
+Application bundle generation failed. [2.388 seconds]
 
-✘ [ERROR] TS2307: Cannot find module 'ngx-monaco-editor' or its corresponding type declarations. [plugin angular-compiler]
+✘ [ERROR] TS2307: Cannot find module '../carrier-profile.service' or its corresponding type declarations. [plugin angular-compiler]
 
-    src/app/private/carrier-profile.monaco.ts:2:35:
-      2 │ import { MonacoEditorModule } from 'ngx-monaco-editor';
-        ╵                                    ~~~~~~~~~~~~~~~~~~~
+    src/app/private/dashboard.component.ts:7:38:
+      7 │ import { CarrierProfileService } from '../carrier-profile.service';
+        ╵                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] NG1010: Value at position 0 in the NgModule.imports of CarrierProfileMonacoModule is not a reference
-  Value could not be determined statically. [plugin angular-compiler]
+✘ [ERROR] NG2003: No suitable injection token for parameter 'carrierProfileService' of class 'DashboardComponent'.
+  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
 
-    src/app/private/carrier-profile.monaco.ts:5:11:
-      5 │   imports: [MonacoEditorModule.forRoot()],
-        ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/dashboard.component.ts:24:12:
+      24 │     private carrierProfileService: CarrierProfileService
+         ╵             ~~~~~~~~~~~~~~~~~~~~~
 
-  Unable to evaluate this expression statically.
+  This type does not have a value, so it cannot be used as injection token.
 
-    src/app/private/carrier-profile.monaco.ts:5:12:
-      5 │   imports: [MonacoEditorModule.forRoot()],
-        ╵             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/dashboard.component.ts:24:35:
+      24 │     private carrierProfileService: CarrierProfileService
+         ╵                                    ~~~~~~~~~~~~~~~~~~~~~
 
-  Unknown reference.
 
-    src/app/private/carrier-profile.monaco.ts:5:12:
-      5 │   imports: [MonacoEditorModule.forRoot()],
-        ╵             ~~~~~~~~~~~~~~~~~~
+✘ [ERROR] TS7006: Parameter 'result' implicitly has an 'any' type. [plugin angular-compiler]
+
+    src/app/private/dashboard.component.ts:37:84:
+      37 │ ...e.getCarrierProfile(this.carrierName.trim()).subscribe(result => {
