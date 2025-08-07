@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SidebarComponent } from './sidebar.component';
 
 @Component({
@@ -8,7 +8,11 @@ import { SidebarComponent } from './sidebar.component';
   styleUrls: ['./layout.component.css'],
   imports: [SidebarComponent]
 })
-export class LayoutComponent {
   @Input() title = '';
+  @Input() isAuthenticated = false;
+  @Output() signOut = new EventEmitter<void>();
   year = new Date().getFullYear();
+  onSignOut() {
+    this.signOut.emit();
+  }
 }

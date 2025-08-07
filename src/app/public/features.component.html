@@ -1,4 +1,4 @@
-<fusionops-layout [title]="'<i class=\'fas fa-star me-2 text-primary\'></i>Features'">
+<fusionops-layout [title]="'<i class=\'fas fa-star me-2 text-primary\'></i>Features'" [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
   <div class="fusionops-features-bg d-flex flex-column justify-content-center align-items-center min-vh-100">
     <div class="card shadow-lg p-5 border-0 rounded-4 fusionops-features-card text-center">
       <h2 class="fw-bold mb-4 text-primary">FusionOps Features</h2>
