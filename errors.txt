@@ -1,27 +1,38 @@
-Application bundle generation failed. [2.388 seconds]
+Application bundle generation failed. [0.593 seconds]
 
-✘ [ERROR] TS2307: Cannot find module '../carrier-profile.service' or its corresponding type declarations. [plugin angular-compiler]
+▲ [WARNING] NG8113: SidebarComponent is not used within the template of App [plugin angular-compiler]
 
-    src/app/private/dashboard.component.ts:7:38:
-      7 │ import { CarrierProfileService } from '../carrier-profile.service';
-        ╵                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG2003: No suitable injection token for parameter 'carrierProfileService' of class 'DashboardComponent'.
-  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
-
-    src/app/private/dashboard.component.ts:24:12:
-      24 │     private carrierProfileService: CarrierProfileService
-         ╵             ~~~~~~~~~~~~~~~~~~~~~
-
-  This type does not have a value, so it cannot be used as injection token.
-
-    src/app/private/dashboard.component.ts:24:35:
-      24 │     private carrierProfileService: CarrierProfileService
-         ╵                                    ~~~~~~~~~~~~~~~~~~~~~
+    src/app/app.ts:10:40:
+      10 │   imports: [RouterModule, RouterOutlet, SidebarComponent],
+         ╵                                         ~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] TS7006: Parameter 'result' implicitly has an 'any' type. [plugin angular-compiler]
+✘ [ERROR] NG8001: 'app-sidebar' is not a known element:
+1. If 'app-sidebar' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-sidebar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message. [plugin angular-compiler]
 
-    src/app/private/dashboard.component.ts:37:84:
-      37 │ ...e.getCarrierProfile(this.carrierName.trim()).subscribe(result => {
+    src/app/app.html:3:4:
+      3 │     <app-sidebar
+        ╵     ~~~~~~~~~~~~
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:11:15:
+      11 │   templateUrl: './app.html',
+         ╵                ~~~~~~~~~~~~
+
+
+✘ [ERROR] NG8002: Can't bind to 'isAuthenticated' since it isn't a known property of 'app-sidebar'.
+1. If 'app-sidebar' is an Angular component and it has 'isAuthenticated' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-sidebar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component. [plugin angular-compiler]
+
+    src/app/app.html:4:6:
+      4 │       [isAuthenticated]="isAuthenticated"
+        ╵       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:11:15:
+      11 │   templateUrl: './app.html',
+         ╵                ~~~~~~~~~~~~
