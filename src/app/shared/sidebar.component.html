@@ -46,5 +46,10 @@
         <i class="fas fa-sign-out-alt me-2"></i> Sign Out
       </button>
     </li>
+    <li *ngIf="!isAuthenticated">
+      <a routerLink="/signin" class="nav-link d-flex align-items-center fusionops-nav-link">
+        <i class="fas fa-sign-in-alt me-2"></i> Sign In
+      </a>
+    </li>
   </ul>
 </div>
