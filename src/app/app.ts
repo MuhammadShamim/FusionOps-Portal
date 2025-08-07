@@ -1,13 +1,12 @@
 import { Component, inject, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { RouterModule, RouterOutlet, Router } from '@angular/router';
-import { SidebarComponent } from './shared/sidebar.component';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, SidebarComponent],
+  imports: [RouterModule, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
