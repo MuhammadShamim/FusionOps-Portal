@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from '../layout.component';
-import { ApiStatusService } from '../api-status.service';
+import { ApiStatusService } from '../services/api-status.service';
 import { CarrierProfileService } from '../carrier-profile.service';
 
 @Component({

@@ -1,19 +1,25 @@
 <fusionops-layout [title]="'Carrier Profile'">
-  <div class="d-flex align-items-center gap-2" header-actions>
-    <form class="d-flex align-items-center gap-2" (ngSubmit)="getCarrierProfile()">
-      <input type="text" class="form-control" style="max-width: 320px;" placeholder="Enter carrier name (e.g. uni_fxfe)" [(ngModel)]="carrierName" name="carrierName" required>
-      <button type="submit" class="btn btn-primary d-flex align-items-center px-3 ms-2" style="border-radius: 2rem; font-weight: 600;">
-        <i class="fas fa-search me-1"></i>
-        <span>Get Profile</span>
-      </button>
-    </form>
-  </div>
-  <div class="flex-fill d-flex flex-column w-100">
-    <div *ngIf="carrierProfileError" class="alert alert-warning mb-3">
-      {{ carrierProfileError }}
+  <div class="container-fluid pt-3">
+    <div class="row mb-3">
+      <div class="col-md-6 col-lg-5 col-xl-4">
+        <form class="d-flex align-items-center gap-2" (ngSubmit)="getCarrierProfile()">
+          <input type="text" class="form-control" style="max-width: 320px;" placeholder="Enter carrier name (e.g. uni_fxfe)" [(ngModel)]="carrierName" name="carrierName" required>
+          <button type="submit" class="btn btn-primary d-flex align-items-center px-3 ms-2" style="border-radius: 2rem; font-weight: 600;">
+            <i class="fas fa-search me-1"></i>
+            <span>Get Profile</span>
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="flex-fill w-100" style="min-height: 400px;">
-      <pre *ngIf="carrierProfile" class="fusionops-json-viewer language-json"><code>{{ profileJson }}</code></pre>
+    <div class="row">
+      <div class="col-12">
+        <div *ngIf="carrierProfileError" class="alert alert-warning mb-3">
+          {{ carrierProfileError }}
+        </div>
+        <div class="flex-fill w-100" style="min-height: 400px;">
+          <pre *ngIf="carrierProfile" class="fusionops-json-viewer language-json"><code>{{ profileJson }}</code></pre>
+        </div>
+      </div>
     </div>
   </div>
 </fusionops-layout>

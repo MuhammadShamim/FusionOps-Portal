@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from '../layout.component';
-import { CarrierProfileService } from '../carrier-profile.service';
+import { CarrierProfileService } from '../services/carrier-profile.service';
 
 @Component({
   selector: 'app-carrier-profile',
