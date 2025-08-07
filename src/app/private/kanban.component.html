@@ -1,0 +1,46 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4 align-items-end">
+    <div class="col-md-4">
+      <h2 class="fw-bold text-primary">Kanban Board</h2>
+    </div>
+    <div class="col-md-8">
+      <form class="row g-2 justify-content-end" (ngSubmit)="addTask()">
+        <div class="col-auto">
+          <input type="text" class="form-control" placeholder="Task title" [(ngModel)]="newTaskTitle" name="newTaskTitle" required>
+        </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" placeholder="Description (optional)" [(ngModel)]="newTaskDescription" name="newTaskDescription">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-gradient-primary">Add Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row kanban-board g-3">
+    <div class="col-md-3" *ngFor="let col of columns; let colIdx = index">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header {{col.color}} fw-semibold text-center">{{ col.name }}</div>
+        <div class="card-body p-2" style="min-height: 200px;"
+             (dragover)="onDragOver($event)" (drop)="onDrop(colIdx)">
+          <div *ngFor="let task of col.tasks" class="kanban-task card mb-2"
+               draggable="true"
+               (dragstart)="onDragStart(task, colIdx)">
+            <div class="card-body p-2">
+              <div class="fw-bold">{{ task.title }}</div>
+              <div class="text-muted small mb-2" *ngIf="task.description">{{ task.description }}</div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <button *ngIf="colIdx > 0" class="btn btn-sm btn-outline-primary me-1" (click)="moveTask(task, colIdx, colIdx-1)"><i class="fas fa-arrow-left"></i></button>
+                  <button *ngIf="colIdx < columns.length-1" class="btn btn-sm btn-outline-primary" (click)="moveTask(task, colIdx, colIdx+1)"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <button class="btn btn-sm btn-outline-danger" (click)="deleteTask(task, colIdx)"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="col.tasks.length === 0" class="text-center text-muted small py-3">No tasks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

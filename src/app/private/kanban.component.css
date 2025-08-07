@@ -1,0 +1,31 @@
+.kanban-board {
+  min-height: 400px;
+}
+.kanban-task {
+  border-left: 4px solid #6366f1;
+  border-radius: 0.5rem;
+  background: #f8fafc;
+  transition: box-shadow 0.2s;
+}
+.kanban-task:hover {
+  box-shadow: 0 2px 8px rgba(99,102,241,0.15);
+}
+.card-header.bg-primary, .card-header.bg-success, .card-header.bg-warning {
+  color: #fff !important;
+}
+.card-header.bg-light {
+  color: #6366f1 !important;
+}
+.btn-gradient-primary {
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-gradient-primary:hover {
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+  color: #fff;
+}
