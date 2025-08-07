@@ -1,11 +1,4 @@
-Application bundle generation failed. [2.393 seconds]
-
-▲ [WARNING] NG8113: PrismPipe is not used within the template of CarrierProfileComponent [plugin angular-compiler]
-
-    src/app/private/carrier-profile.component.ts:13:56:
-      13 │   imports: [CommonModule, FormsModule, LayoutComponent, PrismPipe]
-         ╵                                                         ~~~~~~~~~
-
+Application bundle generation failed. [2.416 seconds]
 
 ✘ [ERROR] TS2307: Cannot find module 'ngx-monaco-editor' or its corresponding type declarations. [plugin angular-compiler]
 
@@ -31,3 +24,4 @@ Application bundle generation failed. [2.393 seconds]
 
     src/app/private/carrier-profile.monaco.ts:5:12:
       5 │   imports: [MonacoEditorModule.forRoot()],
+        ╵             ~~~~~~~~~~~~~~~~~~
