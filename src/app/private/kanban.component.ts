@@ -21,6 +21,7 @@ interface KanbanColumn {
   templateUrl: './kanban.component.html',
   styleUrls: ['./kanban.component.css']
 })
+
 export class KanbanComponent {
   columns: KanbanColumn[] = [
     { name: 'To Do', color: 'bg-light', tasks: [] },
@@ -31,23 +32,31 @@ export class KanbanComponent {
   dragTask: KanbanTask | null = null;
   dragFromIdx: number | null = null;
 
-  newTaskTitle = '';
-  newTaskDescription = '';
+  showModal = false;
+  modalTaskTitle = '';
+  modalTaskDescription = '';
 
   constructor() {
     this.loadFromStorage();
   }
 
-  addTask() {
-    if (!this.newTaskTitle.trim()) return;
+  addTaskFromModal() {
+    if (!this.modalTaskTitle.trim()) return;
     this.columns[0].tasks.push({
       id: Date.now(),
-      title: this.newTaskTitle.trim(),
-      description: this.newTaskDescription.trim()
+      title: this.modalTaskTitle.trim(),
+      description: this.modalTaskDescription.trim()
     });
-    this.newTaskTitle = '';
-    this.newTaskDescription = '';
+    this.modalTaskTitle = '';
+    this.modalTaskDescription = '';
+    this.showModal = false;
     this.saveToStorage();
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.modalTaskTitle = '';
+    this.modalTaskDescription = '';
   }
 
   moveTask(task: KanbanTask, fromIdx: number, toIdx: number) {

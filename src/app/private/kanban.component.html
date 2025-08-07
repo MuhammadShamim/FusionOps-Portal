@@ -1,22 +1,7 @@
-<div class="container-fluid py-4">
-  <div class="row mb-4 align-items-end">
-    <div class="col-md-4">
-      <h2 class="fw-bold text-primary">Kanban Board</h2>
-    </div>
-    <div class="col-md-8">
-      <form class="row g-2 justify-content-end fusionops-form" (ngSubmit)="addTask()">
-        <div class="col-auto">
-          <input type="text" class="form-control" placeholder="Task title" [(ngModel)]="newTaskTitle" name="newTaskTitle" required>
-        </div>
-        <div class="col-auto">
-          <input type="text" class="form-control" placeholder="Description (optional)" [(ngModel)]="newTaskDescription" name="newTaskDescription">
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-gradient-primary">Add Task</button>
-        </div>
-      </form>
-    </div>
-  </div>
+<fusionops-layout [title]="'Kanban Board'">
+  <button header-actions class="btn btn-gradient-primary px-4 py-2 rounded-pill" (click)="showModal = true">
+    <i class="fas fa-plus me-2"></i>Add Task
+  </button>
   <div class="row kanban-board g-3">
     <div class="col-md-3" *ngFor="let col of columns; let colIdx = index">
       <div class="fusionops-card h-100">
@@ -43,4 +28,32 @@
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Modal for creating a new task -->
+  <div class="modal fade show" tabindex="-1" [ngStyle]="{display: showModal ? 'block' : 'none', background: 'rgba(0,0,0,0.5)'}" *ngIf="showModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-white text-dark rounded-4">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Add Task</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <form (ngSubmit)="addTaskFromModal()">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-control" [(ngModel)]="modalTaskTitle" name="modalTaskTitle" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" [(ngModel)]="modalTaskDescription" name="modalTaskDescription" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="btn btn-gradient-primary">Add Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</fusionops-layout>
