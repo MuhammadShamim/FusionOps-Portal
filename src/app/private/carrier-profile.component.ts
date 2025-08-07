@@ -26,10 +26,21 @@ export class CarrierProfileComponent {
       if (result && !result.error) {
         this.carrierProfile = result;
       } else {
-        this.carrierProfileError = result?.error?.message || result?.error || 'No profile found or API error.';
+        // Try to extract HTTP status and message
+        let status = result?.error?.status || result?.status || '';
+        let message = result?.error?.message || result?.error || result?.message || 'No profile found or API error.';
+        if (typeof message === 'object') {
+          message = JSON.stringify(message);
+        }
+        this.carrierProfileError = (status ? `HTTP ${status}: ` : '') + message;
       }
     }, err => {
-      this.carrierProfileError = err?.message || 'API error.';
+      let status = err?.status || '';
+      let message = err?.error?.message || err?.message || err?.error || 'API error.';
+      if (typeof message === 'object') {
+        message = JSON.stringify(message);
+      }
+      this.carrierProfileError = (status ? `HTTP ${status}: ` : '') + message;
     });
   }
 }
