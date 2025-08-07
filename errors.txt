@@ -1,24 +1,10 @@
-Application bundle generation failed. [0.191 seconds]
+Application bundle generation failed. [2.393 seconds]
 
-✘ [ERROR] TS2307: Cannot find module 'ngx-monaco-editor' or its corresponding type declarations. [plugin angular-compiler]
-
-    src/app/private/carrier-profile.component.ts:5:35:
-      5 │ import { MonacoEditorModule } from 'ngx-monaco-editor';
-        ╵                                    ~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
-  Value could not be determined statically. [plugin angular-compiler]
+▲ [WARNING] NG8113: PrismPipe is not used within the template of CarrierProfileComponent [plugin angular-compiler]
 
     src/app/private/carrier-profile.component.ts:13:56:
-      13 │ ...: [CommonModule, FormsModule, LayoutComponent, MonacoEditorModule]
-         ╵                                                   ~~~~~~~~~~~~~~~~~~
-
-  Unknown reference.
-
-    src/app/private/carrier-profile.component.ts:13:56:
-      13 │ ...: [CommonModule, FormsModule, LayoutComponent, MonacoEditorModule]
-         ╵                                                   ~~~~~~~~~~~~~~~~~~
+      13 │   imports: [CommonModule, FormsModule, LayoutComponent, PrismPipe]
+         ╵                                                         ~~~~~~~~~
 
 
 ✘ [ERROR] TS2307: Cannot find module 'ngx-monaco-editor' or its corresponding type declarations. [plugin angular-compiler]
@@ -38,20 +24,10 @@ Application bundle generation failed. [0.191 seconds]
   Unable to evaluate this expression statically.
 
     src/app/private/carrier-profile.monaco.ts:5:12:
-Muhammads-MBP:FusionOps-Portal star$ npm install ngx-monaco-editor
-npm error code ERESOLVE
-npm error ERESOLVE unable to resolve dependency tree
-npm error
-npm error While resolving: fusion-ops-portal@0.0.0
-npm error Found: @angular/common@20.1.6
-npm error node_modules/@angular/common
-npm error   @angular/common@"^20.1.6" from the root project
-npm error
-npm error Could not resolve dependency:
-npm error peer @angular/common@"^12.0.0" from ngx-monaco-editor@12.0.0
-npm error node_modules/ngx-monaco-editor
-npm error   ngx-monaco-editor@"*" from the root project
-npm error
-npm error Fix the upstream dependency conflict, or retry
-npm error this command with --force or --legacy-peer-deps
-npm error to accept an incorrect (and potentially broken) dependency resolution.
+      5 │   imports: [MonacoEditorModule.forRoot()],
+        ╵             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/private/carrier-profile.monaco.ts:5:12:
+      5 │   imports: [MonacoEditorModule.forRoot()],
