@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar.component';
   styleUrls: ['./layout.component.css'],
   imports: [SidebarComponent]
 })
+export class LayoutComponent {
   @Input() title = '';
   @Input() isAuthenticated = false;
   @Output() signOut = new EventEmitter<void>();
