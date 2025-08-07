@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from '../layout.component';
-import { PrismPipe } from '../prism.pipe';
 import { CarrierProfileService } from '../carrier-profile.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { CarrierProfileService } from '../carrier-profile.service';
   templateUrl: './carrier-profile.component.html',
   styleUrls: ['./carrier-profile.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, LayoutComponent, PrismPipe]
+  imports: [CommonModule, FormsModule, LayoutComponent]
 })
 export class CarrierProfileComponent {
   carrierName = '';
