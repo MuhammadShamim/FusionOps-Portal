@@ -21,13 +21,17 @@ export class ApiStatusService {
     console.log('[ApiStatusService] Status Check:', { url, headers });
     return this.http.get<any>(url, { headers }).pipe(
       map(res => {
+        console.log('[ApiStatusService] Response:', res);
         if (res && res.success === true && res.status === 200) {
           return { status: 'success' as const, message: 'API is healthy' };
         } else {
           return { status: 'error' as const, message: (res && typeof res.message === 'string') ? res.message : 'Unknown error' };
         }
       }),
-      catchError(err => of({ status: 'error' as const, message: (err?.error && typeof err.error.message === 'string') ? err.error.message : 'API unreachable' }))
+      catchError(err => {
+        console.log('[ApiStatusService] Error:', err);
+        return of({ status: 'error' as const, message: (err?.error && typeof err.error.message === 'string') ? err.error.message : 'API unreachable' });
+      })
     );
   }
 }

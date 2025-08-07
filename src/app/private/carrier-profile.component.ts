@@ -23,6 +23,7 @@ export class CarrierProfileComponent {
     this.carrierProfileError = null;
     if (!this.carrierName.trim()) return;
     this.carrierProfileService.getCarrierProfile(this.carrierName.trim()).subscribe(result => {
+      console.log('[CarrierProfileComponent] Response:', result);
       if (result && !result.error) {
         this.carrierProfile = result;
       } else {
@@ -35,6 +36,7 @@ export class CarrierProfileComponent {
         this.carrierProfileError = (status ? `HTTP ${status}: ` : '') + message;
       }
     }, err => {
+      console.log('[CarrierProfileComponent] Error:', err);
       let status = err?.status || '';
       let message = err?.error?.message || err?.message || err?.error || 'API error.';
       if (typeof message === 'object') {
