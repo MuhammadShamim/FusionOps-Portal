@@ -31,6 +31,8 @@ export class CarrierProfileService {
       'client_secret': clientSecret,
       'Content-Type': 'text/plain'
     };
+    // Debug logging
+    console.log('[CarrierProfileService] Lookup:', { url, headers, carrierName: name });
     return this.http.get<any>(url, { headers }).pipe(
       catchError(err => {
         let status = err?.status || 'Unknown';
