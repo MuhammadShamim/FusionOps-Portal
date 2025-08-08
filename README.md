@@ -1,4 +1,5 @@
-# 🧩 FusionOps Portal `0.0.4`
+
+# 🧩 FusionOps Portal `0.0.6`
 
 **FusionOps Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
 
@@ -20,18 +21,30 @@ rtal
 - 👤 Profile and Settings pages
 - 📬 Contact page
 - 📊 Dashboard with operational insights
+- 📝 Notes app with modal-based create/edit and sorting
+- 🗂️ Kanban board with drag-and-drop, localStorage, and **edit task** support
+- 🧩 Sneat-inspired, modern UI with global and modular SCSS
+- 🖥️ Public/private layout system (sticky header/footer, responsive sidebar)
+- 🧹 Codebase cleanup: no redundant layouts, unified navigation, and maintainable structure
+
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework:** Angular 17+
-- **UI Library:** Bootstrap 5 (Bootstrap UI)
+- **Frontend Framework:** Angular 20+
+- **UI Library:** Bootstrap 5, Sneat/FusionOps theme
 - **Authentication:** Auth0 with Microsoft SSO
-- **Routing:** Angular Router
+- **Routing:** Angular Standalone Router
 - **State Management:** RxJS
 - **API Integration:** RESTful services (MuleSoft, PagerDuty, GitHub)
-- **Icons & Styling:** FontAwesome, SCSS
+- **Icons & Styling:** FontAwesome, SCSS, modular and global styles
 
-## 🧑‍💻 Development Setup
+
+## 🧑‍💻 Development Setup & Structure
+
+### Key Folders
+- `src/app/shared/` — Shared layouts, sidebar, and reusable UI
+- `src/app/public/` — Public pages (welcome, features, team, contact, etc.)
+- `src/app/private/` — Private/secure pages (dashboard, notes, kanban, carrier profile, etc.)
 
 ### Prerequisites
 
@@ -87,15 +100,26 @@ ng test
 ng e2e
 ```
 
+
 Uses Protractor or Cypress (based on your setup).
 
-## 📦 Build for Production
+
+## ♻️ Refactoring & Modernization Highlights
+
+- Unified all pages under a shared, modern layout system
+- Sidebar is now part of the private layout, not a separate component
+- Removed all redundant/legacy layout and sidebar code
+- All navigation is handled via Angular Router (standalone)
+- Public and private layouts use sticky header/footer and fluid, scrollable body
+- Kanban board supports editing tasks and persistent state
+- All public/private pages use the new layouts and global styles
 
 ```shell
 ng build --configuration production
 ```
 
 Deploy the contents of the dist/ folder to your preferred hosting service.
+
 
 ## 📬 Contact & Support
 For issues, feature requests, or contributions, please open a GitHub issue or contact the Integration Ops team.
