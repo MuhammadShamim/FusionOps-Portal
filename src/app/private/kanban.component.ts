@@ -28,6 +28,7 @@ export class KanbanComponent {
   auth$;
   constructor(public authService: AuthService) {
     this.auth$ = this.authService.auth$;
+    this.loadFromStorage();
   }
 
   onSignOut() {
