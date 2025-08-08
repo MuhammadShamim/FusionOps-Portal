@@ -1,4 +1,39 @@
 .private-layout { background: #f8f9fa; }
-.private-header { background: #fff; }
-.private-footer { background: #f8f9fa; }
-.sidebar { min-width: 220px; max-width: 260px; background: #fff; border-right: 1px solid #e5e7eb; }
+.private-header {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1040;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+.private-footer {
+  background: #f8f9fa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1040;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar {
+  min-width: 220px;
+  max-width: 260px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  min-height: calc(100vh - 120px);
+  margin-top: 64px;
+  margin-bottom: 56px;
+}
+.private-layout main {
+  margin-top: 64px;
+  margin-bottom: 56px;
+  overflow-y: auto;
+  height: calc(100vh - 120px);
+}

@@ -1,3 +1,30 @@
 .public-layout { background: #f8f9fa; }
-.public-header { background: #fff; }
-.public-footer { background: #f8f9fa; }
+.public-header {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1040;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+.public-footer {
+  background: #f8f9fa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1040;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.public-layout main {
+  margin-top: 64px;
+  margin-bottom: 56px;
+  overflow-y: auto;
+  height: calc(100vh - 120px);
+}
