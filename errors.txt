@@ -1,10 +1,80 @@
-Application bundle generation failed. [2.686 seconds]
+Application bundle generation complete. [1.004 seconds]
 
-✘ [ERROR] NG5002: Parser Error: Missing closing parentheses at column 8 in [ (item as any)[col.key] ] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/settings.component.html@91:45 [plugin angular-compiler]
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/
+  ➜  press h + enter to show help
+Application bundle generation failed. [1.158 seconds]
 
-    src/app/private/settings.component.html:92:45:
-      92 │ ...        <span *ngSwitchDefault>{{ (item as any)[col.key] }}</span>
-         ╵                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+✘ [ERROR] TS2339: Property 'authService' does not exist on type 'CarrierProfileComponent'. [plugin angular-compiler]
+
+    src/app/private/carrier-profile.component.html:1:45:
+      1 │ ...-layout [isAuthenticated]="authService.isAuthenticated" (signOut...
+        ╵                               ~~~~~~~~~~~
+
+  Error occurs in the template of component CarrierProfileComponent.
+
+    src/app/private/carrier-profile.component.ts:9:15:
+      9 │   templateUrl: './carrier-profile.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'authService' does not exist on type 'DashboardComponent'. [plugin angular-compiler]
+
+    src/app/private/dashboard.component.html:1:45:
+      1 │ ...-layout [isAuthenticated]="authService.isAuthenticated" (signOut...
+        ╵                               ~~~~~~~~~~~
+
+  Error occurs in the template of component DashboardComponent.
+
+    src/app/private/dashboard.component.ts:10:15:
+      10 │   templateUrl: './dashboard.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+
+    src/app/private/kanban.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component KanbanComponent.
+
+    src/app/private/kanban.component.ts:24:15:
+      24 │   templateUrl: './kanban.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+
+    src/app/private/notes.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component NotesComponent.
+
+    src/app/private/notes.component.ts:16:15:
+      16 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+
+    src/app/private/pagerduty-events.component.html:1:57:
+      1 │ ...ops-private-layout [isAuthenticated]="authService.isAuthenticated">
+        ╵                                                      ~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component PagerDutyEventsComponent.
+
+    src/app/private/pagerduty-events.component.ts:11:15:
+      11 │   templateUrl: './pagerduty-events.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+
+    src/app/private/settings.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
 
   Error occurs in the template of component SettingsComponent.
 
