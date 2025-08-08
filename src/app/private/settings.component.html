@@ -89,7 +89,7 @@
                   <td *ngIf="col.visible">
                     <ng-container [ngSwitch]="col.key">
                       <span *ngSwitchCase="'value'"><pre class="mb-0 text-break">{{item.value}}</pre></span>
-                      <span *ngSwitchDefault>{{ (item as any)[col.key] }}</span>
+                      <span *ngSwitchDefault>{{ item[col.key] }}</span>
                     </ng-container>
                   </td>
                 </ng-container>
