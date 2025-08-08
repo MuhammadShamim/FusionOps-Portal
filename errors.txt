@@ -1,42 +1,29 @@
-Application bundle generation failed. [2.699 seconds]
+Application bundle generation failed. [2.685 seconds]
 
-✘ [ERROR] TS2339: Property 'onSignOut' does not exist on type 'KanbanComponent'. [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'KanbanComponent'. [plugin angular-compiler]
 
-    src/app/private/kanban.component.html:1:73:
+    src/app/private/kanban.component.html:1:45:
       1 │ ...layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
-        ╵                                                          ~~~~~~~~~
+        ╵                              ~~~~~~~~~~~~~~~
 
   Error occurs in the template of component KanbanComponent.
 
-    src/app/private/kanban.component.ts:23:15:
-      23 │   templateUrl: './kanban.component.html',
+    src/app/private/kanban.component.ts:24:15:
+      24 │   templateUrl: './kanban.component.html',
          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] TS2339: Property 'areAllTasksSelected' does not exist on type 'KanbanComponent'. [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'NotesComponent'. [plugin angular-compiler]
 
-    src/app/private/kanban.component.html:29:48:
-      29 │ ..."checkbox" [checked]="areAllTasksSelected()" (change)="$event.t...
-         ╵                          ~~~~~~~~~~~~~~~~~~~
+    src/app/private/notes.component.html:1:45:
+      1 │ ...layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
 
-  Error occurs in the template of component KanbanComponent.
+  Error occurs in the template of component NotesComponent.
 
-    src/app/private/kanban.component.ts:23:15:
-      23 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2339: Property 'getVisibleKanbanColspan' does not exist on type 'KanbanComponent'. [plugin angular-compiler]
-
-    src/app/private/kanban.component.html:53:32:
-      53 │ ...<td [attr.colspan]="getVisibleKanbanColspan()" class="text-cent...
-         ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component KanbanComponent.
-
-    src/app/private/kanban.component.ts:23:15:
-      23 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/notes.component.ts:16:15:
+      16 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 ✘ [ERROR] NG8001: 'fusionops-private-layout' is not a known element:
@@ -49,8 +36,8 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component PagerDutyEventsComponent.
 
-    src/app/private/pagerduty-events.component.ts:8:15:
-      8 │   templateUrl: './pagerduty-events.component.html',
+    src/app/private/pagerduty-events.component.ts:9:15:
+      9 │   templateUrl: './pagerduty-events.component.html',
         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -65,8 +52,8 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component PagerDutyEventsComponent.
 
-    src/app/private/pagerduty-events.component.ts:8:15:
-      8 │   templateUrl: './pagerduty-events.component.html',
+    src/app/private/pagerduty-events.component.ts:9:15:
+      9 │   templateUrl: './pagerduty-events.component.html',
         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -78,8 +65,8 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component PagerDutyEventsComponent.
 
-    src/app/private/pagerduty-events.component.ts:8:15:
-      8 │   templateUrl: './pagerduty-events.component.html',
+    src/app/private/pagerduty-events.component.ts:9:15:
+      9 │   templateUrl: './pagerduty-events.component.html',
         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -91,8 +78,8 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component PagerDutyEventsComponent.
 
-    src/app/private/pagerduty-events.component.ts:8:15:
-      8 │   templateUrl: './pagerduty-events.component.html',
+    src/app/private/pagerduty-events.component.ts:9:15:
+      9 │   templateUrl: './pagerduty-events.component.html',
         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -104,8 +91,8 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component PagerDutyEventsComponent.
 
-    src/app/private/pagerduty-events.component.ts:8:15:
-      8 │   templateUrl: './pagerduty-events.component.html',
+    src/app/private/pagerduty-events.component.ts:9:15:
+      9 │   templateUrl: './pagerduty-events.component.html',
         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -117,8 +104,8 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component PagerDutyEventsComponent.
 
-    src/app/private/pagerduty-events.component.ts:8:15:
-      8 │   templateUrl: './pagerduty-events.component.html',
+    src/app/private/pagerduty-events.component.ts:9:15:
+      9 │   templateUrl: './pagerduty-events.component.html',
         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -134,16 +121,22 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component PagerDutyEventsComponent.
 
-    src/app/private/pagerduty-events.component.ts:8:15:
-      8 │   templateUrl: './pagerduty-events.component.html',
+    src/app/private/pagerduty-events.component.ts:9:15:
+      9 │   templateUrl: './pagerduty-events.component.html',
         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] TS1128: Declaration or statement expected. [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'SettingsComponent'. [plugin angular-compiler]
 
-    src/app/private/pagerduty-events.component.ts:204:0:
-      204 │ }
-          ╵ ^
+    src/app/private/settings.component.html:1:45:
+      1 │ ...layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component SettingsComponent.
+
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 ✘ [ERROR] TS2345: Argument of type 'string' is not assignable to parameter of type '"key" | "value"'. [plugin angular-compiler]
@@ -154,9 +147,9 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component SettingsComponent.
 
-    src/app/private/settings.component.ts:9:15:
-      9 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 ✘ [ERROR] TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ key: string; value: string; }'.
@@ -168,5 +161,6 @@ Application bundle generation failed. [2.699 seconds]
 
   Error occurs in the template of component SettingsComponent.
 
-    src/app/private/settings.component.ts:9:15:
-      9 │   templateUrl: './settings.component.html',
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
