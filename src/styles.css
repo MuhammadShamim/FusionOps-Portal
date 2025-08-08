@@ -43,16 +43,13 @@
   letter-spacing: 0.5px;
 }
 .btn-gradient-primary {
-  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  background: var(--color-primary);
   color: #fff;
   border: none;
-  font-weight: 600;
-  border-radius: 0;
-  box-shadow: 0 2px 8px rgba(99,102,241,0.10);
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s;
 }
 .btn-gradient-primary:hover {
-  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+  background: var(--color-primary-dark);
   color: #fff;
 }
 .btn-outline-primary {
@@ -101,7 +98,7 @@
   --color-card-dark: #23272b;
   --color-primary: #6366f1;
   --color-primary-dark: #3b82f6;
-  --color-accent: #a259ff;
+  --color-accent: var(--color-primary-dark); /* Remove purple, use dark blue */
   --color-sidebar: #007dfa;
   --color-sidebar-dark: #23272b;
   --color-sidebar-link: #adb5bd;
@@ -186,16 +183,13 @@ html, body {
   letter-spacing: 0.5px;
 }
 .btn-gradient-primary {
-  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: var(--color-primary);
   color: #fff;
   border: none;
-  font-weight: 600;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(99,102,241,0.10);
-  transition: var(--transition);
+  transition: background 0.2s;
 }
 .btn-gradient-primary:hover {
-  background: linear-gradient(90deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  background: var(--color-primary-dark);
   color: #fff;
 }
 .btn-outline-primary {

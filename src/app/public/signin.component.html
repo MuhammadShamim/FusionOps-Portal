@@ -1,25 +1,27 @@
-<div class="signin-container">
-  <div class="signin-card">
-    <div class="text-center mb-4">
-      <i class="fas fa-user-circle fa-3x mb-2"></i>
-      <h2 class="fw-bold mb-0">Sign In</h2>
-      <p class="text-muted">Access your FusionOps Portal account</p>
+<fusionops-public-layout>
+  <div class="signin-container fusionops-flex-center fusionops-full-width fusionops-min-vh-100">
+    <div class="signin-card">
+      <div class="text-center mb-4">
+        <i class="fas fa-user-circle fa-3x mb-2"></i>
+        <h2 class="fw-bold mb-0">Sign In</h2>
+        <p class="text-muted">Access your FusionOps Portal account</p>
+      </div>
+      <form (submit)="onSubmit($event)">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter your email" required [(ngModel)]="email" name="email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your password" required [(ngModel)]="password" name="password">
+        </div>
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary btn-lg rounded-pill">Sign In</button>
+        </div>
+        <div class="text-center">
+          <a href="#" class="small text-decoration-none">Forgot password?</a>
+        </div>
+      </form>
     </div>
-    <form (submit)="onSubmit($event)">
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter your email" required [(ngModel)]="email" name="email">
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your password" required [(ngModel)]="password" name="password">
-      </div>
-      <div class="d-grid mb-3">
-        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Sign In</button>
-      </div>
-      <div class="text-center">
-        <a href="#" class="small text-decoration-none">Forgot password?</a>
-      </div>
-    </form>
   </div>
-</div>
+</fusionops-public-layout>
