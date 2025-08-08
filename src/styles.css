@@ -298,6 +298,25 @@ html, body {
   transition: var(--transition);
 }
 
+.fusionops-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fusionops-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.fusionops-full-width {
+  width: 100%;
+}
+.fusionops-full-height {
+  height: 100%;
+}
+.fusionops-min-vh-100 {
+  min-height: 100vh;
+}
+
 @media (max-width: 768px) {
   .app-body {
     flex-direction: column;
