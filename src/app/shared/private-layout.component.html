@@ -9,22 +9,22 @@
     <div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 0;">
       <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="isAuthenticated">
-          <a routerLink="/dashboard" class="nav-link d-flex align-items-center fusionops-nav-link">
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
             <i class="fas fa-tachometer-alt me-2"></i> Dashboard
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/notes" class="nav-link d-flex align-items-center fusionops-nav-link">
+          <a routerLink="/notes" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
             <i class="fas fa-sticky-note me-2"></i> Notes
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/kanban" class="nav-link d-flex align-items-center fusionops-nav-link">
+          <a routerLink="/kanban" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
             <i class="fas fa-columns me-2"></i> Kanban
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/carrier-profile" class="nav-link d-flex align-items-center fusionops-nav-link">
+          <a routerLink="/carrier-profile" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
             <i class="fas fa-truck me-2"></i> Carrier Profile
           </a>
         </li>
