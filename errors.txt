@@ -37,3 +37,26 @@ Application bundle generation failed. [0.550 seconds]
     src/app/services/api-status.service.ts:11:28:
       11 │   getStatus(): Observable<{ status: 'success' | 'error', message: ...
          ╵                             ~~~~~~
+
+
+Application bundle generation failed. [0.110 seconds]
+
+✘ [ERROR] TS2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { status: string; message: string; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
+  Type '{ status: "success" | "error"; message: string; } | { status: string; message: string; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+    Type '{ status: string; message: string; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+      Types of property 'status' are incompatible.
+        Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
+
+    src/app/services/api-status.service.ts:41:4:
+      41 │     return this.http.get<any>(url, { headers }).pipe(
+         ╵     ~~~~~~
+
+
+✘ [ERROR] TS2345: Argument of type 'OperatorFunction<any, { status: string; message: any; }>' is not assignable to parameter of type 'OperatorFunction<any, { status: "success" | "error"; message: string; }>'.
+  Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+    Types of property 'status' are incompatible.
+      Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
+
+    src/app/services/api-status.service.ts:43:6:
+      43 │       map((res: any) => {
+         ╵       ~~~~~~~~~~~~~~~~~~~
