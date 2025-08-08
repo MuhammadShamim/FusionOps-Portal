@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EnvService } from './env.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ApiStatusService {
-  constructor(private http: HttpClient, private env: EnvService) {}
+  constructor(private http: HttpClient) {}
 
   getStatus(): Observable<{ status: 'success' | 'error', message: string }> {
-    const baseUrl = this.env.get('API_BASE_URL');
-    const clientId = this.env.get('API_CLIENT_ID');
-    const clientSecret = this.env.get('API_CLIENT_SECRET');
+    const baseUrl = '/api'; // or your default API base URL
+    let apiId = '';
+    let secret = '';
+    const encrypted = localStorage.getItem('fusionops_secrets');
+    if (encrypted) {
+      try {
+        const decrypted = atob(encrypted);
+        const parsed = JSON.parse(decrypted);
+        apiId = parsed.apiId;
+        secret = parsed.secret;
+      } catch {}
+    }
     const url = `${baseUrl}/statuscheck`;
     const headers = {
-      'client_id': clientId,
-      'client_secret': clientSecret
+      'client_id': apiId,
+      'client_secret': secret
     };
     // Debug logging
     console.log('[ApiStatusService] Status Check:', { url, headers });

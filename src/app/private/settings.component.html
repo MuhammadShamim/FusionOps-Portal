@@ -1,0 +1,45 @@
+<div class="settings-container">
+  <h2>Settings</h2>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'secrets'" href="#" (click)="$event.preventDefault(); setTab('secrets')">Secrets</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'storage'" href="#" (click)="$event.preventDefault(); setTab('storage')">Storage</a>
+    </li>
+  </ul>
+  <div class="tab-content mt-3">
+    <div class="tab-pane" [class.active]="activeTab === 'secrets'">
+      <form (ngSubmit)="saveSecrets()" autocomplete="off">
+        <div class="mb-3">
+          <label for="apiId" class="form-label">API ID</label>
+          <input id="apiId" type="text" class="form-control" [(ngModel)]="apiId" name="apiId" required />
+        </div>
+        <div class="mb-3">
+          <label for="secret" class="form-label">Secret</label>
+          <input id="secret" type="password" class="form-control" [(ngModel)]="secret" name="secret" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <span *ngIf="saved" class="text-success ms-3">Saved!</span>
+      </form>
+    </div>
+    <div class="tab-pane" [class.active]="activeTab === 'storage'">
+      <h5>FusionOps Storage (Read-only)</h5>
+      <table class="table table-bordered table-sm mt-3">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of fusionopsStorage">
+            <td>{{item.key}}</td>
+            <td><pre class="mb-0">{{item.value}}</pre></td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="fusionopsStorage.length === 0" class="text-muted">No FusionOps storage found.</div>
+    </div>
+  </div>
+</div>

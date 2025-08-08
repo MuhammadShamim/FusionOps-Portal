@@ -6,7 +6,13 @@
     </div>
   </header>
   <div class="flex-grow-1 d-flex" style="padding-top: 72px; padding-bottom: 64px; min-height: 0;">
-    <div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 0;">
+    <div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 100vh;">
+      <div class="d-flex align-items-center mb-4">
+        <div class="sidebar-logo bg-primary bg-gradient rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 48px; height: 48px;">
+          <i class="fas fa-cubes fa-2x text-white"></i>
+        </div>
+        <span class="fs-3 fw-bold text-primary">FusionOps</span>
+      </div>
       <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="isAuthenticated">
           <a routerLink="/dashboard" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
@@ -29,11 +35,25 @@
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <button class="btn btn-link nav-link d-flex align-items-center fusionops-nav-link" (click)="onSignOut()">
-            <i class="fas fa-sign-out-alt me-2"></i> Sign Out
-          </button>
+          <a routerLink="/settings" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
+            <i class="fas fa-cog me-2"></i> Settings
+          </a>
         </li>
       </ul>
+      <div class="mt-auto pt-4">
+        <div class="dropdown" *ngIf="isAuthenticated">
+          <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle fusionops-user-dropdown" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://avatars.githubusercontent.com/u/9926709?v=4&size=64" alt="user" class="rounded-circle me-2" width="40" height="40">
+            <span class="fw-semibold">User</span>
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" (click)="onSignOut()">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <main class="flex-fill container-fluid py-4 overflow-auto" style="max-height: calc(100vh - 120px);">
       <ng-content></ng-content>

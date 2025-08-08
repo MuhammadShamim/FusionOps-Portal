@@ -1,34 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EnvService } from './env.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class CarrierProfileService {
-  constructor(private http: HttpClient, private env: EnvService) {}
+  constructor(private http: HttpClient) {}
 
   getCarrierProfile(name: string): Observable<any> {
-    const baseUrl = this.env.get('API_BASE_URL');
-    const clientId = this.env.get('API_CLIENT_ID');
-    const clientSecret = this.env.get('API_CLIENT_SECRET');
+    const baseUrl = '/api'; // or your default API base URL
+    let apiId = '';
+    let secret = '';
+    const encrypted = localStorage.getItem('fusionops_secrets');
+    if (encrypted) {
+      try {
+        const decrypted = atob(encrypted);
+        const parsed = JSON.parse(decrypted);
+        apiId = parsed.apiId;
+        secret = parsed.secret;
+      } catch {}
+    }
 
     // Check for missing or placeholder credentials/URL
     // Allow '/api' for local dev with proxy, or any http/https URL
     if (!baseUrl || !(baseUrl === '/api' || baseUrl.startsWith('http://') || baseUrl.startsWith('https://'))) {
       return of({ error: { status: 'Config', message: 'API_BASE_URL is missing or not set to a valid URL.' } });
     }
-    if (!clientId || clientId === 'your_client_id_here') {
-      return of({ error: { status: 'Config', message: 'API_CLIENT_ID is missing or not set.' } });
+    if (!apiId) {
+      return of({ error: { status: 'Config', message: 'API ID is missing. Please set it in Settings.' } });
     }
-    if (!clientSecret || clientSecret === 'your_client_secret_here') {
-      return of({ error: { status: 'Config', message: 'API_CLIENT_SECRET is missing or not set.' } });
+    if (!secret) {
+      return of({ error: { status: 'Config', message: 'API Secret is missing. Please set it in Settings.' } });
     }
 
     const url = `${baseUrl}/carrierprofile/${encodeURIComponent(name)}`;
     const headers = {
-      'client_id': clientId,
-      'client_secret': clientSecret
+      'client_id': apiId,
+      'client_secret': secret
     };
     // Debug logging
     console.log('[CarrierProfileService] Lookup:', { url, headers, carrierName: name });
