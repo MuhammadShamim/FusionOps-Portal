@@ -8,7 +8,7 @@ export class CarrierProfileService {
   constructor(private http: HttpClient) {}
 
   getCarrierProfile(name: string): Observable<any> {
-    const baseUrl: string = '/api'; // or your default API base URL
+    let baseUrl: string = '/api';
     let apiId = '';
     let secret = '';
     const encrypted = localStorage.getItem('fusionops_secrets');
@@ -18,6 +18,9 @@ export class CarrierProfileService {
         const parsed = JSON.parse(decrypted);
         apiId = parsed.apiId;
         secret = parsed.secret;
+        if (parsed.apiBaseUrl && typeof parsed.apiBaseUrl === 'string') {
+          baseUrl = parsed.apiBaseUrl;
+        }
       } catch {}
     }
 

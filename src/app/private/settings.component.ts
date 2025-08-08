@@ -14,6 +14,7 @@ export class SettingsComponent {
   activeTab: 'secrets' | 'storage' = 'secrets';
   apiId: string = '';
   secret: string = '';
+  apiBaseUrl: string = '';
   saved: boolean = false;
   fusionopsStorage: { key: string, value: string }[] = [];
   isAuthenticated = true; // TODO: Replace with real auth logic
@@ -34,9 +35,10 @@ export class SettingsComponent {
     if (encrypted) {
       try {
         const decrypted = atob(encrypted);
-        const { apiId, secret } = JSON.parse(decrypted);
+        const { apiId, secret, apiBaseUrl } = JSON.parse(decrypted);
         this.apiId = apiId;
         this.secret = secret;
+        this.apiBaseUrl = apiBaseUrl || '';
       } catch {}
     }
   }
@@ -59,7 +61,7 @@ export class SettingsComponent {
   }
 
   saveSecrets() {
-    const data = { apiId: this.apiId, secret: this.secret };
+    const data = { apiId: this.apiId, secret: this.secret, apiBaseUrl: this.apiBaseUrl };
     const encrypted = btoa(JSON.stringify(data));
     localStorage.setItem('fusionops_secrets', encrypted);
     this.saved = true;
