@@ -6,9 +6,9 @@
         <span class="fw-bold">FusionOps</span>
       </div>
       <nav class="public-nav">
-        <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
-        <a routerLink="/features" routerLinkActive="active" class="nav-link">Features</a>
-        <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Home</a>
+        <a routerLink="/features" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Features</a>
+        <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Contact</a>
         <a routerLink="/signin" class="btn btn-outline-primary rounded-pill px-4 ms-2">Sign In</a>
       </nav>
     </div>

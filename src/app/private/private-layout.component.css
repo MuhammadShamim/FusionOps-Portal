@@ -76,7 +76,7 @@
   min-width: 250px;
   max-width: 260px;
   height: 100vh;
-  background: linear-gradient(180deg, var(--color-sidebar) 0%, #2563eb 100%);
+  background: var(--color-card);
   color: var(--color-sidebar-link-active);
   border-right: 1px solid var(--color-sidebar-border);
   position: sticky;
@@ -94,7 +94,7 @@
 .sidebar .sidebar-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-primary);
   margin-bottom: 2rem;
   letter-spacing: 0.5px;
   display: flex;
@@ -106,7 +106,7 @@
   gap: 0.5rem;
 }
 .sidebar .nav-link {
-  color: var(--color-sidebar-link);
+  color: var(--color-text);
   font-weight: 500;
   font-size: 1rem;
   border-radius: 8px;

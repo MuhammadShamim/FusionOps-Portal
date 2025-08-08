@@ -50,10 +50,13 @@
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }
-.public-nav .nav-link.active,
-.public-nav .nav-link:hover {
+.public-nav .nav-link.active {
   background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
   color: #fff !important;
+}
+.public-nav .nav-link:hover {
+  background: var(--color-bg);
+  color: var(--color-primary);
 }
 .public-nav .btn {
   margin-left: 0.5rem;

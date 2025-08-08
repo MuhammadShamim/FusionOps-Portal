@@ -17,37 +17,37 @@
       </div>
       <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="isAuthenticated">
-          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link fusionops-nav-link">
+          <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
             <i class="fas fa-tachometer-alt"></i> Dashboard
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/notes" routerLinkActive="active" class="nav-link fusionops-nav-link">
+          <a routerLink="/notes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
             <i class="fas fa-sticky-note"></i> Notes
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/kanban" routerLinkActive="active" class="nav-link fusionops-nav-link">
+          <a routerLink="/kanban" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
             <i class="fas fa-columns"></i> Kanban
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/carrier-profile" routerLinkActive="active" class="nav-link fusionops-nav-link">
+          <a routerLink="/carrier-profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
             <i class="fas fa-truck"></i> Carrier Profile
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/settings" routerLinkActive="active" class="nav-link fusionops-nav-link">
+          <a routerLink="/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
             <i class="fas fa-cog"></i> Settings
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/pagerduty-events" routerLinkActive="active" class="nav-link fusionops-nav-link">
+          <a routerLink="/pagerduty-events" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
             <i class="fas fa-bell"></i> PagerDuty
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a href="#" (click)="$event.preventDefault(); onSignOut()" class="nav-link fusionops-nav-link">
+          <a href="#" (click)="$event.preventDefault(); signOut.emit()" class="nav-link fusionops-nav-link">
             <i class="fas fa-sign-out-alt"></i> Sign Out
           </a>
         </li>
