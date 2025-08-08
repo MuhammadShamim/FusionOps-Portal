@@ -1,78 +1,28 @@
-Application bundle generation failed. [2.461 seconds]
+Application bundle generation failed. [0.145 seconds]
 
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+✘ [ERROR] TS2305: Module '"./private/settings.component"' has no exported member 'SettingsComponent'. [plugin angular-compiler]
 
-    src/app/private/settings.component.html:23:15:
-      23 │         <span *ngIf="saved" class="text-success ms-3">Saved!</span>
-         ╵                ~~~~
-
-  Warning occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:6:15:
-      6 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/app.routes.ts:9:9:
+      9 │ import { SettingsComponent } from './private/settings.component';
+        ╵          ~~~~~~~~~~~~~~~~~
 
 
-▲ [WARNING] NG8103: The `*ngFor` directive was used in the template, but neither the `NgFor` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @for or make sure that either the `NgFor` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+✘ [ERROR] TS1136: Property assignment expected. [plugin angular-compiler]
 
-    src/app/private/settings.component.html:36:15:
-      36 │           <tr *ngFor="let item of fusionopsStorage">
-         ╵                ~~~~~
-
-  Warning occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:6:15:
-      6 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/settings.component.ts:7:0:
+      7 │ @Component({
+        ╵ ^
 
 
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+✘ [ERROR] TS1146: Declaration expected. [plugin angular-compiler]
 
-    src/app/private/settings.component.html:42:12:
-      42 │       <div *ngIf="fusionopsStorage.length === 0" class="text-muted...
-         ╵             ~~~~
-
-  Warning occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:6:15:
-      6 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/settings.component.ts:70:1:
+      70 │ }
+         ╵  ^
 
 
-✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
+✘ [ERROR] TS1005: ')' expected. [plugin angular-compiler]
 
-    src/app/private/settings.component.html:16:61:
-      16 │ ... class="form-control" [(ngModel)]="apiId" name="apiId" required />
-         ╵                          ~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:6:15:
-      6 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
-
-    src/app/private/settings.component.html:20:66:
-      20 │ ... class="form-control" [(ngModel)]="secret" name="secret" requir...
-         ╵                          ~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:6:15:
-      6 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2339: Property 'startsWith' does not exist on type 'never'. [plugin angular-compiler]
-
-    src/app/services/carrier-profile.service.ts:26:52:
-      26 │ ...eUrl === '/api' || baseUrl.startsWith('http://') || baseUrl.sta...
-         ╵                               ~~~~~~~~~~
-
-
-✘ [ERROR] TS2339: Property 'startsWith' does not exist on type 'never'. [plugin angular-compiler]
-
-    src/app/services/carrier-profile.service.ts:26:85:
-      26 │ ...aseUrl.startsWith('http://') || baseUrl.startsWith('https://'))) {
+    src/app/private/settings.component.ts:71:0:
+      71 │ 
+         ╵ ^
