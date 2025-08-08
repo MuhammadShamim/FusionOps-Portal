@@ -7,6 +7,7 @@ interface KanbanTask {
   id: number;
   title: string;
   description?: string;
+  [key: string]: any;
 }
 
 interface KanbanColumn {
@@ -22,15 +23,11 @@ interface KanbanColumn {
   templateUrl: './kanban.component.html',
   styleUrls: ['./kanban.component.css']
 })
-
 export class KanbanComponent {
   isAuthenticated = true; // TODO: Replace with real auth logic
+  // ...existing code...
 
-  onSignOut() {
-    // TODO: Implement sign out logic
-    this.isAuthenticated = false;
-    window.location.href = '/';
-  }
+// ...existing code...
   columns: KanbanColumn[] = [
     { name: 'To Do', color: 'bg-light', tasks: [] },
     { name: 'In Progress', color: 'bg-primary text-white', tasks: [] },

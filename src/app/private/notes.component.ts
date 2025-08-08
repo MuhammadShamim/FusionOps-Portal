@@ -18,6 +18,18 @@ interface Note {
   imports: [FormsModule, CommonModule, PrivateLayoutComponent]
 })
 export class NotesComponent {
+  // ...existing properties...
+
+  areAllNotesSelected(): boolean {
+    const notes = this.getFilteredSortedNotes();
+    return notes.length > 0 && notes.every(n => this.selectedRows.has(n.id));
+  }
+
+  getVisibleNotesColspan(): number {
+    return this.columns.filter(c => c.visible).length + 2;
+  }
+
+  // ...existing methods...
   isAuthenticated = true; // TODO: Replace with real auth logic
 
   onSignOut() {

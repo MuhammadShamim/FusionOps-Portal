@@ -26,7 +26,7 @@
         <thead>
           <tr>
             <th>
-              <input type="checkbox" [checked]="getFilteredSortedTasks().every(t => selectedRows.has(t.id)) && getFilteredSortedTasks().length > 0" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
+              <input type="checkbox" [checked]="areAllTasksSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
             </th>
             <ng-container *ngFor="let col of kanbanColumns">
               <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" class="fusionops-th" style="cursor:pointer">
@@ -50,7 +50,7 @@
             </ng-container>
           </tr>
           <tr *ngIf="getFilteredSortedTasks().length === 0">
-            <td colspan="{{kanbanColumns.filter(c=>c.visible).length+1}}" class="text-center text-muted">No tasks found.</td>
+            <td [attr.colspan]="getVisibleKanbanColspan()" class="text-center text-muted">No tasks found.</td>
           </tr>
         </tbody>
       </table>

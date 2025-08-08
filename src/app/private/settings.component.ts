@@ -11,6 +11,18 @@ import { PrivateLayoutComponent } from './private-layout.component';
   imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class SettingsComponent {
+  // ...existing properties...
+
+  areAllStorageSelected(): boolean {
+    const items = this.getFilteredSortedStorage();
+    return items.length > 0 && items.every(i => this.selectedRows.has(i.key));
+  }
+
+  getVisibleStorageColspan(): number {
+    return this.columns.filter(c => c.visible).length + 2;
+  }
+
+  // ...existing methods...
   activeTab: 'secrets' | 'storage' | 'pagerduty' = 'secrets';
   apiId: string = '';
   secret: string = '';

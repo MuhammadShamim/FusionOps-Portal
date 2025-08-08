@@ -70,7 +70,7 @@
             <thead class="table-light">
               <tr>
                 <th>
-                  <input type="checkbox" [checked]="getFilteredSortedStorage().every(i => selectedRows.has(i.key)) && getFilteredSortedStorage().length > 0" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
+                  <input type="checkbox" [checked]="areAllStorageSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
                 </th>
                 <ng-container *ngFor="let col of columns">
                   <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" style="cursor:pointer">
@@ -89,7 +89,7 @@
                   <td *ngIf="col.visible">
                     <ng-container [ngSwitch]="col.key">
                       <span *ngSwitchCase="'value'"><pre class="mb-0 text-break">{{item.value}}</pre></span>
-                      <span *ngSwitchDefault>{{item[col.key]}}</span>
+                      <span *ngSwitchDefault>{{ item[col.key] }}</span>
                     </ng-container>
                   </td>
                 </ng-container>
@@ -97,6 +97,9 @@
                   <button class="btn btn-sm btn-danger" (click)="deleteKey(item.key)"><i class="fas fa-trash"></i></button>
                 </td>
               </tr>
+            <tr *ngIf="getFilteredSortedStorage().length === 0">
+              <td [attr.colspan]="getVisibleStorageColspan()" class="text-center text-muted">No storage items found.</td>
+            </tr>
             </tbody>
           </table>
         </div>

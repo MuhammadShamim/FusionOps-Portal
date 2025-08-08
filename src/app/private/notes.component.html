@@ -42,7 +42,7 @@
             <thead>
               <tr>
                 <th>
-                  <input type="checkbox" [checked]="getFilteredSortedNotes().every(n => selectedRows.has(n.id)) && getFilteredSortedNotes().length > 0" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
+                  <input type="checkbox" [checked]="areAllNotesSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
                 </th>
                 <ng-container *ngFor="let col of columns">
                   <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" class="fusionops-th" style="cursor:pointer">
@@ -71,7 +71,7 @@
                 </td>
               </tr>
               <tr *ngIf="getFilteredSortedNotes().length === 0">
-                <td colspan="{{columns.filter(c=>c.visible).length+2}}" class="text-center text-muted">No notes found.</td>
+                <td [attr.colspan]="getVisibleNotesColspan()" class="text-center text-muted">No notes found.</td>
               </tr>
             </tbody>
           </table>
