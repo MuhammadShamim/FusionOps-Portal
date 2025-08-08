@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PrivateLayoutComponent } from './private-layout.component';
+import { AuthService } from '../services/auth.service';
 
 interface Note {
   id: number;
@@ -18,7 +19,7 @@ interface Note {
   imports: [FormsModule, CommonModule, PrivateLayoutComponent]
 })
 export class NotesComponent {
-  // ...existing properties...
+  auth$;
 
   areAllNotesSelected(): boolean {
     const notes = this.getFilteredSortedNotes();
@@ -29,14 +30,11 @@ export class NotesComponent {
     return this.columns.filter(c => c.visible).length + 2;
   }
 
-  // ...existing methods...
-  isAuthenticated = true; // TODO: Replace with real auth logic
-
   onSignOut() {
-    // TODO: Implement sign out logic
-    this.isAuthenticated = false;
+    this.authService.signOut();
     window.location.href = '/';
   }
+
   notes: Note[] = [];
   search = '';
   sortKeys: { key: keyof Note, asc: boolean }[] = [{ key: 'created', asc: false }];
@@ -161,7 +159,8 @@ export class NotesComponent {
     return filtered;
   }
 
-  constructor() {
+  constructor(public authService: AuthService) {
+    this.auth$ = this.authService.auth$;
     this.loadNotes();
   }
 

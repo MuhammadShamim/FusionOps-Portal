@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
+import { AuthService } from '../services/auth.service';
 
 interface KanbanTask {
   id: number;
@@ -24,10 +25,25 @@ interface KanbanColumn {
   styleUrls: ['./kanban.component.css']
 })
 export class KanbanComponent {
-  isAuthenticated = true; // TODO: Replace with real auth logic
-  // ...existing code...
+  auth$;
+  constructor(public authService: AuthService) {
+    this.auth$ = this.authService.auth$;
+  }
 
-// ...existing code...
+  onSignOut() {
+    this.authService.signOut();
+    window.location.href = '/';
+  }
+
+  areAllTasksSelected(): boolean {
+    const tasks = this.getFilteredSortedTasks();
+    return tasks.length > 0 && tasks.every(t => this.selectedRows.has(t.id));
+  }
+
+  getVisibleKanbanColspan(): number {
+    return this.kanbanColumns.filter(c => c.visible).length + 1;
+  }
+
   columns: KanbanColumn[] = [
     { name: 'To Do', color: 'bg-light', tasks: [] },
     { name: 'In Progress', color: 'bg-primary text-white', tasks: [] },
@@ -138,9 +154,7 @@ export class KanbanComponent {
     navigator.clipboard.writeText(text);
   }
 
-  constructor() {
-    this.loadFromStorage();
-  }
+  // ...existing code...
 
   openAddModal() {
     this.editingTask = null;

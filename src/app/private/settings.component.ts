@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -11,7 +12,9 @@ import { PrivateLayoutComponent } from './private-layout.component';
   imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class SettingsComponent {
-  // ...existing properties...
+  auth$ = this.authService.auth$;
+
+  constructor(public authService: AuthService) {}
 
   areAllStorageSelected(): boolean {
     const items = this.getFilteredSortedStorage();
@@ -22,7 +25,11 @@ export class SettingsComponent {
     return this.columns.filter(c => c.visible).length + 2;
   }
 
-  // ...existing methods...
+  onSignOut() {
+    this.authService.signOut();
+    window.location.href = '/';
+  }
+
   activeTab: 'secrets' | 'storage' | 'pagerduty' = 'secrets';
   apiId: string = '';
   secret: string = '';
@@ -30,7 +37,6 @@ export class SettingsComponent {
   pagerDutyToken: string = '';
   pagerDutySaved: boolean = false;
   fusionopsStorage: { key: string, value: string }[] = [];
-  isAuthenticated = true; // TODO: Replace with real auth logic
   sortKeys: { key: 'key' | 'value', asc: boolean }[] = [{ key: 'key', asc: true }];
   columns = [
     { key: 'key', label: 'Key', visible: true },

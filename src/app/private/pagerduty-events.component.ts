@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagerDutyService } from './pagerduty.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-pagerduty-events',
@@ -28,7 +29,18 @@ export class PagerDutyEventsComponent implements OnInit {
   ];
   selectedRows: Set<string> = new Set();
 
-  constructor(private pagerDuty: PagerDutyService) {}
+  auth$;
+  constructor(
+    private pagerDuty: PagerDutyService,
+    public authService: AuthService
+  ) {
+    this.auth$ = this.authService.auth$;
+  }
+
+  onSignOut() {
+    this.authService.signOut();
+    window.location.href = '/';
+  }
 
   ngOnInit() {
     this.loadColumnPrefs();
