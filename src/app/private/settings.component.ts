@@ -103,7 +103,7 @@ export class SettingsComponent {
     }
   }
 
-  sortBy(col: 'key' | 'value' | 'created') {
+  sortBy(col: 'key' | 'value' | 'created' | 'updated') {
     if (this.sortKey === col) {
       this.sortAsc = !this.sortAsc;
     } else {
