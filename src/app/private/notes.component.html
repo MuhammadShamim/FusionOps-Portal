@@ -1,4 +1,4 @@
-<fusionops-layout [title]="'Notes'" [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+<fusionops-private-layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
   <button header-actions class="btn btn-gradient-primary px-4 py-2 rounded-pill" (click)="showModal = true">
     <i class="fas fa-plus me-2"></i>Create Note
   </button>
@@ -73,4 +73,4 @@
       </div>
     </div>
   </div>
-</fusionops-layout>
+</fusionops-private-layout>

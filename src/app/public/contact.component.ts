@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { LayoutComponent } from '../shared/layout.component';
+import { PublicLayoutComponent } from '../shared/public-layout.component';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   standalone: true,
-  imports: [LayoutComponent]
+  imports: [PublicLayoutComponent]
 })
 export class ContactComponent {}

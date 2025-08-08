@@ -1,0 +1,17 @@
+<div class="private-layout d-flex flex-column min-vh-100">
+  <header class="private-header py-2 px-3 border-bottom bg-white shadow-sm">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="fw-bold fs-4">FusionOps Portal</div>
+      <ng-content select="[header-actions]"></ng-content>
+    </div>
+  </header>
+  <div class="flex-grow-1 d-flex">
+    <fusionops-sidebar class="sidebar" [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()"></fusionops-sidebar>
+    <main class="flex-fill container-fluid py-4">
+      <ng-content></ng-content>
+    </main>
+  </div>
+  <footer class="private-footer text-center py-3 border-top bg-light small text-muted">
+    &copy; {{year}} FusionOps. All rights reserved.
+  </footer>
+</div>

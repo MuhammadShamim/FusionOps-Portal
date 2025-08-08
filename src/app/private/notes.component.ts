@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from '../shared/layout.component';
+import { PrivateLayoutComponent } from '../shared/private-layout.component';
 
 interface Note {
   id: number;
@@ -15,7 +15,7 @@ interface Note {
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule, LayoutComponent]
+  imports: [FormsModule, CommonModule, PrivateLayoutComponent]
 })
 export class NotesComponent {
   notes: Note[] = [];

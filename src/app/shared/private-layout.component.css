@@ -1,0 +1,4 @@
+.private-layout { background: #f8f9fa; }
+.private-header { background: #fff; }
+.private-footer { background: #f8f9fa; }
+.sidebar { min-width: 220px; max-width: 260px; background: #fff; border-right: 1px solid #e5e7eb; }

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LayoutComponent } from '../shared/layout.component';
+import { PrivateLayoutComponent } from '../shared/private-layout.component';
 import { ApiStatusService } from '../services/api-status.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ApiStatusService } from '../services/api-status.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, LayoutComponent]
+  imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class DashboardComponent implements OnInit {
   apiStatus: { status: 'success' | 'error', message: string } | null = null;

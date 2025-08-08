@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LayoutComponent } from '../shared/layout.component';
+import { PrivateLayoutComponent } from '../shared/private-layout.component';
 import { CarrierProfileService } from '../services/carrier-profile.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CarrierProfileService } from '../services/carrier-profile.service';
   templateUrl: './carrier-profile.component.html',
   styleUrls: ['./carrier-profile.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, LayoutComponent]
+  imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class CarrierProfileComponent {
   carrierName = '';

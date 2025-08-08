@@ -1,4 +1,4 @@
-<fusionops-layout [title]="'Kanban Board'" [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+<fusionops-private-layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
   <button header-actions class="btn btn-gradient-primary px-4 py-2 rounded-pill" (click)="showModal = true">
     <i class="fas fa-plus me-2"></i>Add Task
   </button>
@@ -56,4 +56,4 @@
       </div>
     </div>
   </div>
-</fusionops-layout>
+</fusionops-private-layout>
