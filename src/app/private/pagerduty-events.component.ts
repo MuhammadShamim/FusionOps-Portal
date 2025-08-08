@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PrivateLayoutComponent } from './private-layout.component';
 import { PagerDutyService } from './pagerduty.service';
 import { AuthService } from '../services/auth.service';
 
@@ -8,9 +10,12 @@ import { AuthService } from '../services/auth.service';
   standalone: true,
   templateUrl: './pagerduty-events.component.html',
   styleUrls: ['./pagerduty-events.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class PagerDutyEventsComponent implements OnInit {
+  areAllRowsSelectedOnPage(): boolean {
+    return this.pagedEvents.length > 0 && this.pagedEvents.every((e: any) => this.selectedRows.has(e.id));
+  }
   events: any[] = [];
   filteredEvents: any[] = [];
   loading = false;

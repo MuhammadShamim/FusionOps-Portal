@@ -1,4 +1,4 @@
-<fusionops-private-layout [isAuthenticated]="true">
+<fusionops-private-layout>
   <div class="container-fluid px-0">
     <h2 class="mb-4">PagerDuty Events</h2>
     <div *ngIf="loading" class="alert alert-info">Loading PagerDuty events...</div>
@@ -33,7 +33,7 @@
         <thead class="table-light">
           <tr>
             <th>
-              <input type="checkbox" [checked]="pagedEvents.every(e => selectedRows.has(e.id)) && pagedEvents.length > 0" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
+              <input type="checkbox" [checked]="areAllRowsSelectedOnPage()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
             </th>
             <ng-container *ngFor="let col of columns" >
               <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" style="cursor:pointer">
