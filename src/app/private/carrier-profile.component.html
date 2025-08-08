@@ -1,4 +1,4 @@
-<fusionops-private-layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+<fusionops-private-layout [isAuthenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
   <div class="container-fluid pt-3">
     <div class="row mb-3">
       <div class="col-md-6 col-lg-5 col-xl-4">

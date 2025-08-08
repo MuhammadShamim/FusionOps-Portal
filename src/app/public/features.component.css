@@ -1,5 +1,4 @@
 :host {
-  display: flex;
   align-items: center;
   justify-content: center;
   min-height: 70vh;
@@ -38,4 +37,15 @@
   border-radius: 2rem;
   background: #fff;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+}
+
+.btn-gradient-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  transition: background 0.2s;
+}
+.btn-gradient-primary:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
 }

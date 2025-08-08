@@ -1,14 +1,38 @@
-.container {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+/* Sneat-style sign-in card, centered in main, using CSS variables */
+.signin-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  padding: 2rem 0;
 }
-.card {
-  border: none;
+.signin-card {
+  background: var(--color-card);
+  box-shadow: 0 2px 16px rgba(79,140,255,0.10);
   border-radius: 1rem;
+  max-width: 400px;
+  width: 100%;
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin: 0 auto;
+  transition: var(--transition);
+}
+.signin-card .fa-user-circle {
+  color: var(--color-primary);
 }
 .btn-primary {
-  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  background: var(--color-primary);
+  color: #fff;
   border: none;
+  transition: background 0.2s;
 }
 .btn-primary:hover {
-  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+@media (max-width: 480px) {
+  .signin-card {
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+  }
 }

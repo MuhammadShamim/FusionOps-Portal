@@ -1,5 +1,4 @@
 :host {
-  display: flex;
   align-items: center;
   justify-content: center;
   min-height: 70vh;
@@ -35,12 +34,12 @@ h1 {
 }
 
 .btn-gradient-primary {
-  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  background: var(--color-primary);
   color: #fff;
   border: none;
   transition: background 0.2s;
 }
 .btn-gradient-primary:hover {
-  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+  background: var(--color-primary-dark);
   color: #fff;
 }

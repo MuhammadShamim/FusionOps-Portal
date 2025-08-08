@@ -1,13 +1,15 @@
-Application bundle generation failed. [0.305 seconds]
+Application bundle generation failed. [0.685 seconds]
 
-✘ [ERROR] TS2345: Argument of type '"updated"' is not assignable to parameter of type '"key" | "value" | "created"'. [plugin angular-compiler]
+✘ [ERROR] NG8001: 'fusionops-public-layout' is not a known element:
+1. If 'fusionops-public-layout' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'fusionops-public-layout' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message. [plugin angular-compiler]
 
-    src/app/private/settings.component.html:38:55:
-      38 │ ...idth: 15%" (click)="sortBy('updated')" style="cursor:pointer">U...
-         ╵                               ~~~~~~~~~
+    src/app/public/signin.component.html:0:0:
+      0 │ 
+        ╵ ^
 
-  Error occurs in the template of component SettingsComponent.
+  Error occurs in the template of component SigninComponent.
 
-    src/app/private/settings.component.ts:9:15:
-      9 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/public/signin.component.ts:9:15:
+      9 │   templateUrl: './signin.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~

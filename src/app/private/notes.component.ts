@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PrivateLayoutComponent } from './private-layout.component';
+import { AuthService } from '../services/auth.service';
 
 interface Note {
   id: number;
@@ -18,25 +20,152 @@ interface Note {
   imports: [FormsModule, CommonModule, PrivateLayoutComponent]
 })
 export class NotesComponent {
-  isAuthenticated = true; // TODO: Replace with real auth logic
+  auth$;
+  constructor(public authService: AuthService, private router: Router) {
+    this.auth$ = this.authService.auth$;
+    this.loadNotes();
+  }
+
+  areAllNotesSelected(): boolean {
+    const notes = this.getFilteredSortedNotes();
+    return notes.length > 0 && notes.every(n => this.selectedRows.has(n.id));
+  }
+
+  getVisibleNotesColspan(): number {
+    return this.columns.filter(c => c.visible).length + 2;
+  }
 
   onSignOut() {
-    // TODO: Implement sign out logic
-    this.isAuthenticated = false;
-    window.location.href = '/';
+    this.authService.signOut();
+    this.router.navigate(['/']);
   }
+
   notes: Note[] = [];
   search = '';
-  sortColumn: keyof Note = 'created';
-  sortAsc = false;
+  sortKeys: { key: keyof Note, asc: boolean }[] = [{ key: 'created', asc: false }];
   editingNote: Note | null = null;
   showModal = false;
   modalTitle = '';
   modalContent = '';
+  columns: { key: keyof Note, label: string, visible: boolean }[] = [
+    { key: 'title', label: 'Title', visible: true },
+    { key: 'content', label: 'Content', visible: true },
+    { key: 'created', label: 'Created', visible: true }
+  ];
+  selectedRows: Set<number> = new Set();
 
-  constructor() {
-    this.loadNotes();
+  downloadCSV(selectedOnly = false) {
+    const visibleCols = this.columns.filter(c => c.visible);
+    const headers = visibleCols.map(c => c.label);
+    const notes = this.getFilteredSortedNotes();
+    const rows = (selectedOnly ? notes.filter(n => this.selectedRows.has(n.id)) : notes)
+      .map(n => visibleCols.map(c => {
+        if (c.key === 'title' || c.key === 'content') return '"' + (n[c.key] as string || '').replace(/"/g, '""') + '"';
+        return n[c.key];
+      }));
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'notes.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
   }
+
+  copySelectedToClipboard() {
+    const visibleCols = this.columns.filter(c => c.visible);
+    const headers = visibleCols.map(c => c.label);
+    const notes = this.getFilteredSortedNotes();
+    const rows = notes.filter(n => this.selectedRows.has(n.id))
+      .map(n => visibleCols.map(c => n[c.key]));
+    const text = [headers.join('\t'), ...rows.map(r => r.join('\t'))].join('\n');
+    navigator.clipboard.writeText(text);
+  }
+
+  toggleColumn(col: { key: keyof Note, label: string, visible: boolean }) {
+    col.visible = !col.visible;
+  }
+
+  toggleRowSelection(id: number) {
+    if (this.selectedRows.has(id)) {
+      this.selectedRows.delete(id);
+    } else {
+      this.selectedRows.add(id);
+    }
+  }
+
+  selectAllOnPage() {
+    this.getFilteredSortedNotes().forEach(n => this.selectedRows.add(n.id));
+  }
+
+  clearSelection() {
+    this.selectedRows.clear();
+  }
+
+  sortBy(key: string, event?: MouseEvent) {
+    const k = key as keyof Note;
+    if (event && event.shiftKey) {
+      const idx = this.sortKeys.findIndex(s => s.key === k);
+      if (idx > -1) {
+        this.sortKeys[idx].asc = !this.sortKeys[idx].asc;
+      } else {
+        this.sortKeys.push({ key: k, asc: true });
+      }
+    } else {
+      if (this.sortKeys.length === 1 && this.sortKeys[0].key === k) {
+        this.sortKeys[0].asc = !this.sortKeys[0].asc;
+      } else {
+        this.sortKeys = [{ key: k, asc: true }];
+      }
+    }
+    this.sortNotes();
+  }
+
+  sortNotes() {
+    this.notes.sort((a, b) => {
+      for (const sort of this.sortKeys) {
+        let v1 = a[sort.key];
+        let v2 = b[sort.key];
+        if (typeof v1 === 'string' && typeof v2 === 'string') {
+          v1 = v1.toLowerCase();
+          v2 = v2.toLowerCase();
+        }
+        if (v1 < v2) return sort.asc ? -1 : 1;
+        if (v1 > v2) return sort.asc ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  getFilteredSortedNotes() {
+    let filtered = this.notes;
+    if (this.search.trim()) {
+      const s = this.search.toLowerCase();
+      filtered = filtered.filter(n =>
+        n.title.toLowerCase().includes(s) ||
+        n.content.toLowerCase().includes(s) ||
+        n.created.toLowerCase().includes(s)
+      );
+    }
+    filtered = [...filtered];
+    filtered.sort((a, b) => {
+      for (const sort of this.sortKeys) {
+        let v1 = a[sort.key];
+        let v2 = b[sort.key];
+        if (typeof v1 === 'string' && typeof v2 === 'string') {
+          v1 = v1.toLowerCase();
+          v2 = v2.toLowerCase();
+        }
+        if (v1 < v2) return sort.asc ? -1 : 1;
+        if (v1 > v2) return sort.asc ? 1 : -1;
+      }
+      return 0;
+    });
+    return filtered;
+  }
+
+
 
   loadNotes() {
     const data = localStorage.getItem('fusionops_notes');
@@ -96,37 +225,4 @@ export class NotesComponent {
     this.saveNotes();
   }
 
-  sortBy(col: keyof Note) {
-    if (this.sortColumn === col) {
-      this.sortAsc = !this.sortAsc;
-    } else {
-      this.sortColumn = col;
-      this.sortAsc = true;
-    }
-    this.sortNotes();
-  }
-
-  sortNotes() {
-    this.notes.sort((a, b) => {
-      let v1 = a[this.sortColumn];
-      let v2 = b[this.sortColumn];
-      if (typeof v1 === 'string' && typeof v2 === 'string') {
-        v1 = v1.toLowerCase();
-        v2 = v2.toLowerCase();
-      }
-      if (v1 < v2) return this.sortAsc ? -1 : 1;
-      if (v1 > v2) return this.sortAsc ? 1 : -1;
-      return 0;
-    });
-  }
-
-  get filteredNotes() {
-    if (!this.search.trim()) return this.notes;
-    const s = this.search.toLowerCase();
-    return this.notes.filter(n =>
-      n.title.toLowerCase().includes(s) ||
-      n.content.toLowerCase().includes(s) ||
-      n.created.toLowerCase().includes(s)
-    );
-  }
 }

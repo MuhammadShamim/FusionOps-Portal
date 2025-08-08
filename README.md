@@ -1,5 +1,4 @@
-
-# 🧩 FusionOps Portal `0.0.7`
+# 🧩 FusionOps Portal `0.0.8`
 
 **FusionOps Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
 
@@ -14,18 +13,22 @@ rtal
 
 - 🔐 Auth0 Microsoft SSO authentication
 - 📦 MuleSoft iPaaS integration
-- 🚨 PagerDuty incident tracking
+- 🚨 PagerDuty incident tracking with secure token storage, events page, and proxy support
 - 🛠️ GitHub repo and PR management
 - 📅 Release and change management tools
-- 👋 Welcome, Sign-in, Sign-up pages
-- 👤 Profile and Settings pages
+- 👋 Welcome, Sign-in, and Sign-up pages with sticky header/footer
+- 👤 Profile and Settings pages (with secrets, storage, and PagerDuty tabs)
 - 📬 Contact page
 - 📊 Dashboard with operational insights
-- 📝 Notes app with modal-based create/edit and sorting
-- 🗂️ Kanban board with drag-and-drop, localStorage, and **edit task** support
-- 🧩 Sneat-inspired, modern UI with global and modular SCSS
-- 🖥️ Public/private layout system (sticky header/footer, responsive sidebar)
-- 🧹 Codebase cleanup: no redundant layouts, unified navigation, and maintainable structure
+- 📝 Notes app with modal-based create/edit, advanced table features (multi-sort, column toggling, row selection, CSV export, copy-to-clipboard)
+- 🗂️ Kanban board with drag-and-drop, localStorage, Board/Data tabs, and modal-based editing
+- 🧩 Sneat-inspired, modern UI with global and modular SCSS, no purple accents, only blue theme
+- 🖥️ Public/private layout system (sticky header/footer, responsive sidebar, full-width public pages)
+- 🌗 Dark/light mode toggle (global, sticky, and themeable)
+- 🔄 Universal search and navigation in header
+- ♻️ Codebase cleanup: no redundant layouts, unified navigation, maintainable structure, reusable CSS utilities
+- 🛡️ Environment-based config for all API services
+- 🧹 All public/private pages use new layouts and global styles, no per-component flex/box hacks
 
 
 ## 🛠️ Tech Stack

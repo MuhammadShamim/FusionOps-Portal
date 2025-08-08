@@ -1,4 +1,4 @@
-<fusionops-private-layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+<fusionops-private-layout [isAuthenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
   <button header-actions class="btn btn-gradient-primary px-4 py-2 rounded-pill" (click)="showModal = true">
     <i class="fas fa-plus me-2"></i>Create Note
   </button>
@@ -15,29 +15,63 @@
   </div>
   <div class="row">
     <div class="col-12">
+      <div class="row mb-2">
+        <div class="col-md-4 mb-2">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+              Columns
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let col of columns">
+                <label class="dropdown-item">
+                  <input type="checkbox" [(ngModel)]="col.visible" (change)="toggleColumn(col)"> {{col.label}}
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 text-end mb-2">
+          <button class="btn btn-outline-primary me-2" (click)="downloadCSV(selectedRows.size > 0)"><i class="fas fa-download me-2"></i>Download as CSV</button>
+          <button class="btn btn-outline-secondary me-2" [disabled]="selectedRows.size === 0" (click)="copySelectedToClipboard()"><i class="fas fa-copy me-2"></i>Copy Selected</button>
+          <button class="btn btn-outline-secondary" [disabled]="selectedRows.size === 0" (click)="clearSelection()"><i class="fas fa-times me-2"></i>Clear Selection</button>
+        </div>
+      </div>
       <div class="fusionops-card p-0 shadow-sm">
         <div class="table-responsive">
           <table class="table fusionops-table align-middle mb-0">
             <thead>
               <tr>
-                <th (click)="sortBy('title')" class="fusionops-th">Title <i class="fas fa-sort"></i></th>
-                <th (click)="sortBy('content')" class="fusionops-th">Content <i class="fas fa-sort"></i></th>
-                <th (click)="sortBy('created')" class="fusionops-th">Created <i class="fas fa-sort"></i></th>
+                <th>
+                  <input type="checkbox" [checked]="areAllNotesSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
+                </th>
+                <ng-container *ngFor="let col of columns">
+                  <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" class="fusionops-th" style="cursor:pointer">
+                    {{col.label}} <i class="fas fa-sort"></i>
+                  </th>
+                </ng-container>
                 <th class="fusionops-th">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let note of filteredNotes">
-                <td class="fw-semibold">{{ note.title }}</td>
-                <td class="text-secondary">{{ note.content }}</td>
-                <td class="text-secondary">{{ note.created | date:'short' }}</td>
+              <tr *ngFor="let note of getFilteredSortedNotes()">
+                <td>
+                  <input type="checkbox" [checked]="selectedRows.has(note.id)" (change)="toggleRowSelection(note.id)">
+                </td>
+                <ng-container *ngFor="let col of columns">
+                  <td *ngIf="col.visible">
+                    <ng-container [ngSwitch]="col.key">
+                      <span *ngSwitchCase="'created'">{{ note.created | date:'short' }}</span>
+                      <span *ngSwitchDefault>{{ note[col.key] }}</span>
+                    </ng-container>
+                  </td>
+                </ng-container>
                 <td>
                   <button class="btn btn-sm btn-outline-primary me-2" (click)="openEditModal(note)"><i class="fas fa-edit"></i></button>
                   <button class="btn btn-sm btn-outline-danger" (click)="deleteNote(note.id)"><i class="fas fa-trash"></i></button>
                 </td>
               </tr>
-              <tr *ngIf="filteredNotes.length === 0">
-                <td colspan="4" class="text-center text-muted">No notes found.</td>
+              <tr *ngIf="getFilteredSortedNotes().length === 0">
+                <td [attr.colspan]="getVisibleNotesColspan()" class="text-center text-muted">No notes found.</td>
               </tr>
             </tbody>
           </table>
