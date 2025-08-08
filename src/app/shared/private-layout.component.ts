@@ -1,13 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'fusionops-private-layout',
   standalone: true,
   templateUrl: './private-layout.component.html',
   styleUrls: ['./private-layout.component.css'],
-  imports: [CommonModule, RouterModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterModule],
 })
 export class PrivateLayoutComponent {
   @Input() isAuthenticated = false;
