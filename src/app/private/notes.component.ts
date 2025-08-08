@@ -23,6 +23,7 @@ export class NotesComponent {
   onSignOut() {
     // TODO: Implement sign out logic
     this.isAuthenticated = false;
+    window.location.href = '/';
   }
   notes: Note[] = [];
   search = '';

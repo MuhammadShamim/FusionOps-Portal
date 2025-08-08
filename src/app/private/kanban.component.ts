@@ -29,6 +29,7 @@ export class KanbanComponent {
   onSignOut() {
     // TODO: Implement sign out logic
     this.isAuthenticated = false;
+    window.location.href = '/';
   }
   columns: KanbanColumn[] = [
     { name: 'To Do', color: 'bg-light', tasks: [] },

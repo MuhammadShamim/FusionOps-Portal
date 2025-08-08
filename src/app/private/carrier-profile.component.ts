@@ -17,6 +17,7 @@ export class CarrierProfileComponent {
   onSignOut() {
     // TODO: Implement sign out logic
     this.isAuthenticated = false;
+    window.location.href = '/';
   }
   carrierName = '';
   carrierProfile: any = null;

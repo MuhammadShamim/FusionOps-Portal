@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   onSignOut() {
     // TODO: Implement sign out logic
     this.isAuthenticated = false;
+    window.location.href = '/';
   }
   apiStatus: { status: 'success' | 'error', message: string } | null = null;
 
