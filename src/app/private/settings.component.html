@@ -12,15 +12,11 @@
     <div class="tab-content">
       <div class="tab-pane" [class.active]="activeTab === 'secrets'">
         <form (ngSubmit)="saveSecrets()" autocomplete="off" class="row g-3">
-          <div class="col-md-4 col-lg-3">
-            <label for="apiBaseUrl" class="form-label">API Base URL</label>
-            <input id="apiBaseUrl" type="text" class="form-control" [(ngModel)]="apiBaseUrl" name="apiBaseUrl" placeholder="/api or https://..." required />
-          </div>
-          <div class="col-md-4 col-lg-3">
+          <div class="col-md-6 col-lg-4">
             <label for="apiId" class="form-label">API ID</label>
             <input id="apiId" type="text" class="form-control" [(ngModel)]="apiId" name="apiId" required />
           </div>
-          <div class="col-md-4 col-lg-3">
+          <div class="col-md-6 col-lg-4">
             <label for="secret" class="form-label">Secret</label>
             <input id="secret" type="password" class="form-control" [(ngModel)]="secret" name="secret" required />
           </div>
