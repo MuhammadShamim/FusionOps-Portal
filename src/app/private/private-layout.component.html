@@ -34,9 +34,9 @@
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <button class="nav-link btn btn-link d-flex align-items-center fusionops-nav-link text-danger p-0 ps-2" style="width:100%;text-align:left;" (click)="onSignOut()">
+          <a href="#" (click)="$event.preventDefault(); onSignOut()" class="nav-link d-flex align-items-center fusionops-nav-link">
             <i class="fas fa-sign-out-alt me-2"></i> Sign Out
-          </button>
+          </a>
         </li>
       </ul>
     </div>
