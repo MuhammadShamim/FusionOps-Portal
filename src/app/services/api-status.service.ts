@@ -24,13 +24,13 @@ export class ApiStatusService {
 
     // Check for missing or placeholder credentials/URL
     if (!baseUrl || !(baseUrl === '/api' || baseUrl.startsWith('http://') || baseUrl.startsWith('https://'))) {
-      return of({ error: { status: 'Config', message: 'API_BASE_URL is missing or not set to a valid URL.' } });
+      return of({ status: 'error', message: 'API_BASE_URL is missing or not set to a valid URL.' });
     }
     if (!apiId) {
-      return of({ error: { status: 'Config', message: 'API_CLIENT_ID is missing or not set in Settings.' } });
+      return of({ status: 'error', message: 'API_CLIENT_ID is missing or not set in Settings.' });
     }
     if (!secret) {
-      return of({ error: { status: 'Config', message: 'API_CLIENT_SECRET is missing or not set in Settings.' } });
+      return of({ status: 'error', message: 'API_CLIENT_SECRET is missing or not set in Settings.' });
     }
 
     const url = `${baseUrl}/statuscheck`;
@@ -39,9 +39,26 @@ export class ApiStatusService {
       'client_secret': secret
     };
     return this.http.get<any>(url, { headers }).pipe(
-      map((res: any) => res),
+      // If the API returns a success, map to the expected type
+      map((res: any) => {
+        if (res && (res.success === true || res.status === 200)) {
+          return { status: 'success', message: 'API is healthy' };
+        } else if (res && typeof res.message === 'string') {
+          return { status: 'error', message: res.message };
+        } else {
+          return { status: 'error', message: 'Unknown error' };
+        }
+      }),
       catchError((err: any) => {
-        return of({ error: true, message: err?.message || 'API unreachable' });
+        let message = '';
+        if (err?.error && typeof err.error === 'string' && err.error.trim().startsWith('<!DOCTYPE html')) {
+          message = 'Server returned an HTML error page (possible 404 or 500).';
+        } else if (err?.error && typeof err.error === 'object') {
+          message = err.error.message || JSON.stringify(err.error);
+        } else {
+          message = err?.message || 'API unreachable';
+        }
+        return of({ status: 'error', message });
       })
     );
   }
