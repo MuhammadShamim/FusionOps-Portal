@@ -98,19 +98,20 @@ export class NotesComponent {
     this.selectedRows.clear();
   }
 
-  sortBy(key: keyof Note, event?: MouseEvent) {
+  sortBy(key: string, event?: MouseEvent) {
+    const k = key as keyof Note;
     if (event && event.shiftKey) {
-      const idx = this.sortKeys.findIndex(s => s.key === key);
+      const idx = this.sortKeys.findIndex(s => s.key === k);
       if (idx > -1) {
         this.sortKeys[idx].asc = !this.sortKeys[idx].asc;
       } else {
-        this.sortKeys.push({ key, asc: true });
+        this.sortKeys.push({ key: k, asc: true });
       }
     } else {
-      if (this.sortKeys.length === 1 && this.sortKeys[0].key === key) {
+      if (this.sortKeys.length === 1 && this.sortKeys[0].key === k) {
         this.sortKeys[0].asc = !this.sortKeys[0].asc;
       } else {
-        this.sortKeys = [{ key, asc: true }];
+        this.sortKeys = [{ key: k, asc: true }];
       }
     }
     this.sortNotes();

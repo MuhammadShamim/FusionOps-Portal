@@ -116,19 +116,20 @@ export class SettingsComponent {
     }
   }
 
-  sortBy(col: 'key' | 'value', event?: MouseEvent) {
+  sortBy(col: string, event?: MouseEvent) {
+    const key = col as 'key' | 'value';
     if (event && event.shiftKey) {
-      const idx = this.sortKeys.findIndex(s => s.key === col);
+      const idx = this.sortKeys.findIndex(s => s.key === key);
       if (idx > -1) {
         this.sortKeys[idx].asc = !this.sortKeys[idx].asc;
       } else {
-        this.sortKeys.push({ key: col, asc: true });
+        this.sortKeys.push({ key, asc: true });
       }
     } else {
-      if (this.sortKeys.length === 1 && this.sortKeys[0].key === col) {
+      if (this.sortKeys.length === 1 && this.sortKeys[0].key === key) {
         this.sortKeys[0].asc = !this.sortKeys[0].asc;
       } else {
-        this.sortKeys = [{ key: col, asc: true }];
+        this.sortKeys = [{ key, asc: true }];
       }
     }
     this.sortStorage();
