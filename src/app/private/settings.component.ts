@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PrivateLayoutComponent } from '../shared/private-layout.component';
 
+@Component({
 @Component({
   selector: 'app-settings',
   standalone: true,
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css',
-  imports: [CommonModule, FormsModule]
+  styleUrls: ['./settings.component.css'],
+  imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class SettingsComponent {
   activeTab: 'secrets' | 'storage' = 'secrets';
@@ -15,10 +17,17 @@ export class SettingsComponent {
   secret: string = '';
   saved: boolean = false;
   fusionopsStorage: { key: string, value: string }[] = [];
+  isAuthenticated = true; // TODO: Replace with real auth logic
 
   ngOnInit() {
     this.loadSecrets();
     this.loadFusionopsStorage();
+  }
+
+  onSignOut() {
+    // TODO: Implement real sign out logic
+    this.isAuthenticated = false;
+    window.location.href = '/';
   }
 
   loadSecrets() {
