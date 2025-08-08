@@ -1,6 +1,3 @@
-  get isAuthenticated(): boolean {
-    return this.authSubject.value;
-  }
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,6 +5,10 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private authSubject = new BehaviorSubject<boolean>(localStorage.getItem('fusionops_isAuthenticated') === 'true');
   auth$ = this.authSubject.asObservable();
+
+  get isAuthenticated(): boolean {
+    return this.authSubject.value;
+  }
 
   signIn() {
     localStorage.setItem('fusionops_isAuthenticated', 'true');
