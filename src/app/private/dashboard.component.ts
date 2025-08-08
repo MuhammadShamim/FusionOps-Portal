@@ -13,6 +13,12 @@ import { ApiStatusService } from '../services/api-status.service';
   imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class DashboardComponent implements OnInit {
+  isAuthenticated = true; // TODO: Replace with real auth logic
+
+  onSignOut() {
+    // TODO: Implement sign out logic
+    this.isAuthenticated = false;
+  }
   apiStatus: { status: 'success' | 'error', message: string } | null = null;
 
   constructor(

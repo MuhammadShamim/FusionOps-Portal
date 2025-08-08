@@ -18,6 +18,12 @@ interface Note {
   imports: [FormsModule, CommonModule, PrivateLayoutComponent]
 })
 export class NotesComponent {
+  isAuthenticated = true; // TODO: Replace with real auth logic
+
+  onSignOut() {
+    // TODO: Implement sign out logic
+    this.isAuthenticated = false;
+  }
   notes: Note[] = [];
   search = '';
   sortColumn: keyof Note = 'created';

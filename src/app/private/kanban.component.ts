@@ -24,6 +24,12 @@ interface KanbanColumn {
 })
 
 export class KanbanComponent {
+  isAuthenticated = true; // TODO: Replace with real auth logic
+
+  onSignOut() {
+    // TODO: Implement sign out logic
+    this.isAuthenticated = false;
+  }
   columns: KanbanColumn[] = [
     { name: 'To Do', color: 'bg-light', tasks: [] },
     { name: 'In Progress', color: 'bg-primary text-white', tasks: [] },

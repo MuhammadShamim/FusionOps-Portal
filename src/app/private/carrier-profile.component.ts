@@ -12,6 +12,12 @@ import { CarrierProfileService } from '../services/carrier-profile.service';
   imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class CarrierProfileComponent {
+  isAuthenticated = true; // TODO: Replace with real auth logic
+
+  onSignOut() {
+    // TODO: Implement sign out logic
+    this.isAuthenticated = false;
+  }
   carrierName = '';
   carrierProfile: any = null;
   carrierProfileError: string | null = null;
