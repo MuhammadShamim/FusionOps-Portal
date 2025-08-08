@@ -4,5 +4,12 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/pagerduty": {
+    "target": "https://api.pagerduty.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/pagerduty": "" },
+    "logLevel": "debug"
   }
 }
