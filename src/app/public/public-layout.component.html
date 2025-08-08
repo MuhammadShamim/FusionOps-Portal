@@ -8,14 +8,15 @@
       <nav class="public-nav">
         <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
         <a routerLink="/features" routerLinkActive="active" class="nav-link">Features</a>
-        <a routerLink="/team" routerLinkActive="active" class="nav-link">Team</a>
         <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
         <a routerLink="/signin" class="btn btn-outline-primary rounded-pill px-4 ms-2">Sign In</a>
       </nav>
     </div>
   </header>
   <main class="public-main">
-    <ng-content></ng-content>
+    <div class="public-main-content">
+      <ng-content></ng-content>
+    </div>
   </main>
   <footer class="public-footer">
     &copy; {{year}} FusionOps. All rights reserved.
