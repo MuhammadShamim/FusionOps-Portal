@@ -1,25 +1,11 @@
-<div class="public-layout d-flex flex-column min-vh-100">
-  <header class="public-header py-2 px-3 border-bottom bg-white shadow-sm fixed-top w-100" style="z-index: 1040;">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand fw-bold" href="#">FusionOps</a>
-      <div class="collapse navbar-collapse justify-content-between">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/features" routerLinkActive="active">Features</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/team" routerLinkActive="active">Team</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a></li>
-        </ul>
-        <div class="d-flex align-items-center gap-2">
-          <ng-content select="[header-actions]"></ng-content>
-          <a routerLink="/signin" class="btn btn-outline-primary rounded-pill px-4">Sign In</a>
-        </div>
-      </div>
-    </nav>
+<div class="public-layout">
+  <header class="public-header">
+    <div class="app-title">FusionOps Portal</div>
   </header>
-  <main class="flex-fill d-flex flex-column justify-content-center align-items-center w-100 p-0 m-0 overflow-auto" style="padding-top: 72px; padding-bottom: 64px; min-height: 0; max-height: calc(100vh - 120px);">
+  <main class="public-main">
     <ng-content></ng-content>
   </main>
-  <footer class="public-footer text-center py-3 border-top bg-light small text-muted fixed-bottom w-100" style="z-index: 1040;">
+  <footer class="public-footer">
     &copy; {{year}} FusionOps. All rights reserved.
   </footer>
 </div>

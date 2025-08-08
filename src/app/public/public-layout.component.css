@@ -1,7 +1,13 @@
-.public-layout { background: #f8f9fa; }
+/* Sneat-style, minimal public layout for all public pages (no sidebar) */
+.public-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+}
 .public-header {
-  background: #fff;
-  position: fixed;
+  background: var(--color-card);
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,10 +15,30 @@
   height: 64px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  border-bottom: 1px solid var(--color-border);
+  transition: var(--transition);
+}
+.public-header .app-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+}
+.public-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  background: var(--color-bg);
+  padding: 2rem 1rem;
+  transition: var(--transition);
 }
 .public-footer {
-  background: #f8f9fa;
-  position: fixed;
+  background: var(--color-footer-bg);
+  position: sticky;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -21,10 +47,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: var(--transition);
 }
-.public-layout main {
-  margin-top: 64px;
-  margin-bottom: 56px;
-  overflow-y: auto;
-  height: calc(100vh - 120px);
+@media (max-width: 768px) {
+  .public-header {
+    height: 56px;
+  }
+  .public-main {
+    padding: 1rem 0.5rem;
+  }
 }

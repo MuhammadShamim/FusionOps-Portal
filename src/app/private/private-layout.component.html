@@ -1,8 +1,11 @@
-<div class="private-layout d-flex flex-column min-vh-100">
-  <header class="private-header py-2 px-3 border-bottom bg-white shadow-sm fixed-top w-100" style="z-index: 1040;">
-    <div class="d-flex align-items-center justify-content-between">
-      <div class="fw-bold fs-4">FusionOps Portal</div>
-      <div class="d-flex align-items-center gap-2">
+<div class="private-layout">
+  <header class="private-header">
+    <div class="header-content">
+      <div class="app-title">FusionOps Portal</div>
+      <div class="universal-search">
+        <input type="text" placeholder="Search..." aria-label="Universal Search" />
+      </div>
+      <div class="header-actions">
         <button class="btn btn-sm btn-outline-secondary" type="button" title="Toggle dark mode" (click)="toggleDarkMode()">
           <i class="fas" [ngClass]="{'fa-moon': !isDarkMode, 'fa-sun': isDarkMode}"></i>
         </button>
@@ -10,8 +13,8 @@
       </div>
     </div>
   </header>
-  <div class="flex-grow-1 d-flex" style="padding-top: 72px; padding-bottom: 64px; min-height: 0;">
-    <div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 100vh;">
+  <div class="workspace d-flex flex-row flex-grow-1" style="min-height: 0;">
+    <nav class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3">
       <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="isAuthenticated">
           <a routerLink="/dashboard" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
@@ -49,12 +52,12 @@
           </a>
         </li>
       </ul>
-    </div>
-    <main class="flex-fill container-fluid py-4 overflow-auto" style="max-height: calc(100vh - 120px);">
+    </nav>
+    <main>
       <ng-content></ng-content>
     </main>
   </div>
-  <footer class="private-footer text-center py-3 border-top bg-light small text-muted fixed-bottom w-100" style="z-index: 1040;">
+  <footer class="private-footer">
     &copy; {{year}} FusionOps. All rights reserved.
   </footer>
 </div>
