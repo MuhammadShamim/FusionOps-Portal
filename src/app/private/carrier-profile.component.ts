@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
 import { CarrierProfileService } from '../services/carrier-profile.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-carrier-profile',
@@ -29,7 +30,7 @@ export class CarrierProfileComponent {
 
   constructor(
     private carrierProfileService: CarrierProfileService,
-    public authService: import('../services/auth.service').AuthService
+    public authService: AuthService
   ) {}
 
   getCarrierProfile() {

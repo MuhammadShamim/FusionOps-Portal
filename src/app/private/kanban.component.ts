@@ -26,7 +26,7 @@ interface KanbanColumn {
 })
 export class KanbanComponent {
   auth$;
-  constructor(public authService: import('../services/auth.service').AuthService) {
+  constructor(public authService: AuthService) {
     this.auth$ = this.authService.auth$;
   }
 

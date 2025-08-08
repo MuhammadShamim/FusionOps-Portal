@@ -1,9 +1,9 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
 import { ApiStatusService } from '../services/api-status.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private apiStatusService: ApiStatusService,
-    public authService: import('../services/auth.service').AuthService
+    public authService: AuthService
   ) {}
 
   ngOnInit() {

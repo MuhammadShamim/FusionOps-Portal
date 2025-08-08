@@ -160,7 +160,7 @@ export class NotesComponent {
     return filtered;
   }
 
-  constructor(public authService: import('../services/auth.service').AuthService) {
+  constructor(public authService: AuthService) {
     this.auth$ = this.authService.auth$;
     this.loadNotes();
   }

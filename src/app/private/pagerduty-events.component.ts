@@ -37,7 +37,7 @@ export class PagerDutyEventsComponent implements OnInit {
   auth$;
   constructor(
     private pagerDuty: PagerDutyService,
-  public authService: import('../services/auth.service').AuthService
+  public authService: AuthService
   ) {
     this.auth$ = this.authService.auth$;
   }
