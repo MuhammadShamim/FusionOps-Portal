@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
@@ -13,25 +14,24 @@ import { AuthService } from '../services/auth.service';
   imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class CarrierProfileComponent {
-  isAuthenticated = true; // TODO: Replace with real auth logic
-
-  onSignOut() {
-    // TODO: Implement sign out logic
-    this.isAuthenticated = false;
-    window.location.href = '/';
-  }
   carrierName = '';
   carrierProfile: any = null;
   carrierProfileError: string | null = null;
 
+  constructor(
+    private carrierProfileService: CarrierProfileService,
+    public authService: AuthService,
+    private router: Router
+  ) {}
+
+  onSignOut() {
+    this.authService.signOut();
+    this.router.navigate(['/']);
+  }
+
   get profileJson(): string {
     return this.carrierProfile ? JSON.stringify(this.carrierProfile, null, 2) : '';
   }
-
-  constructor(
-    private carrierProfileService: CarrierProfileService,
-    public authService: AuthService
-  ) {}
 
   getCarrierProfile() {
     this.carrierProfile = null;

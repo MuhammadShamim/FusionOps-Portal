@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PrivateLayoutComponent } from './private-layout.component';
@@ -20,6 +21,10 @@ interface Note {
 })
 export class NotesComponent {
   auth$;
+  constructor(public authService: AuthService, private router: Router) {
+    this.auth$ = this.authService.auth$;
+    this.loadNotes();
+  }
 
   areAllNotesSelected(): boolean {
     const notes = this.getFilteredSortedNotes();
@@ -32,7 +37,7 @@ export class NotesComponent {
 
   onSignOut() {
     this.authService.signOut();
-    window.location.href = '/';
+    this.router.navigate(['/']);
   }
 
   notes: Note[] = [];
@@ -160,10 +165,7 @@ export class NotesComponent {
     return filtered;
   }
 
-  constructor(public authService: AuthService) {
-    this.auth$ = this.authService.auth$;
-    this.loadNotes();
-  }
+
 
   loadNotes() {
     const data = localStorage.getItem('fusionops_notes');

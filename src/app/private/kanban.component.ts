@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
@@ -25,15 +26,16 @@ interface KanbanColumn {
   styleUrls: ['./kanban.component.css']
 })
 export class KanbanComponent {
+  activeTab: 'board' | 'data' = 'board';
   auth$;
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private router: Router) {
     this.auth$ = this.authService.auth$;
     this.loadFromStorage();
   }
 
   onSignOut() {
     this.authService.signOut();
-    window.location.href = '/';
+    this.router.navigate(['/']);
   }
 
   areAllTasksSelected(): boolean {

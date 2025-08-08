@@ -1,84 +1,99 @@
 <fusionops-private-layout [isAuthenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
-  <div class="row mb-2">
-    <div class="col-md-4 mb-2">
-      <div class="dropdown">
-        <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
-          Columns
-        </button>
-        <ul class="dropdown-menu">
-          <li *ngFor="let col of kanbanColumns">
-            <label class="dropdown-item">
-              <input type="checkbox" [(ngModel)]="col.visible" (change)="toggleColumn(col)"> {{col.label}}
-            </label>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-8 text-end mb-2">
-      <button class="btn btn-outline-primary me-2" (click)="downloadCSV(selectedRows.size > 0)"><i class="fas fa-download me-2"></i>Download as CSV</button>
-      <button class="btn btn-outline-secondary me-2" [disabled]="selectedRows.size === 0" (click)="copySelectedToClipboard()"><i class="fas fa-copy me-2"></i>Copy Selected</button>
-      <button class="btn btn-outline-secondary" [disabled]="selectedRows.size === 0" (click)="clearSelection()"><i class="fas fa-times me-2"></i>Clear Selection</button>
-    </div>
-  </div>
-  <div class="fusionops-card p-0 shadow-sm mb-4">
-    <div class="table-responsive">
-      <table class="table fusionops-table align-middle mb-0">
-        <thead>
-          <tr>
-            <th>
-              <input type="checkbox" [checked]="areAllTasksSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
-            </th>
-            <ng-container *ngFor="let col of kanbanColumns">
-              <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" class="fusionops-th" style="cursor:pointer">
-                {{col.label}} <i class="fas fa-sort"></i>
-              </th>
-            </ng-container>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let task of getFilteredSortedTasks()">
-            <td>
-              <input type="checkbox" [checked]="selectedRows.has(task.id)" (change)="toggleRowSelection(task.id)">
-            </td>
-            <ng-container *ngFor="let col of kanbanColumns">
-              <td *ngIf="col.visible">
-                <ng-container [ngSwitch]="col.key">
-                  <span *ngSwitchCase="'column'">{{ task.column }}</span>
-                  <span *ngSwitchDefault>{{ task[col.key] }}</span>
-                </ng-container>
-              </td>
-            </ng-container>
-          </tr>
-          <tr *ngIf="getFilteredSortedTasks().length === 0">
-            <td [attr.colspan]="getVisibleKanbanColspan()" class="text-center text-muted">No tasks found.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row kanban-board g-3">
-    <div class="col-md-3" *ngFor="let col of columns; let colIdx = index">
-      <div class="fusionops-card h-100">
-        <div class="card-header {{col.color}} fw-semibold text-center">{{ col.name }}</div>
-        <div class="card-body p-2" style="min-height: 200px;"
-             (dragover)="onDragOver($event)" (drop)="onDrop(colIdx)">
-          <div *ngFor="let task of col.tasks" class="kanban-task fusionops-card mb-2"
-               draggable="true"
-               (dragstart)="onDragStart(task, colIdx)">
-            <div class="card-body p-2">
-              <div class="fw-bold">{{ task.title }}</div>
-              <div class="text-muted small mb-2" *ngIf="task.description">{{ task.description }}</div>
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button *ngIf="colIdx > 0" class="btn btn-sm btn-outline-primary me-1" (click)="moveTask(task, colIdx, colIdx-1)"><i class="fas fa-arrow-left"></i></button>
-                  <button *ngIf="colIdx < columns.length-1" class="btn btn-sm btn-outline-primary" (click)="moveTask(task, colIdx, colIdx+1)"><i class="fas fa-arrow-right"></i></button>
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'board'" href="#" (click)="$event.preventDefault(); activeTab = 'board'">Board</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'data'" href="#" (click)="$event.preventDefault(); activeTab = 'data'">Data</a>
+    </li>
+  </ul>
+
+  <div [ngSwitch]="activeTab">
+    <div *ngSwitchCase="'board'">
+      <div class="row kanban-board g-3">
+        <div class="col-md-3" *ngFor="let col of columns; let colIdx = index">
+          <div class="fusionops-card h-100">
+            <div class="card-header {{col.color}} fw-semibold text-center">{{ col.name }}</div>
+            <div class="card-body p-2" style="min-height: 200px;"
+                 (dragover)="onDragOver($event)" (drop)="onDrop(colIdx)">
+              <div *ngFor="let task of col.tasks" class="kanban-task fusionops-card mb-2"
+                   draggable="true"
+                   (dragstart)="onDragStart(task, colIdx)">
+                <div class="card-body p-2">
+                  <div class="fw-bold">{{ task.title }}</div>
+                  <div class="text-muted small mb-2" *ngIf="task.description">{{ task.description }}</div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <button *ngIf="colIdx > 0" class="btn btn-sm btn-outline-primary me-1" (click)="moveTask(task, colIdx, colIdx-1)"><i class="fas fa-arrow-left"></i></button>
+                      <button *ngIf="colIdx < columns.length-1" class="btn btn-sm btn-outline-primary" (click)="moveTask(task, colIdx, colIdx+1)"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-primary me-1" (click)="openEditModal(task, colIdx)"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteTask(task, colIdx)"><i class="fas fa-trash"></i></button>
+                  </div>
                 </div>
-                <button class="btn btn-sm btn-outline-primary me-1" (click)="openEditModal(task, colIdx)"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-sm btn-outline-danger" (click)="deleteTask(task, colIdx)"><i class="fas fa-trash"></i></button>
               </div>
+              <div *ngIf="col.tasks.length === 0" class="text-center text-muted small py-3">No tasks</div>
             </div>
           </div>
-          <div *ngIf="col.tasks.length === 0" class="text-center text-muted small py-3">No tasks</div>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'data'">
+      <div class="row mb-2">
+        <div class="col-md-4 mb-2">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+              Columns
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let col of kanbanColumns">
+                <label class="dropdown-item">
+                  <input type="checkbox" [(ngModel)]="col.visible" (change)="toggleColumn(col)"> {{col.label}}
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 text-end mb-2">
+          <button class="btn btn-outline-primary me-2" (click)="downloadCSV(selectedRows.size > 0)"><i class="fas fa-download me-2"></i>Download as CSV</button>
+          <button class="btn btn-outline-secondary me-2" [disabled]="selectedRows.size === 0" (click)="copySelectedToClipboard()"><i class="fas fa-copy me-2"></i>Copy Selected</button>
+          <button class="btn btn-outline-secondary" [disabled]="selectedRows.size === 0" (click)="clearSelection()"><i class="fas fa-times me-2"></i>Clear Selection</button>
+        </div>
+      </div>
+      <div class="fusionops-card p-0 shadow-sm mb-4">
+        <div class="table-responsive">
+          <table class="table fusionops-table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" [checked]="areAllTasksSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
+                </th>
+                <ng-container *ngFor="let col of kanbanColumns">
+                  <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" class="fusionops-th" style="cursor:pointer">
+                    {{col.label}} <i class="fas fa-sort"></i>
+                  </th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let task of getFilteredSortedTasks()">
+                <td>
+                  <input type="checkbox" [checked]="selectedRows.has(task.id)" (change)="toggleRowSelection(task.id)">
+                </td>
+                <ng-container *ngFor="let col of kanbanColumns">
+                  <td *ngIf="col.visible">
+                    <ng-container [ngSwitch]="col.key">
+                      <span *ngSwitchCase="'column'">{{ task.column }}</span>
+                      <span *ngSwitchDefault>{{ task[col.key] }}</span>
+                    </ng-container>
+                  </td>
+                </ng-container>
+              </tr>
+              <tr *ngIf="getFilteredSortedTasks().length === 0">
+                <td [attr.colspan]="getVisibleKanbanColspan()" class="text-center text-muted">No tasks found.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

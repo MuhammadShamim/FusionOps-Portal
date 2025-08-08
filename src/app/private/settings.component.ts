@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
@@ -13,8 +14,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class SettingsComponent {
   auth$;
-  constructor(public authService: AuthService) {
+  private router: Router;
+  constructor(public authService: AuthService, router: Router) {
     this.auth$ = this.authService.auth$;
+    this.router = router;
   }
 
   areAllStorageSelected(): boolean {
@@ -28,7 +31,7 @@ export class SettingsComponent {
 
   onSignOut() {
     this.authService.signOut();
-    window.location.href = '/';
+    this.router.navigate(['/']);
   }
 
   activeTab: 'secrets' | 'storage' | 'pagerduty' = 'secrets';

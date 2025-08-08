@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
@@ -37,14 +38,15 @@ export class PagerDutyEventsComponent implements OnInit {
   auth$;
   constructor(
     private pagerDuty: PagerDutyService,
-  public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) {
     this.auth$ = this.authService.auth$;
   }
 
   onSignOut() {
     this.authService.signOut();
-    window.location.href = '/';
+    this.router.navigate(['/']);
   }
 
   ngOnInit() {
