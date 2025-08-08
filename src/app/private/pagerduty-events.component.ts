@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from './private-layout.component';
-import { PagerDutyService } from './pagerduty.service';
+import { PagerDutyService } from '../services/pagerduty.service';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -37,7 +37,7 @@ export class PagerDutyEventsComponent implements OnInit {
   auth$;
   constructor(
     private pagerDuty: PagerDutyService,
-    public authService: AuthService
+  public authService: import('../services/auth.service').AuthService
   ) {
     this.auth$ = this.authService.auth$;
   }

@@ -13,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class SettingsComponent {
   auth$;
-  constructor(public authService: AuthService) {
+  constructor(public authService: import('../services/auth.service').AuthService) {
     this.auth$ = this.authService.auth$;
   }
 

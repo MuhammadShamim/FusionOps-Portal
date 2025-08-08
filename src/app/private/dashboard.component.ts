@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private apiStatusService: ApiStatusService,
+    public authService: import('../services/auth.service').AuthService
   ) {}
 
   ngOnInit() {

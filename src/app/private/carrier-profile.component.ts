@@ -27,7 +27,10 @@ export class CarrierProfileComponent {
     return this.carrierProfile ? JSON.stringify(this.carrierProfile, null, 2) : '';
   }
 
-  constructor(private carrierProfileService: CarrierProfileService) {}
+  constructor(
+    private carrierProfileService: CarrierProfileService,
+    public authService: import('../services/auth.service').AuthService
+  ) {}
 
   getCarrierProfile() {
     this.carrierProfile = null;

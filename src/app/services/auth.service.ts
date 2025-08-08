@@ -1,3 +1,6 @@
+  get isAuthenticated(): boolean {
+    return this.authSubject.value;
+  }
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
