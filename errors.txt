@@ -1,28 +1,39 @@
-Application bundle generation failed. [0.145 seconds]
+Application bundle generation failed. [0.550 seconds]
 
-✘ [ERROR] TS2305: Module '"./private/settings.component"' has no exported member 'SettingsComponent'. [plugin angular-compiler]
+✘ [ERROR] TS2322: Type 'Observable<{ error: { status: string; message: string; }; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
+  Type '{ error: { status: string; message: string; }; }' is missing the following properties from type '{ status: "success" | "error"; message: string; }': status, message [plugin angular-compiler]
 
-    src/app/app.routes.ts:9:9:
-      9 │ import { SettingsComponent } from './private/settings.component';
-        ╵          ~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS1136: Property assignment expected. [plugin angular-compiler]
-
-    src/app/private/settings.component.ts:7:0:
-      7 │ @Component({
-        ╵ ^
+    src/app/services/api-status.service.ts:27:6:
+      27 │       return of({ error: { status: 'Config', message: 'API_BASE_UR...
+         ╵       ~~~~~~
 
 
-✘ [ERROR] TS1146: Declaration expected. [plugin angular-compiler]
+✘ [ERROR] TS2322: Type 'Observable<{ error: { status: string; message: string; }; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
+  Type '{ error: { status: string; message: string; }; }' is missing the following properties from type '{ status: "success" | "error"; message: string; }': status, message [plugin angular-compiler]
 
-    src/app/private/settings.component.ts:70:1:
-      70 │ }
-         ╵  ^
+    src/app/services/api-status.service.ts:30:6:
+      30 │       return of({ error: { status: 'Config', message: 'API_CLIENT_...
+         ╵       ~~~~~~
 
 
-✘ [ERROR] TS1005: ')' expected. [plugin angular-compiler]
+✘ [ERROR] TS2322: Type 'Observable<{ error: { status: string; message: string; }; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
+  Type '{ error: { status: string; message: string; }; }' is missing the following properties from type '{ status: "success" | "error"; message: string; }': status, message [plugin angular-compiler]
 
-    src/app/private/settings.component.ts:71:0:
-      71 │ 
-         ╵ ^
+    src/app/services/api-status.service.ts:33:6:
+      33 │       return of({ error: { status: 'Config', message: 'API_CLIENT_...
+         ╵       ~~~~~~
+
+
+✘ [ERROR] TS2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { error: boolean; message: any; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
+  Type '{ status: "success" | "error"; message: string; } | { error: boolean; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
+    Property 'status' is missing in type '{ error: boolean; message: any; }' but required in type '{ status: "success" | "error"; message: string; }'. [plugin angular-compiler]
+
+    src/app/services/api-status.service.ts:41:4:
+      41 │     return this.http.get<any>(url, { headers }).pipe(
+         ╵     ~~~~~~
+
+  'status' is declared here.
+
+    src/app/services/api-status.service.ts:11:28:
+      11 │   getStatus(): Observable<{ status: 'success' | 'error', message: ...
+         ╵                             ~~~~~~
