@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'fusionops-private-layout',
   standalone: true,
   templateUrl: './private-layout.component.html',
   styleUrls: ['./private-layout.component.css'],
-  // No longer imports SidebarComponent
+  imports: [CommonModule],
 })
 export class PrivateLayoutComponent {
   @Input() isAuthenticated = false;
