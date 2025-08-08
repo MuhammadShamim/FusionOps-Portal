@@ -15,16 +15,48 @@
   height: 64px;
   display: flex;
   align-items: center;
-  justify-content: center;
   box-shadow: 0 2px 8px rgba(79,140,255,0.10);
   border-bottom: 1px solid var(--color-border);
   transition: var(--transition);
 }
-.public-header .app-title {
-  font-weight: 700;
-  font-size: 1.5rem;
+.public-header-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+.public-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
   color: var(--color-primary);
+  font-weight: 700;
   letter-spacing: 0.5px;
+}
+.public-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.public-nav .nav-link {
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.public-nav .nav-link.active,
+.public-nav .nav-link:hover {
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff !important;
+}
+.public-nav .btn {
+  margin-left: 0.5rem;
 }
 .public-main {
   flex: 1;
@@ -54,6 +86,9 @@
 @media (max-width: 768px) {
   .public-header {
     height: 56px;
+  }
+  .public-header-content {
+    padding: 0 0.5rem;
   }
   .public-main {
     padding: 1rem 0.5rem;

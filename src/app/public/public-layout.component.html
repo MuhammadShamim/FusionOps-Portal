@@ -1,6 +1,18 @@
 <div class="public-layout">
   <header class="public-header">
-    <div class="app-title">FusionOps Portal</div>
+    <div class="public-header-content">
+      <div class="public-logo">
+        <i class="fas fa-cubes me-2 text-primary"></i>
+        <span class="fw-bold">FusionOps</span>
+      </div>
+      <nav class="public-nav">
+        <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
+        <a routerLink="/features" routerLinkActive="active" class="nav-link">Features</a>
+        <a routerLink="/team" routerLinkActive="active" class="nav-link">Team</a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+        <a routerLink="/signin" class="btn btn-outline-primary rounded-pill px-4 ms-2">Sign In</a>
+      </nav>
+    </div>
   </header>
   <main class="public-main">
     <ng-content></ng-content>
