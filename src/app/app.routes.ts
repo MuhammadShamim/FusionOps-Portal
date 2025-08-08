@@ -7,6 +7,7 @@ import { NotesComponent } from './private/notes.component';
 import { SigninComponent } from './public/signin.component';
 import { KanbanComponent } from './private/kanban.component';
 import { SettingsComponent } from './private/settings.component';
+import { PagerDutyEventsComponent } from './private/pagerduty-events.component';
 
 export const routes = [
   { path: '', component: CoverComponent },
@@ -21,6 +22,11 @@ export const routes = [
     path: 'settings',
     component: SettingsComponent,
     canActivate: [/* add your auth guard here if needed */],
+    data: { private: true }
+  },
+  {
+    path: 'pagerduty-events',
+    component: PagerDutyEventsComponent,
     data: { private: true }
   },
 ];

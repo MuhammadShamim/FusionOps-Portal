@@ -20,6 +20,11 @@
             <label for="secret" class="form-label">Secret</label>
             <input id="secret" type="password" class="form-control" [(ngModel)]="secret" name="secret" required />
           </div>
+          <div class="col-md-6 col-lg-4">
+            <label for="pagerDutyToken" class="form-label">PagerDuty API Token</label>
+            <input id="pagerDutyToken" type="password" class="form-control" [(ngModel)]="pagerDutyToken" name="pagerDutyToken" placeholder="Enter PagerDuty API token" />
+            <div class="form-text">Stored securely and used for PagerDuty integration.</div>
+          </div>
           <div class="col-12 align-self-end">
             <button type="submit" class="btn btn-primary">Save</button>
             <span *ngIf="saved" class="text-success ms-3">Saved!</span>

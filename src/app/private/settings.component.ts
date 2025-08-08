@@ -15,6 +15,7 @@ export class SettingsComponent {
   apiId: string = '';
   secret: string = '';
   saved: boolean = false;
+  pagerDutyToken: string = '';
   fusionopsStorage: { key: string, value: string }[] = [];
   isAuthenticated = true; // TODO: Replace with real auth logic
   sortKey: 'key' | 'value' = 'key';
@@ -35,9 +36,10 @@ export class SettingsComponent {
     if (encrypted) {
       try {
         const decrypted = atob(encrypted);
-        const { apiId, secret } = JSON.parse(decrypted);
+        const { apiId, secret, pagerDutyToken } = JSON.parse(decrypted);
         this.apiId = apiId;
         this.secret = secret;
+        this.pagerDutyToken = pagerDutyToken || '';
       } catch {}
     }
   }
@@ -62,12 +64,9 @@ export class SettingsComponent {
   }
 
   saveSecrets() {
-    const data = { apiId: this.apiId, secret: this.secret };
+    const data = { apiId: this.apiId, secret: this.secret, pagerDutyToken: this.pagerDutyToken };
     const encrypted = btoa(JSON.stringify(data));
     localStorage.setItem('fusionops_secrets', encrypted);
-    this.saved = true;
-    setTimeout(() => (this.saved = false), 2000);
-    this.loadFusionopsStorage();
     this.saved = true;
     setTimeout(() => (this.saved = false), 2000);
     this.loadFusionopsStorage();

@@ -1,0 +1,30 @@
+<div class="container-fluid px-0">
+  <h2 class="mb-4">PagerDuty Events</h2>
+  <div *ngIf="loading" class="alert alert-info">Loading PagerDuty events...</div>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  <div *ngIf="!loading && !error && events.length === 0" class="alert alert-warning">No PagerDuty events found.</div>
+  <div *ngIf="events.length > 0" class="table-responsive mt-3">
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Urgency</th>
+          <th>Created At</th>
+          <th>Service</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{event.id}}</td>
+          <td>{{event.title}}</td>
+          <td>{{event.status}}</td>
+          <td>{{event.urgency}}</td>
+          <td>{{event.created_at | date:'short'}}</td>
+          <td>{{event.service?.summary}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

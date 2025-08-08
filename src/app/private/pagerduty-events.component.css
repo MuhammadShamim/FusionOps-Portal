@@ -1,0 +1,4 @@
+/* Basic styling for PagerDuty Events page */
+.container-fluid {
+  max-width: 900px;
+}

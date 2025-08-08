@@ -34,6 +34,11 @@
           </a>
         </li>
         <li *ngIf="isAuthenticated">
+          <a routerLink="/pagerduty-events" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
+            <i class="fas fa-bell me-2"></i> PagerDuty
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
           <a href="#" (click)="$event.preventDefault(); onSignOut()" class="nav-link d-flex align-items-center fusionops-nav-link">
             <i class="fas fa-sign-out-alt me-2"></i> Sign Out
           </a>
