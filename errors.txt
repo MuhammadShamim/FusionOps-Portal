@@ -1,175 +1,42 @@
-Application bundle generation failed. [2.635 seconds]
+Application bundle generation failed. [2.699 seconds]
 
-✘ [ERROR] NG5002: Parser Error: Bindings cannot contain assignments at column 35 in [getFilteredSortedTasks().every(t => selectedRows.has(t.id)) && getFilteredSortedTasks().length > 0] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/kanban.component.html@28:48 [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'onSignOut' does not exist on type 'KanbanComponent'. [plugin angular-compiler]
+
+    src/app/private/kanban.component.html:1:73:
+      1 │ ...layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+        ╵                                                          ~~~~~~~~~
+
+  Error occurs in the template of component KanbanComponent.
+
+    src/app/private/kanban.component.ts:23:15:
+      23 │   templateUrl: './kanban.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'areAllTasksSelected' does not exist on type 'KanbanComponent'. [plugin angular-compiler]
 
     src/app/private/kanban.component.html:29:48:
-      29 │ ...checked]="getFilteredSortedTasks().every(t => selectedRows.has(...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      29 │ ..."checkbox" [checked]="areAllTasksSelected()" (change)="$event.t...
+         ╵                          ~~~~~~~~~~~~~~~~~~~
 
   Error occurs in the template of component KanbanComponent.
 
-    src/app/private/kanban.component.ts:22:15:
-      22 │   templateUrl: './kanban.component.html',
+    src/app/private/kanban.component.ts:23:15:
+      23 │   templateUrl: './kanban.component.html',
          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] NG5002: Parser Error: Unexpected token ')' at column 59 in [getFilteredSortedTasks().every(t => selectedRows.has(t.id)) && getFilteredSortedTasks().length > 0] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/kanban.component.html@28:48 [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'getVisibleKanbanColspan' does not exist on type 'KanbanComponent'. [plugin angular-compiler]
 
-    src/app/private/kanban.component.html:29:48:
-      29 │ ...checked]="getFilteredSortedTasks().every(t => selectedRows.has(...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/kanban.component.html:53:32:
+      53 │ ...<td [attr.colspan]="getVisibleKanbanColspan()" class="text-cent...
+         ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
 
   Error occurs in the template of component KanbanComponent.
 
-    src/app/private/kanban.component.ts:22:15:
-      22 │   templateUrl: './kanban.component.html',
+    src/app/private/kanban.component.ts:23:15:
+      23 │   templateUrl: './kanban.component.html',
          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: any, index: number, array: any[]) => value is any, thisArg?: any): this is S[]', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: any, index: number, array: any[]) => value is any'.
-  Overload 2 of 2, '(predicate: (value: any, index: number, array: any[]) => unknown, thisArg?: any): boolean', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: any, index: number, array: any[]) => unknown'. [plugin angular-compiler]
-
-    src/app/private/kanban.component.html:29:79:
-      29 │ ...ortedTasks().every(t => selectedRows.has(t.id)) && getFilteredS...
-         ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component KanbanComponent.
-
-    src/app/private/kanban.component.ts:22:15:
-      22 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG8002: Can't bind to 'colspan' since it isn't a known property of 'td'. [plugin angular-compiler]
-
-    src/app/private/kanban.component.html:53:16:
-      53 │ ...      <td colspan="{{kanbanColumns.filter(c=>c.visible).length+...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component KanbanComponent.
-
-    src/app/private/kanban.component.ts:22:15:
-      22 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG5002: Parser Error: Bindings cannot contain assignments at column 24 in [kanbanColumns.filter(c=>c.visible).length+1] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/kanban.component.html@52:25 [plugin angular-compiler]
-
-    src/app/private/kanban.component.html:53:25:
-      53 │ ... colspan="{{kanbanColumns.filter(c=>c.visible).length+1}}" clas...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component KanbanComponent.
-
-    src/app/private/kanban.component.ts:22:15:
-      22 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: { key: string; label: string; visible: boolean; }, index: number, array: { key: string; label: string; visible: boolean; }[]) => value is { key: string; label: string; visible: boolean; }, thisArg?: any): { ...; }[]', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: { key: string; label: string; visible: boolean; }, index: number, array: { key: string; label: string; visible: boolean; }[]) => value is { key: string; label: string; visible: boolean; }'.
-  Overload 2 of 2, '(predicate: (value: { key: string; label: string; visible: boolean; }, index: number, array: { key: string; label: string; visible: boolean; }[]) => unknown, thisArg?: any): { key: string; label: string; visible: boolean; }[]', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: { key: string; label: string; visible: boolean; }, index: number, array: { key: string; label: string; visible: boolean; }[]) => unknown'. [plugin angular-compiler]
-
-    src/app/private/kanban.component.html:53:48:
-      53 │ ...n="{{kanbanColumns.filter(c=>c.visible).length+1}}" class="text...
-         ╵                              ~~~~~~~~~~~~
-
-  Error occurs in the template of component KanbanComponent.
-
-    src/app/private/kanban.component.ts:22:15:
-      22 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG5002: Parser Error: Bindings cannot contain assignments at column 35 in [getFilteredSortedNotes().every(n => selectedRows.has(n.id)) && getFilteredSortedNotes().length > 0] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/notes.component.html@44:52 [plugin angular-compiler]
-
-    src/app/private/notes.component.html:45:52:
-      45 │ ...checked]="getFilteredSortedNotes().every(n => selectedRows.has(...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component NotesComponent.
-
-    src/app/private/notes.component.ts:15:15:
-      15 │   templateUrl: './notes.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG5002: Parser Error: Unexpected token ')' at column 59 in [getFilteredSortedNotes().every(n => selectedRows.has(n.id)) && getFilteredSortedNotes().length > 0] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/notes.component.html@44:52 [plugin angular-compiler]
-
-    src/app/private/notes.component.html:45:52:
-      45 │ ...checked]="getFilteredSortedNotes().every(n => selectedRows.has(...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component NotesComponent.
-
-    src/app/private/notes.component.ts:15:15:
-      15 │   templateUrl: './notes.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: Note, index: number, array: Note[]) => value is Note, thisArg?: any): this is S[]', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: Note, index: number, array: Note[]) => value is Note'.
-  Overload 2 of 2, '(predicate: (value: Note, index: number, array: Note[]) => unknown, thisArg?: any): boolean', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: Note, index: number, array: Note[]) => unknown'. [plugin angular-compiler]
-
-    src/app/private/notes.component.html:45:83:
-      45 │ ...ortedNotes().every(n => selectedRows.has(n.id)) && getFilteredS...
-         ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component NotesComponent.
-
-    src/app/private/notes.component.ts:15:15:
-      15 │   templateUrl: './notes.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG8002: Can't bind to 'colspan' since it isn't a known property of 'td'. [plugin angular-compiler]
-
-    src/app/private/notes.component.html:74:20:
-      74 │ ...      <td colspan="{{columns.filter(c=>c.visible).length+2}}" c...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component NotesComponent.
-
-    src/app/private/notes.component.ts:15:15:
-      15 │   templateUrl: './notes.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG5002: Parser Error: Bindings cannot contain assignments at column 18 in [columns.filter(c=>c.visible).length+2] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/notes.component.html@73:29 [plugin angular-compiler]
-
-    src/app/private/notes.component.html:74:29:
-      74 │ ...d colspan="{{columns.filter(c=>c.visible).length+2}}" class="te...
-         ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component NotesComponent.
-
-    src/app/private/notes.component.ts:15:15:
-      15 │   templateUrl: './notes.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: { key: keyof Note; label: string; visible: boolean; }, index: number, array: { key: keyof Note; label: string; visible: boolean; }[]) => value is { key: keyof Note; label: string; visible: boolean; }, thisArg?: any): { ...; }[]', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: { key: keyof Note; label: string; visible: boolean; }, index: number, array: { key: keyof Note; label: string; visible: boolean; }[]) => value is { key: keyof Note; label: string; visible: boolean; }'.
-  Overload 2 of 2, '(predicate: (value: { key: keyof Note; label: string; visible: boolean; }, index: number, array: { key: keyof Note; label: string; visible: boolean; }[]) => unknown, thisArg?: any): { key: keyof Note; label: string; visible: boolean; }[]', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: { key: keyof Note; label: string; visible: boolean; }, index: number, array: { key: keyof Note; label: string; visible: boolean; }[]) => unknown'. [plugin angular-compiler]
-
-    src/app/private/notes.component.html:74:46:
-      74 │ ...colspan="{{columns.filter(c=>c.visible).length+2}}" class="text...
-         ╵                              ~~~~~~~~~~~~
-
-  Error occurs in the template of component NotesComponent.
-
-    src/app/private/notes.component.ts:15:15:
-      15 │   templateUrl: './notes.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 ✘ [ERROR] NG8001: 'fusionops-private-layout' is not a known element:
@@ -279,49 +146,6 @@ Application bundle generation failed. [2.635 seconds]
           ╵ ^
 
 
-✘ [ERROR] NG5002: Parser Error: Bindings cannot contain assignments at column 37 in [getFilteredSortedStorage().every(i => selectedRows.has(i.key)) && getFilteredSortedStorage().length > 0] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/settings.component.html@72:52 [plugin angular-compiler]
-
-    src/app/private/settings.component.html:73:52:
-      73 │ ...checked]="getFilteredSortedStorage().every(i => selectedRows.ha...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:9:15:
-      9 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG5002: Parser Error: Unexpected token ')' at column 62 in [getFilteredSortedStorage().every(i => selectedRows.has(i.key)) && getFilteredSortedStorage().length > 0] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/settings.component.html@72:52 [plugin angular-compiler]
-
-    src/app/private/settings.component.html:73:52:
-      73 │ ...checked]="getFilteredSortedStorage().every(i => selectedRows.ha...
-         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:9:15:
-      9 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: { key: string; value: string; }, index: number, array: { key: string; value: string; }[]) => value is { key: string; value: string; }, thisArg?: any): this is S[]', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: { key: string; value: string; }, index: number, array: { key: string; value: string; }[]) => value is { key: string; value: string; }'.
-  Overload 2 of 2, '(predicate: (value: { key: string; value: string; }, index: number, array: { key: string; value: string; }[]) => unknown, thisArg?: any): boolean', gave the following error.
-    Argument of type 'undefined' is not assignable to parameter of type '(value: { key: string; value: string; }, index: number, array: { key: string; value: string; }[]) => unknown'. [plugin angular-compiler]
-
-    src/app/private/settings.component.html:73:85:
-      73 │ ...edStorage().every(i => selectedRows.has(i.key)) && getFilteredS...
-         ╵                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:9:15:
-      9 │   templateUrl: './settings.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 ✘ [ERROR] TS2345: Argument of type 'string' is not assignable to parameter of type '"key" | "value"'. [plugin angular-compiler]
 
     src/app/private/settings.component.html:76:62:
@@ -338,9 +162,9 @@ Application bundle generation failed. [2.635 seconds]
 ✘ [ERROR] TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ key: string; value: string; }'.
   No index signature with a parameter of type 'string' was found on type '{ key: string; value: string; }'. [plugin angular-compiler]
 
-    src/app/private/settings.component.html:92:47:
-      92 │                       <span *ngSwitchDefault>{{item[col.key]}}</span>
-         ╵                                                ~~~~~~~~~~~~~
+    src/app/private/settings.component.html:92:48:
+      92 │ ...                 <span *ngSwitchDefault>{{ item[col.key] }}</span>
+         ╵                                               ~~~~~~~~~~~~~
 
   Error occurs in the template of component SettingsComponent.
 
