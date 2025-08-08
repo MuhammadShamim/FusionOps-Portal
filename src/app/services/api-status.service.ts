@@ -24,13 +24,13 @@ export class ApiStatusService {
 
     // Check for missing or placeholder credentials/URL
     if (!baseUrl || !(baseUrl === '/api' || baseUrl.startsWith('http://') || baseUrl.startsWith('https://'))) {
-      return of({ status: 'error', message: 'API_BASE_URL is missing or not set to a valid URL.' });
+      return of({ status: 'error' as const, message: 'API_BASE_URL is missing or not set to a valid URL.' });
     }
     if (!apiId) {
-      return of({ status: 'error', message: 'API_CLIENT_ID is missing or not set in Settings.' });
+      return of({ status: 'error' as const, message: 'API_CLIENT_ID is missing or not set in Settings.' });
     }
     if (!secret) {
-      return of({ status: 'error', message: 'API_CLIENT_SECRET is missing or not set in Settings.' });
+      return of({ status: 'error' as const, message: 'API_CLIENT_SECRET is missing or not set in Settings.' });
     }
 
     const url = `${baseUrl}/statuscheck`;
@@ -39,14 +39,13 @@ export class ApiStatusService {
       'client_secret': secret
     };
     return this.http.get<any>(url, { headers }).pipe(
-      // If the API returns a success, map to the expected type
       map((res: any) => {
         if (res && (res.success === true || res.status === 200)) {
-          return { status: 'success', message: 'API is healthy' };
+          return { status: 'success' as const, message: 'API is healthy' };
         } else if (res && typeof res.message === 'string') {
-          return { status: 'error', message: res.message };
+          return { status: 'error' as const, message: res.message };
         } else {
-          return { status: 'error', message: 'Unknown error' };
+          return { status: 'error' as const, message: 'Unknown error' };
         }
       }),
       catchError((err: any) => {
@@ -58,7 +57,7 @@ export class ApiStatusService {
         } else {
           message = err?.message || 'API unreachable';
         }
-        return of({ status: 'error', message });
+        return of({ status: 'error' as const, message });
       })
     );
   }
