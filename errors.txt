@@ -1,87 +1,81 @@
-Application bundle generation failed. [2.166 seconds]
+Application bundle generation failed. [2.746 seconds]
 
-✘ [ERROR] NG2003: No suitable injection token for parameter 'authService' of class 'CarrierProfileComponent'.
-  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
 
-    src/app/private/carrier-profile.component.ts:32:11:
-      32 │     public authService: import('../services/auth.service').AuthSer...
-         ╵            ~~~~~~~~~~~
+    src/app/private/carrier-profile.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
 
-  This type is not supported as injection token.
+  Error occurs in the template of component CarrierProfileComponent.
 
-    src/app/private/carrier-profile.component.ts:32:24:
-      32 │ ...public authService: import('../services/auth.service').AuthService
-         ╵                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG2003: No suitable injection token for parameter 'authService' of class 'DashboardComponent'.
-  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
-
-    src/app/private/dashboard.component.ts:27:11:
-      27 │     public authService: import('../services/auth.service').AuthSer...
-         ╵            ~~~~~~~~~~~
-
-  This type is not supported as injection token.
-
-    src/app/private/dashboard.component.ts:27:24:
-      27 │ ...public authService: import('../services/auth.service').AuthService
-         ╵                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/carrier-profile.component.ts:10:15:
+      10 │   templateUrl: './carrier-profile.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] NG2003: No suitable injection token for parameter 'authService' of class 'KanbanComponent'.
-  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
 
-    src/app/private/kanban.component.ts:29:21:
-      29 │   constructor(public authService: import('../services/auth.service...
-         ╵                      ~~~~~~~~~~~
+    src/app/private/dashboard.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
 
-  This type is not supported as injection token.
+  Error occurs in the template of component DashboardComponent.
 
-    src/app/private/kanban.component.ts:29:34:
-      29 │ ...lic authService: import('../services/auth.service').AuthService) {
-         ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] NG2003: No suitable injection token for parameter 'authService' of class 'NotesComponent'.
-  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
-
-    src/app/private/notes.component.ts:163:21:
-      163 │   constructor(public authService: import('../services/auth.servic...
-          ╵                      ~~~~~~~~~~~
-
-  This type is not supported as injection token.
-
-    src/app/private/notes.component.ts:163:34:
-      163 │ ...ic authService: import('../services/auth.service').AuthService) {
-          ╵                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/dashboard.component.ts:10:15:
+      10 │   templateUrl: './dashboard.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] NG2003: No suitable injection token for parameter 'authService' of class 'PagerDutyEventsComponent'.
-  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
 
-    src/app/private/pagerduty-events.component.ts:40:9:
-      40 │   public authService: import('../services/auth.service').AuthService
-         ╵          ~~~~~~~~~~~
+    src/app/private/kanban.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
 
-  This type is not supported as injection token.
+  Error occurs in the template of component KanbanComponent.
 
-    src/app/private/pagerduty-events.component.ts:40:22:
-      40 │   public authService: import('../services/auth.service').AuthService
-         ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/kanban.component.ts:24:15:
+      24 │   templateUrl: './kanban.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] NG2003: No suitable injection token for parameter 'authService' of class 'SettingsComponent'.
-  Consider using the @Inject decorator to specify an injection token. [plugin angular-compiler]
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
 
-    src/app/private/settings.component.ts:16:21:
-      16 │   constructor(public authService: import('../services/auth.service...
-         ╵                      ~~~~~~~~~~~
+    src/app/private/notes.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
 
-  This type is not supported as injection token.
+  Error occurs in the template of component NotesComponent.
 
-    src/app/private/settings.component.ts:16:34:
-      16 │ ...lic authService: import('../services/auth.service').AuthService) {
-         ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/private/notes.component.ts:16:15:
+      16 │   templateUrl: './notes.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+
+    src/app/private/pagerduty-events.component.html:1:57:
+      1 │ ...ops-private-layout [isAuthenticated]="authService.isAuthenticated">
+        ╵                                                      ~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component PagerDutyEventsComponent.
+
+    src/app/private/pagerduty-events.component.ts:11:15:
+      11 │   templateUrl: './pagerduty-events.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+
+    src/app/private/settings.component.html:1:57:
+      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+        ╵                              ~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component SettingsComponent.
+
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 ✘ [ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler]
@@ -136,3 +130,4 @@ Application bundle generation failed. [2.166 seconds]
 
     src/app/services/auth.service.ts:10:0:
       10 │ export class AuthService {
+         ╵ ~~~~~~
