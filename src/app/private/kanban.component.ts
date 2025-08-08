@@ -43,21 +43,51 @@ export class KanbanComponent {
   showModal = false;
   modalTaskTitle = '';
   modalTaskDescription = '';
+  editingTask: KanbanTask | null = null;
+  editingColIdx: number | null = null;
 
   constructor() {
     this.loadFromStorage();
   }
 
-  addTaskFromModal() {
-    if (!this.modalTaskTitle.trim()) return;
-    this.columns[0].tasks.push({
-      id: Date.now(),
-      title: this.modalTaskTitle.trim(),
-      description: this.modalTaskDescription.trim()
-    });
+  openAddModal() {
+    this.editingTask = null;
+    this.editingColIdx = null;
     this.modalTaskTitle = '';
     this.modalTaskDescription = '';
-    this.showModal = false;
+    this.showModal = true;
+  }
+
+  openEditModal(task: KanbanTask, colIdx: number) {
+    this.editingTask = { ...task };
+    this.editingColIdx = colIdx;
+    this.modalTaskTitle = task.title;
+    this.modalTaskDescription = task.description || '';
+    this.showModal = true;
+  }
+
+  addOrUpdateTaskFromModal() {
+    if (!this.modalTaskTitle.trim()) return;
+    if (this.editingTask && this.editingColIdx !== null) {
+      // Edit mode
+      const col = this.columns[this.editingColIdx];
+      const idx = col.tasks.findIndex(t => t.id === this.editingTask!.id);
+      if (idx > -1) {
+        col.tasks[idx] = {
+          ...col.tasks[idx],
+          title: this.modalTaskTitle.trim(),
+          description: this.modalTaskDescription.trim()
+        };
+      }
+    } else {
+      // Add mode
+      this.columns[0].tasks.push({
+        id: Date.now(),
+        title: this.modalTaskTitle.trim(),
+        description: this.modalTaskDescription.trim()
+      });
+    }
+    this.closeModal();
     this.saveToStorage();
   }
 
@@ -65,6 +95,8 @@ export class KanbanComponent {
     this.showModal = false;
     this.modalTaskTitle = '';
     this.modalTaskDescription = '';
+    this.editingTask = null;
+    this.editingColIdx = null;
   }
 
   moveTask(task: KanbanTask, fromIdx: number, toIdx: number) {
