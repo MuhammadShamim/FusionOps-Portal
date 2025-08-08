@@ -1,9 +1,9 @@
 /* Sneat-style, minimal public layout for all public pages (no sidebar) */
 .public-layout {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--color-bg);
+  min-height: 100vh;
+  width: 100%;
 }
 .public-header {
   background: var(--color-card);
@@ -62,7 +62,8 @@
   margin-left: 0.5rem;
 }
 .public-main {
-  flex: 1;
+  flex: 1 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
