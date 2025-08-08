@@ -1,133 +1,26 @@
-Application bundle generation failed. [2.746 seconds]
+Application bundle generation failed. [0.208 seconds]
 
-✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
 
-    src/app/private/carrier-profile.component.html:1:57:
-      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
-        ╵                              ~~~~~~~~~~~~~~~
+    src/app/public/signin.component.html:11:110:
+      11 │ ...lder="Enter your email" required [(ngModel)]="email" name="email">
+         ╵                                     ~~~~~~~~~~~~~~~~~~~
 
-  Error occurs in the template of component CarrierProfileComponent.
+  Error occurs in the template of component SigninComponent.
 
-    src/app/private/carrier-profile.component.ts:10:15:
-      10 │   templateUrl: './carrier-profile.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
-
-    src/app/private/dashboard.component.html:1:57:
-      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
-        ╵                              ~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component DashboardComponent.
-
-    src/app/private/dashboard.component.ts:10:15:
-      10 │   templateUrl: './dashboard.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/public/signin.component.ts:7:15:
+      7 │   templateUrl: './signin.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
+✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
 
-    src/app/private/kanban.component.html:1:57:
-      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
-        ╵                              ~~~~~~~~~~~~~~~
+    src/app/public/signin.component.html:15:119:
+      15 │ ...er your password" required [(ngModel)]="password" name="password">
+         ╵                               ~~~~~~~~~~~~~~~~~~~~~~
 
-  Error occurs in the template of component KanbanComponent.
+  Error occurs in the template of component SigninComponent.
 
-    src/app/private/kanban.component.ts:24:15:
-      24 │   templateUrl: './kanban.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
-
-    src/app/private/notes.component.html:1:57:
-      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
-        ╵                              ~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component NotesComponent.
-
-    src/app/private/notes.component.ts:16:15:
-      16 │   templateUrl: './notes.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
-
-    src/app/private/pagerduty-events.component.html:1:57:
-      1 │ ...ops-private-layout [isAuthenticated]="authService.isAuthenticated">
-        ╵                                                      ~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component PagerDutyEventsComponent.
-
-    src/app/private/pagerduty-events.component.ts:11:15:
-      11 │   templateUrl: './pagerduty-events.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS2339: Property 'isAuthenticated' does not exist on type 'AuthService'. [plugin angular-compiler]
-
-    src/app/private/settings.component.html:1:57:
-      1 │ ...thenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
-        ╵                              ~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SettingsComponent.
-
-    src/app/private/settings.component.ts:10:15:
-      10 │   templateUrl: './settings.component.html',
-         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler]
-
-    src/app/services/auth.service.ts:1:2:
-      1 │   get isAuthenticated(): boolean {
-        ╵   ~~~
-
-
-✘ [ERROR] TS2304: Cannot find name 'get'. [plugin angular-compiler]
-
-    src/app/services/auth.service.ts:1:2:
-      1 │   get isAuthenticated(): boolean {
-        ╵   ~~~
-
-
-✘ [ERROR] TS2304: Cannot find name 'isAuthenticated'. [plugin angular-compiler]
-
-    src/app/services/auth.service.ts:1:6:
-      1 │   get isAuthenticated(): boolean {
-        ╵       ~~~~~~~~~~~~~~~
-
-
-✘ [ERROR] TS1005: ';' expected. [plugin angular-compiler]
-
-    src/app/services/auth.service.ts:1:23:
-      1 │   get isAuthenticated(): boolean {
-        ╵                        ^
-
-
-✘ [ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler]
-
-    src/app/services/auth.service.ts:1:25:
-      1 │   get isAuthenticated(): boolean {
-        ╵                          ~~~~~~~
-
-
-✘ [ERROR] TS2693: 'boolean' only refers to a type, but is being used as a value here. [plugin angular-compiler]
-
-    src/app/services/auth.service.ts:1:25:
-      1 │   get isAuthenticated(): boolean {
-        ╵                          ~~~~~~~
-
-
-✘ [ERROR] Top-level return cannot be used inside an ECMAScript module
-
-    src/app/services/auth.service.ts:8:4:
-      8 │     return this.authSubject.value;
-        ╵     ~~~~~~
-
-  This file is considered to be an ECMAScript module because of the "export" keyword here:
-
-    src/app/services/auth.service.ts:10:0:
-      10 │ export class AuthService {
-         ╵ ~~~~~~
+    src/app/public/signin.component.ts:7:15:
+      7 │   templateUrl: './signin.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
