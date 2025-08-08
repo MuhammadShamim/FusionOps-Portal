@@ -12,8 +12,12 @@ export class SigninComponent {
   router = inject(Router);
   auth = inject(AuthService);
 
+  email = 'a@a.com';
+  password = 'b';
+
   onSubmit(event: Event) {
     event.preventDefault();
+    // You can add real auth logic here if needed
     this.auth.signIn();
     this.router.navigate(['/dashboard']);
   }
