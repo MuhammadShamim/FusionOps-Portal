@@ -12,40 +12,43 @@
   </header>
   <div class="app-body">
     <nav class="sidebar fusionops-sidebar">
+      <div class="sidebar-title">
+        <i class="fas fa-cubes"></i> <span>FusionOps</span>
+      </div>
       <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="isAuthenticated">
-          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
-            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link fusionops-nav-link">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/notes" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
-            <i class="fas fa-sticky-note me-2"></i> Notes
+          <a routerLink="/notes" routerLinkActive="active" class="nav-link fusionops-nav-link">
+            <i class="fas fa-sticky-note"></i> Notes
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/kanban" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
-            <i class="fas fa-columns me-2"></i> Kanban
+          <a routerLink="/kanban" routerLinkActive="active" class="nav-link fusionops-nav-link">
+            <i class="fas fa-columns"></i> Kanban
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/carrier-profile" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
-            <i class="fas fa-truck me-2"></i> Carrier Profile
+          <a routerLink="/carrier-profile" routerLinkActive="active" class="nav-link fusionops-nav-link">
+            <i class="fas fa-truck"></i> Carrier Profile
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/settings" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
-            <i class="fas fa-cog me-2"></i> Settings
+          <a routerLink="/settings" routerLinkActive="active" class="nav-link fusionops-nav-link">
+            <i class="fas fa-cog"></i> Settings
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/pagerduty-events" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
-            <i class="fas fa-bell me-2"></i> PagerDuty
+          <a routerLink="/pagerduty-events" routerLinkActive="active" class="nav-link fusionops-nav-link">
+            <i class="fas fa-bell"></i> PagerDuty
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a href="#" (click)="$event.preventDefault(); onSignOut()" class="nav-link d-flex align-items-center fusionops-nav-link">
-            <i class="fas fa-sign-out-alt me-2"></i> Sign Out
+          <a href="#" (click)="$event.preventDefault(); onSignOut()" class="nav-link fusionops-nav-link">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
           </a>
         </li>
       </ul>
