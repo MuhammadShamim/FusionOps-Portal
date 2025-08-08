@@ -32,10 +32,8 @@
           <table class="table table-hover table-bordered align-middle notes-table">
             <thead class="table-light">
               <tr>
-                <th style="width: 20%" (click)="sortBy('key')" style="cursor:pointer">Key <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='key'}"></i></th>
+                <th style="width: 30%" (click)="sortBy('key')" style="cursor:pointer">Key <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='key'}"></i></th>
                 <th (click)="sortBy('value')" style="cursor:pointer">Value <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='value'}"></i></th>
-                <th style="width: 15%" (click)="sortBy('created')" style="cursor:pointer">Created <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='created'}"></i></th>
-                <th style="width: 15%" (click)="sortBy('updated')" style="cursor:pointer">Updated <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='updated'}"></i></th>
                 <th style="width: 5%">Delete</th>
               </tr>
             </thead>
@@ -43,8 +41,6 @@
               <tr *ngFor="let item of fusionopsStorage">
                 <td class="text-break">{{item.key}}</td>
                 <td><pre class="mb-0 text-break">{{item.value}}</pre></td>
-                <td class="small text-muted">{{item.created ? (item.created | date:'short') : '—'}}</td>
-                <td class="small text-muted">{{item.updated ? (item.updated | date:'short') : '—'}}</td>
                 <td>
                   <button class="btn btn-sm btn-danger" (click)="deleteKey(item.key)"><i class="fas fa-trash"></i></button>
                 </td>

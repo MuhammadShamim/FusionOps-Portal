@@ -15,9 +15,9 @@ export class SettingsComponent {
   apiId: string = '';
   secret: string = '';
   saved: boolean = false;
-  fusionopsStorage: { key: string, value: string, created?: string, updated?: string }[] = [];
+  fusionopsStorage: { key: string, value: string }[] = [];
   isAuthenticated = true; // TODO: Replace with real auth logic
-  sortKey: 'key' | 'value' | 'created' | 'updated' = 'key';
+  sortKey: 'key' | 'value' = 'key';
   sortAsc: boolean = true;
 
   ngOnInit() {
@@ -48,19 +48,7 @@ export class SettingsComponent {
       const key = localStorage.key(i)!;
       if (key.startsWith('fusionops_')) {
         const value = localStorage.getItem(key) ?? '';
-        // Try to get created/updated date from metadata
-        const metaKey = key + ':meta';
-        let created: string | undefined = undefined;
-        let updated: string | undefined = undefined;
-        const meta = localStorage.getItem(metaKey);
-        if (meta) {
-          try {
-            const metaObj = JSON.parse(meta);
-            if (metaObj.created) created = metaObj.created;
-            if (metaObj.updated) updated = metaObj.updated;
-          } catch {}
-        }
-        this.fusionopsStorage.push({ key, value, created, updated });
+        this.fusionopsStorage.push({ key, value });
       }
     }
     this.sortStorage();
@@ -77,19 +65,9 @@ export class SettingsComponent {
     const data = { apiId: this.apiId, secret: this.secret };
     const encrypted = btoa(JSON.stringify(data));
     localStorage.setItem('fusionops_secrets', encrypted);
-    // Save created/updated date in meta
-    const metaKey = 'fusionops_secrets:meta';
-    let metaObj: any = {};
-    const meta = localStorage.getItem(metaKey);
-    const now = new Date().toISOString();
-    if (meta) {
-      try {
-        metaObj = JSON.parse(meta);
-      } catch {}
-    }
-    if (!metaObj.created) metaObj.created = now;
-    metaObj.updated = now;
-    localStorage.setItem(metaKey, JSON.stringify(metaObj));
+    this.saved = true;
+    setTimeout(() => (this.saved = false), 2000);
+    this.loadFusionopsStorage();
     this.saved = true;
     setTimeout(() => (this.saved = false), 2000);
     this.loadFusionopsStorage();
@@ -98,12 +76,12 @@ export class SettingsComponent {
   deleteKey(key: string) {
     if (confirm(`Are you sure you want to delete the key "${key}"?`)) {
       localStorage.removeItem(key);
-      localStorage.removeItem(key + ':meta');
+      // Removed the line that deletes metadata
       this.loadFusionopsStorage();
     }
   }
 
-  sortBy(col: 'key' | 'value' | 'created' | 'updated') {
+  sortBy(col: 'key' | 'value') {
     if (this.sortKey === col) {
       this.sortAsc = !this.sortAsc;
     } else {
@@ -117,10 +95,6 @@ export class SettingsComponent {
     this.fusionopsStorage.sort((a, b) => {
       let aVal = a[this.sortKey] || '';
       let bVal = b[this.sortKey] || '';
-      if (this.sortKey === 'created') {
-        aVal = aVal || '';
-        bVal = bVal || '';
-      }
       if (aVal < bVal) return this.sortAsc ? -1 : 1;
       if (aVal > bVal) return this.sortAsc ? 1 : -1;
       return 0;
