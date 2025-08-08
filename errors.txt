@@ -1,26 +1,13 @@
-Application bundle generation failed. [0.208 seconds]
+Application bundle generation complete. [0.745 seconds]
 
-✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
+▲ [WARNING] NG8113: RouterLink is not used within the template of PublicLayoutComponent [plugin angular-compiler]
 
-    src/app/public/signin.component.html:11:110:
-      11 │ ...lder="Enter your email" required [(ngModel)]="email" name="email">
-         ╵                                     ~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SigninComponent.
-
-    src/app/public/signin.component.ts:7:15:
-      7 │   templateUrl: './signin.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/public/public-layout.component.ts:9:26:
+      9 │   imports: [RouterModule, RouterLink, RouterLinkActive]
+        ╵                           ~~~~~~~~~~
 
 
-✘ [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]
+▲ [WARNING] NG8113: RouterLinkActive is not used within the template of PublicLayoutComponent [plugin angular-compiler]
 
-    src/app/public/signin.component.html:15:119:
-      15 │ ...er your password" required [(ngModel)]="password" name="password">
-         ╵                               ~~~~~~~~~~~~~~~~~~~~~~
-
-  Error occurs in the template of component SigninComponent.
-
-    src/app/public/signin.component.ts:7:15:
-      7 │   templateUrl: './signin.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+    src/app/public/public-layout.component.ts:9:38:
+      9 │   imports: [RouterModule, RouterLink, RouterLinkActive]
