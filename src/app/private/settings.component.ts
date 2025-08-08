@@ -37,7 +37,7 @@ export class SettingsComponent {
   saved: boolean = false;
   pagerDutyToken: string = '';
   pagerDutySaved: boolean = false;
-  fusionopsStorage: { key: string, value: string }[] = [];
+  fusionopsStorage: { key: string, value: string, [key: string]: any }[] = [];
   sortKeys: { key: 'key' | 'value', asc: boolean }[] = [{ key: 'key', asc: true }];
   columns = [
     { key: 'key', label: 'Key', visible: true },

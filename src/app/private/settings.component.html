@@ -1,4 +1,4 @@
-<fusionops-private-layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+<fusionops-private-layout (signOut)="onSignOut()">
   <div class="container-fluid px-0">
     <h2 class="mb-4">Settings</h2>
     <ul class="nav nav-tabs mb-3">
@@ -89,7 +89,7 @@
                   <td *ngIf="col.visible">
                     <ng-container [ngSwitch]="col.key">
                       <span *ngSwitchCase="'value'"><pre class="mb-0 text-break">{{item.value}}</pre></span>
-                      <span *ngSwitchDefault>{{ item[col.key] }}</span>
+                      <span *ngSwitchDefault>{{ (item as any)[col.key] }}</span>
                     </ng-container>
                   </td>
                 </ng-container>
