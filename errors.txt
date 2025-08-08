@@ -1,13 +1,15 @@
-Application bundle generation complete. [0.745 seconds]
+Application bundle generation failed. [0.685 seconds]
 
-▲ [WARNING] NG8113: RouterLink is not used within the template of PublicLayoutComponent [plugin angular-compiler]
+✘ [ERROR] NG8001: 'fusionops-public-layout' is not a known element:
+1. If 'fusionops-public-layout' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'fusionops-public-layout' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message. [plugin angular-compiler]
 
-    src/app/public/public-layout.component.ts:9:26:
-      9 │   imports: [RouterModule, RouterLink, RouterLinkActive]
-        ╵                           ~~~~~~~~~~
+    src/app/public/signin.component.html:0:0:
+      0 │ 
+        ╵ ^
 
+  Error occurs in the template of component SigninComponent.
 
-▲ [WARNING] NG8113: RouterLinkActive is not used within the template of PublicLayoutComponent [plugin angular-compiler]
-
-    src/app/public/public-layout.component.ts:9:38:
-      9 │   imports: [RouterModule, RouterLink, RouterLinkActive]
+    src/app/public/signin.component.ts:9:15:
+      9 │   templateUrl: './signin.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
