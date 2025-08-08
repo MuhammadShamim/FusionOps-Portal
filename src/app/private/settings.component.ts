@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PrivateLayoutComponent } from '../shared/private-layout.component';
+import { PrivateLayoutComponent } from './private-layout.component';
 
 @Component({
   selector: 'app-settings',

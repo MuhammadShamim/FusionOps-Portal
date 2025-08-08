@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PublicLayoutComponent } from '../shared/public-layout.component';
+import { PublicLayoutComponent } from './public-layout.component';
 
 @Component({
   selector: 'app-features',
