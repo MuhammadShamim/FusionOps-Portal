@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { EnvService } from './env.service';
 
 @Injectable({ providedIn: 'root' })
 export class ApiStatusService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private env: EnvService) {}
 
   getStatus(): Observable<{ status: 'success' | 'error', message: string }> {
-    let baseUrl: string = '/api';
+    const baseUrl = this.env.get('API_BASE_URL');
     let apiId = '';
     let secret = '';
     const encrypted = localStorage.getItem('fusionops_secrets');
@@ -18,30 +19,29 @@ export class ApiStatusService {
         const parsed = JSON.parse(decrypted);
         apiId = parsed.apiId;
         secret = parsed.secret;
-        if (parsed.apiBaseUrl && typeof parsed.apiBaseUrl === 'string') {
-          baseUrl = parsed.apiBaseUrl;
-        }
       } catch {}
     }
+
+    // Check for missing or placeholder credentials/URL
+    if (!baseUrl || !(baseUrl === '/api' || baseUrl.startsWith('http://') || baseUrl.startsWith('https://'))) {
+      return of({ error: { status: 'Config', message: 'API_BASE_URL is missing or not set to a valid URL.' } });
+    }
+    if (!apiId) {
+      return of({ error: { status: 'Config', message: 'API_CLIENT_ID is missing or not set in Settings.' } });
+    }
+    if (!secret) {
+      return of({ error: { status: 'Config', message: 'API_CLIENT_SECRET is missing or not set in Settings.' } });
+    }
+
     const url = `${baseUrl}/statuscheck`;
     const headers = {
       'client_id': apiId,
       'client_secret': secret
     };
-    // Debug logging
-    console.log('[ApiStatusService] Status Check:', { url, headers });
     return this.http.get<any>(url, { headers }).pipe(
-      map(res => {
-        console.log('[ApiStatusService] Response:', res);
-        if (res && res.success === true && res.status === 200) {
-          return { status: 'success' as const, message: 'API is healthy' };
-        } else {
-          return { status: 'error' as const, message: (res && typeof res.message === 'string') ? res.message : 'Unknown error' };
-        }
-      }),
-      catchError(err => {
-        console.log('[ApiStatusService] Error:', err);
-        return of({ status: 'error' as const, message: (err?.error && typeof err.error.message === 'string') ? err.error.message : 'API unreachable' });
+      map((res: any) => res),
+      catchError((err: any) => {
+        return of({ error: true, message: err?.message || 'API unreachable' });
       })
     );
   }

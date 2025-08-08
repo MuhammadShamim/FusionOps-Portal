@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { EnvService } from './env.service';
 
 @Injectable({ providedIn: 'root' })
 export class CarrierProfileService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private env: EnvService) {}
 
   getCarrierProfile(name: string): Observable<any> {
-    let baseUrl: string = '/api';
+    const baseUrl = this.env.get('API_BASE_URL');
     let apiId = '';
     let secret = '';
     const encrypted = localStorage.getItem('fusionops_secrets');
@@ -18,22 +19,18 @@ export class CarrierProfileService {
         const parsed = JSON.parse(decrypted);
         apiId = parsed.apiId;
         secret = parsed.secret;
-        if (parsed.apiBaseUrl && typeof parsed.apiBaseUrl === 'string') {
-          baseUrl = parsed.apiBaseUrl;
-        }
       } catch {}
     }
 
     // Check for missing or placeholder credentials/URL
-    // Allow '/api' for local dev with proxy, or any http/https URL
     if (!baseUrl || !(baseUrl === '/api' || baseUrl.startsWith('http://') || baseUrl.startsWith('https://'))) {
       return of({ error: { status: 'Config', message: 'API_BASE_URL is missing or not set to a valid URL.' } });
     }
     if (!apiId) {
-      return of({ error: { status: 'Config', message: 'API ID is missing. Please set it in Settings.' } });
+      return of({ error: { status: 'Config', message: 'API_CLIENT_ID is missing or not set in Settings.' } });
     }
     if (!secret) {
-      return of({ error: { status: 'Config', message: 'API Secret is missing. Please set it in Settings.' } });
+      return of({ error: { status: 'Config', message: 'API_CLIENT_SECRET is missing or not set in Settings.' } });
     }
 
     const url = `${baseUrl}/carrierprofile/${encodeURIComponent(name)}`;
@@ -44,7 +41,7 @@ export class CarrierProfileService {
     // Debug logging
     console.log('[CarrierProfileService] Lookup:', { url, headers, carrierName: name });
     return this.http.get<any>(url, { headers }).pipe(
-      catchError(err => {
+      catchError((err: any) => {
         let status = err?.status || 'Unknown';
         let message = '';
         if (err?.error && typeof err.error === 'string' && err.error.trim().startsWith('<!DOCTYPE html')) {
