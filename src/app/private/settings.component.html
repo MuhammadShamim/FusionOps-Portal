@@ -32,9 +32,9 @@
           <table class="table table-hover table-bordered align-middle notes-table">
             <thead class="table-light">
               <tr>
-                <th style="width: 25%" (click)="sortBy('key')" style="cursor:pointer">Key <span [ngClass]="{'text-primary': sortKey==='key'}">&#8597;</span></th>
-                <th (click)="sortBy('value')" style="cursor:pointer">Value <span [ngClass]="{'text-primary': sortKey==='value'}">&#8597;</span></th>
-                <th style="width: 20%" (click)="sortBy('created')" style="cursor:pointer">Created <span [ngClass]="{'text-primary': sortKey==='created'}">&#8597;</span></th>
+                <th style="width: 25%" (click)="sortBy('key')" style="cursor:pointer">Key <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='key'}"></i></th>
+                <th (click)="sortBy('value')" style="cursor:pointer">Value <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='value'}"></i></th>
+                <th style="width: 20%" (click)="sortBy('created')" style="cursor:pointer">Created <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='created'}"></i></th>
                 <th style="width: 5%">Delete</th>
               </tr>
             </thead>
