@@ -1,0 +1,45 @@
+<div class="private-layout d-flex flex-column min-vh-100">
+  <header class="private-header py-2 px-3 border-bottom bg-white shadow-sm fixed-top w-100" style="z-index: 1040;">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="fw-bold fs-4">FusionOps Portal</div>
+      <ng-content select="[header-actions]"></ng-content>
+    </div>
+  </header>
+  <div class="flex-grow-1 d-flex" style="padding-top: 72px; padding-bottom: 64px; min-height: 0;">
+    <div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 0;">
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li *ngIf="isAuthenticated">
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a routerLink="/notes" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
+            <i class="fas fa-sticky-note me-2"></i> Notes
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a routerLink="/kanban" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
+            <i class="fas fa-columns me-2"></i> Kanban
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a routerLink="/carrier-profile" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
+            <i class="fas fa-truck me-2"></i> Carrier Profile
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <button class="btn btn-link nav-link d-flex align-items-center fusionops-nav-link" (click)="onSignOut()">
+            <i class="fas fa-sign-out-alt me-2"></i> Sign Out
+          </button>
+        </li>
+      </ul>
+    </div>
+    <main class="flex-fill container-fluid py-4 overflow-auto" style="max-height: calc(100vh - 120px);">
+      <ng-content></ng-content>
+    </main>
+  </div>
+  <footer class="private-footer text-center py-3 border-top bg-light small text-muted fixed-bottom w-100" style="z-index: 1040;">
+    &copy; {{year}} FusionOps. All rights reserved.
+  </footer>
+</div>

@@ -1,51 +1,46 @@
-<div class="fusionops-notes-bg min-vh-100 py-5 px-3 px-md-5">
-  <div class="container-fluid">
-    <div class="row mb-4">
-      <div class="col-12 d-flex justify-content-between align-items-center">
-        <h1 class="fw-bold display-5 mb-0 text-primary">Notes</h1>
-        <button class="btn btn-gradient-primary px-4 py-2 rounded-pill" (click)="showModal = true"><i class="fas fa-plus me-2"></i>Create Note</button>
-      </div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-12">
-        <div class="fusionops-card fusionops-form p-4 mb-0 shadow-sm">
-          <div class="row g-3 align-items-end">
-            <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Search notes..." [(ngModel)]="search" name="search">
-            </div>
+<fusionops-private-layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+  <button header-actions class="btn btn-gradient-primary px-4 py-2 rounded-pill" (click)="showModal = true">
+    <i class="fas fa-plus me-2"></i>Create Note
+  </button>
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="fusionops-card fusionops-form p-4 mb-0 shadow-sm">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Search notes..." [(ngModel)]="search" name="search">
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="fusionops-card p-0 shadow-sm">
-          <div class="table-responsive">
-            <table class="table fusionops-table align-middle mb-0">
-              <thead>
-                <tr>
-                  <th (click)="sortBy('title')" class="fusionops-th">Title <i class="fas fa-sort"></i></th>
-                  <th (click)="sortBy('content')" class="fusionops-th">Content <i class="fas fa-sort"></i></th>
-                  <th (click)="sortBy('created')" class="fusionops-th">Created <i class="fas fa-sort"></i></th>
-                  <th class="fusionops-th">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let note of filteredNotes">
-                  <td class="fw-semibold">{{ note.title }}</td>
-                  <td class="text-secondary">{{ note.content }}</td>
-                  <td class="text-secondary">{{ note.created | date:'short' }}</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary me-2" (click)="openEditModal(note)"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm btn-outline-danger" (click)="deleteNote(note.id)"><i class="fas fa-trash"></i></button>
-                  </td>
-                </tr>
-                <tr *ngIf="filteredNotes.length === 0">
-                  <td colspan="4" class="text-center text-muted">No notes found.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="fusionops-card p-0 shadow-sm">
+        <div class="table-responsive">
+          <table class="table fusionops-table align-middle mb-0">
+            <thead>
+              <tr>
+                <th (click)="sortBy('title')" class="fusionops-th">Title <i class="fas fa-sort"></i></th>
+                <th (click)="sortBy('content')" class="fusionops-th">Content <i class="fas fa-sort"></i></th>
+                <th (click)="sortBy('created')" class="fusionops-th">Created <i class="fas fa-sort"></i></th>
+                <th class="fusionops-th">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let note of filteredNotes">
+                <td class="fw-semibold">{{ note.title }}</td>
+                <td class="text-secondary">{{ note.content }}</td>
+                <td class="text-secondary">{{ note.created | date:'short' }}</td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary me-2" (click)="openEditModal(note)"><i class="fas fa-edit"></i></button>
+                  <button class="btn btn-sm btn-outline-danger" (click)="deleteNote(note.id)"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr *ngIf="filteredNotes.length === 0">
+                <td colspan="4" class="text-center text-muted">No notes found.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -78,4 +73,4 @@
       </div>
     </div>
   </div>
-</div>
+</fusionops-private-layout>

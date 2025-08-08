@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "AP_PROXY_URL",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

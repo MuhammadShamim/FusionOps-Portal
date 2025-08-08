@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PrivateLayoutComponent } from '../shared/private-layout.component';
 
 interface Note {
   id: number;
@@ -14,9 +15,16 @@ interface Note {
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, PrivateLayoutComponent]
 })
 export class NotesComponent {
+  isAuthenticated = true; // TODO: Replace with real auth logic
+
+  onSignOut() {
+    // TODO: Implement sign out logic
+    this.isAuthenticated = false;
+    window.location.href = '/';
+  }
   notes: Note[] = [];
   search = '';
   sortColumn: keyof Note = 'created';
