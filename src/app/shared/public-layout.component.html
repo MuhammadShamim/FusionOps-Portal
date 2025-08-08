@@ -2,18 +2,21 @@
   <header class="public-header py-2 px-3 border-bottom bg-white shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand fw-bold" href="#">FusionOps</a>
-      <div class="collapse navbar-collapse">
+      <div class="collapse navbar-collapse justify-content-between">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/features" routerLinkActive="active">Features</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/team" routerLinkActive="active">Team</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a></li>
         </ul>
-        <ng-content select="[header-actions]"></ng-content>
+        <div class="d-flex align-items-center gap-2">
+          <ng-content select="[header-actions]"></ng-content>
+          <a routerLink="/signin" class="btn btn-outline-primary rounded-pill px-4">Sign In</a>
+        </div>
       </div>
     </nav>
   </header>
-  <main class="flex-fill container-fluid py-4">
+  <main class="flex-fill d-flex flex-column justify-content-center align-items-center w-100 p-0 m-0">
     <ng-content></ng-content>
   </main>
   <footer class="public-footer text-center py-3 border-top bg-light small text-muted">
