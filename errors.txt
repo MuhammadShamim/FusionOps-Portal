@@ -1,62 +1,13 @@
-Application bundle generation failed. [0.550 seconds]
+Application bundle generation failed. [0.305 seconds]
 
-✘ [ERROR] TS2322: Type 'Observable<{ error: { status: string; message: string; }; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
-  Type '{ error: { status: string; message: string; }; }' is missing the following properties from type '{ status: "success" | "error"; message: string; }': status, message [plugin angular-compiler]
+✘ [ERROR] TS2345: Argument of type '"updated"' is not assignable to parameter of type '"key" | "value" | "created"'. [plugin angular-compiler]
 
-    src/app/services/api-status.service.ts:27:6:
-      27 │       return of({ error: { status: 'Config', message: 'API_BASE_UR...
-         ╵       ~~~~~~
+    src/app/private/settings.component.html:38:55:
+      38 │ ...idth: 15%" (click)="sortBy('updated')" style="cursor:pointer">U...
+         ╵                               ~~~~~~~~~
 
+  Error occurs in the template of component SettingsComponent.
 
-✘ [ERROR] TS2322: Type 'Observable<{ error: { status: string; message: string; }; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
-  Type '{ error: { status: string; message: string; }; }' is missing the following properties from type '{ status: "success" | "error"; message: string; }': status, message [plugin angular-compiler]
-
-    src/app/services/api-status.service.ts:30:6:
-      30 │       return of({ error: { status: 'Config', message: 'API_CLIENT_...
-         ╵       ~~~~~~
-
-
-✘ [ERROR] TS2322: Type 'Observable<{ error: { status: string; message: string; }; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
-  Type '{ error: { status: string; message: string; }; }' is missing the following properties from type '{ status: "success" | "error"; message: string; }': status, message [plugin angular-compiler]
-
-    src/app/services/api-status.service.ts:33:6:
-      33 │       return of({ error: { status: 'Config', message: 'API_CLIENT_...
-         ╵       ~~~~~~
-
-
-✘ [ERROR] TS2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { error: boolean; message: any; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
-  Type '{ status: "success" | "error"; message: string; } | { error: boolean; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-    Property 'status' is missing in type '{ error: boolean; message: any; }' but required in type '{ status: "success" | "error"; message: string; }'. [plugin angular-compiler]
-
-    src/app/services/api-status.service.ts:41:4:
-      41 │     return this.http.get<any>(url, { headers }).pipe(
-         ╵     ~~~~~~
-
-  'status' is declared here.
-
-    src/app/services/api-status.service.ts:11:28:
-      11 │   getStatus(): Observable<{ status: 'success' | 'error', message: ...
-         ╵                             ~~~~~~
-
-
-Application bundle generation failed. [0.110 seconds]
-
-✘ [ERROR] TS2322: Type 'Observable<{ status: "success" | "error"; message: string; } | { status: string; message: string; }>' is not assignable to type 'Observable<{ status: "success" | "error"; message: string; }>'.
-  Type '{ status: "success" | "error"; message: string; } | { status: string; message: string; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-    Type '{ status: string; message: string; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-      Types of property 'status' are incompatible.
-        Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
-
-    src/app/services/api-status.service.ts:41:4:
-      41 │     return this.http.get<any>(url, { headers }).pipe(
-         ╵     ~~~~~~
-
-
-✘ [ERROR] TS2345: Argument of type 'OperatorFunction<any, { status: string; message: any; }>' is not assignable to parameter of type 'OperatorFunction<any, { status: "success" | "error"; message: string; }>'.
-  Type '{ status: string; message: any; }' is not assignable to type '{ status: "success" | "error"; message: string; }'.
-    Types of property 'status' are incompatible.
-      Type 'string' is not assignable to type '"success" | "error"'. [plugin angular-compiler]
-
-    src/app/services/api-status.service.ts:43:6:
-      43 │       map((res: any) => {
-         ╵       ~~~~~~~~~~~~~~~~~~~
+    src/app/private/settings.component.ts:9:15:
+      9 │   templateUrl: './settings.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
