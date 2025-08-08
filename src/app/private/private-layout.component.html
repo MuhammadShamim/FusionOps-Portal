@@ -2,7 +2,12 @@
   <header class="private-header py-2 px-3 border-bottom bg-white shadow-sm fixed-top w-100" style="z-index: 1040;">
     <div class="d-flex align-items-center justify-content-between">
       <div class="fw-bold fs-4">FusionOps Portal</div>
-      <ng-content select="[header-actions]"></ng-content>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-outline-secondary" type="button" title="Toggle dark mode" (click)="toggleDarkMode()">
+          <i class="fas" [ngClass]="{'fa-moon': !isDarkMode, 'fa-sun': isDarkMode}"></i>
+        </button>
+        <ng-content select="[header-actions]"></ng-content>
+      </div>
     </div>
   </header>
   <div class="flex-grow-1 d-flex" style="padding-top: 72px; padding-bottom: 64px; min-height: 0;">

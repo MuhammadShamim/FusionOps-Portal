@@ -13,6 +13,17 @@ export class PrivateLayoutComponent {
   @Input() isAuthenticated = false;
   @Output() signOut = new EventEmitter<void>();
   year = new Date().getFullYear();
+  isDarkMode = false;
+
+  ngOnInit() {
+    this.isDarkMode = document.body.classList.contains('dark-mode');
+  }
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
+  }
+
   onSignOut() {
     this.signOut.emit();
   }
