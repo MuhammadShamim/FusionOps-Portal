@@ -6,6 +6,7 @@ import { CarrierProfileComponent } from './private/carrier-profile.component';
 import { NotesComponent } from './private/notes.component';
 import { SigninComponent } from './public/signin.component';
 import { KanbanComponent } from './private/kanban.component';
+import { SettingsComponent } from './private/settings.component';
 
 export const routes = [
   { path: '', component: CoverComponent },
@@ -16,4 +17,10 @@ export const routes = [
   { path: 'notes', component: NotesComponent },
   { path: 'kanban', component: KanbanComponent },
   { path: 'signin', component: SigninComponent },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [/* add your auth guard here if needed */],
+    data: { private: true }
+  },
 ];

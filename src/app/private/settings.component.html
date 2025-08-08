@@ -1,0 +1,55 @@
+<fusionops-private-layout [isAuthenticated]="isAuthenticated" (signOut)="onSignOut()">
+  <div class="container-fluid px-0">
+    <h2 class="mb-4">Settings</h2>
+    <ul class="nav nav-tabs mb-3">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'secrets'" href="#" (click)="$event.preventDefault(); setTab('secrets')">Secrets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'storage'" href="#" (click)="$event.preventDefault(); setTab('storage')">Storage</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" [class.active]="activeTab === 'secrets'">
+        <form (ngSubmit)="saveSecrets()" autocomplete="off" class="row g-3">
+          <div class="col-md-6 col-lg-4">
+            <label for="apiId" class="form-label">API ID</label>
+            <input id="apiId" type="text" class="form-control" [(ngModel)]="apiId" name="apiId" required />
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <label for="secret" class="form-label">Secret</label>
+            <input id="secret" type="password" class="form-control" [(ngModel)]="secret" name="secret" required />
+          </div>
+          <div class="col-12 align-self-end">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <span *ngIf="saved" class="text-success ms-3">Saved!</span>
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane" [class.active]="activeTab === 'storage'">
+        <h5>FusionOps Storage</h5>
+        <div class="table-responsive mt-3">
+          <table class="table table-hover table-bordered align-middle notes-table">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 30%" (click)="sortBy('key')" style="cursor:pointer">Key <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='key'}"></i></th>
+                <th (click)="sortBy('value')" style="cursor:pointer">Value <i class="fas fa-sort" [ngClass]="{'text-primary': sortKey==='value'}"></i></th>
+                <th style="width: 5%">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of fusionopsStorage">
+                <td class="text-break">{{item.key}}</td>
+                <td><pre class="mb-0 text-break">{{item.value}}</pre></td>
+                <td>
+                  <button class="btn btn-sm btn-danger" (click)="deleteKey(item.key)"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="fusionopsStorage.length === 0" class="text-muted">No FusionOps storage found.</div>
+      </div>
+    </div>
+  </div>
+</fusionops-private-layout>

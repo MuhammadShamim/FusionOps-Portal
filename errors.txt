@@ -1,107 +1,13 @@
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+Application bundle generation failed. [0.305 seconds]
 
-    src/app/shared/private-layout.component.html:47:13:
-      47 │         <li *ngIf="isAuthenticated">
-         ╵              ~~~~
+✘ [ERROR] TS2345: Argument of type '"updated"' is not assignable to parameter of type '"key" | "value" | "created"'. [plugin angular-compiler]
 
-  Warning occurs in the template of component PrivateLayoutComponent.
+    src/app/private/settings.component.html:38:55:
+      38 │ ...idth: 15%" (click)="sortBy('updated')" style="cursor:pointer">U...
+         ╵                               ~~~~~~~~~
 
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Error occurs in the template of component SettingsComponent.
 
-
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
-
-    src/app/shared/private-layout.component.html:52:13:
-      52 │         <li *ngIf="isAuthenticated">
-         ╵              ~~~~
-
-  Warning occurs in the template of component PrivateLayoutComponent.
-
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
-
-    src/app/shared/private-layout.component.html:57:13:
-      57 │         <li *ngIf="!isAuthenticated">
-         ╵              ~~~~
-
-  Warning occurs in the template of component PrivateLayoutComponent.
-
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Page reload sent to client(s).
-Initial chunk files | Names |  Raw size
-main.js             | main  | 121.97 kB | 
-
-Application bundle generation complete. [0.248 seconds]
-
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
-
-    src/app/shared/private-layout.component.html:11:13:
-      11 │         <li *ngIf="isAuthenticated">
-         ╵              ~~~~
-
-  Warning occurs in the template of component PrivateLayoutComponent.
-
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
-
-    src/app/shared/private-layout.component.html:16:13:
-      16 │         <li *ngIf="isAuthenticated">
-         ╵              ~~~~
-
-  Warning occurs in the template of component PrivateLayoutComponent.
-
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
-
-    src/app/shared/private-layout.component.html:21:13:
-      21 │         <li *ngIf="isAuthenticated">
-         ╵              ~~~~
-
-  Warning occurs in the template of component PrivateLayoutComponent.
-
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
-
-    src/app/shared/private-layout.component.html:26:13:
-      26 │         <li *ngIf="isAuthenticated">
-         ╵              ~~~~
-
-  Warning occurs in the template of component PrivateLayoutComponent.
-
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
-        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
-
-    src/app/shared/private-layout.component.html:31:13:
-      31 │         <li *ngIf="isAuthenticated">
-         ╵              ~~~~
-
-  Warning occurs in the template of component PrivateLayoutComponent.
-
-    src/app/shared/private-layout.component.ts:6:15:
-      6 │   templateUrl: './private-layout.component.html',
+    src/app/private/settings.component.ts:9:15:
+      9 │   templateUrl: './settings.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~

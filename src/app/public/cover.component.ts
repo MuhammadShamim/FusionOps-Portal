@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PublicLayoutComponent } from '../shared/public-layout.component';
+import { PublicLayoutComponent } from './public-layout.component';
 
 @Component({
   selector: 'app-cover',

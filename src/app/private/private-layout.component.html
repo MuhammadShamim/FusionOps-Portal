@@ -6,7 +6,7 @@
     </div>
   </header>
   <div class="flex-grow-1 d-flex" style="padding-top: 72px; padding-bottom: 64px; min-height: 0;">
-    <div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 0;">
+    <div class="sidebar fusionops-sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 100vh;">
       <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="isAuthenticated">
           <a routerLink="/dashboard" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
@@ -29,9 +29,14 @@
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <button class="btn btn-link nav-link d-flex align-items-center fusionops-nav-link" (click)="onSignOut()">
+          <a routerLink="/settings" routerLinkActive="active" class="nav-link d-flex align-items-center fusionops-nav-link">
+            <i class="fas fa-cog me-2"></i> Settings
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a href="#" (click)="$event.preventDefault(); onSignOut()" class="nav-link d-flex align-items-center fusionops-nav-link">
             <i class="fas fa-sign-out-alt me-2"></i> Sign Out
-          </button>
+          </a>
         </li>
       </ul>
     </div>
