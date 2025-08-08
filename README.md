@@ -1,5 +1,5 @@
 
-# 🧩 FusionOps Portal `0.0.6`
+# 🧩 FusionOps Portal `0.0.7`
 
 **FusionOps Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
 
