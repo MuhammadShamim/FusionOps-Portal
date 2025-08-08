@@ -1,9 +1,60 @@
+✘ [ERROR] NG5002: Parser Error: Cannot have a pipe in an action expression at column 27 in [sortBy(col.key as 'key' | 'value', $event)] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/settings.component.html@75:51 [plugin angular-compiler]
+
+    src/app/private/settings.component.html:76:51:
+      76 │ ..." (click)="sortBy(col.key as 'key' | 'value', $event)" style="c...
+         ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component SettingsComponent.
+
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG5002: Parser Error: Missing expected ) at column 16 in [sortBy(col.key as 'key' | 'value', $event)] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/settings.component.html@75:51 [plugin angular-compiler]
+
+    src/app/private/settings.component.html:76:51:
+      76 │ ..." (click)="sortBy(col.key as 'key' | 'value', $event)" style="c...
+         ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component SettingsComponent.
+
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG5002: Parser Error: Unexpected end of input, expected identifier or keyword at the end of the expression [sortBy(col.key as 'key' | 'value', $event)] in /Users/star/Documents/GitHubRepos/FusionOps-Portal/src/app/private/settings.component.html@75:51 [plugin angular-compiler]
+
+    src/app/private/settings.component.html:76:51:
+      76 │ ..." (click)="sortBy(col.key as 'key' | 'value', $event)" style="c...
+         ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Error occurs in the template of component SettingsComponent.
+
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 ✘ [ERROR] TS2345: Argument of type 'string' is not assignable to parameter of type '"key" | "value"'. [plugin angular-compiler]
 
     src/app/private/settings.component.html:76:62:
-      76 │ ....visible" (click)="sortBy(col.key, $event)" style="cursor:point...
+      76 │ ....visible" (click)="sortBy(col.key as 'key' | 'value', $event)" ...
          ╵                                  ~~~
+
+  Error occurs in the template of component SettingsComponent.
+
+    src/app/private/settings.component.ts:10:15:
+      10 │   templateUrl: './settings.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] NG8004: No pipe found with name ''. [plugin angular-compiler]
+
+    src/app/private/settings.component.html:76:93:
+      76 │ ...ortBy(col.key as 'key' | 'value', $event)" style="cursor:pointer">
+         ╵                                             ^
 
   Error occurs in the template of component SettingsComponent.
 
