@@ -46,6 +46,101 @@ export class KanbanComponent {
   editingTask: KanbanTask | null = null;
   editingColIdx: number | null = null;
 
+  kanbanColumns = [
+    { key: 'title', label: 'Title', visible: true },
+    { key: 'description', label: 'Description', visible: true },
+    { key: 'column', label: 'Column', visible: true }
+  ];
+  sortKeys: { key: string, asc: boolean }[] = [{ key: 'column', asc: true }];
+  selectedRows: Set<number> = new Set();
+
+  getAllTasks() {
+    const tasks: Array<any> = [];
+    this.columns.forEach((col, colIdx) => {
+      col.tasks.forEach(task => tasks.push({ ...task, column: col.name, colIdx }));
+    });
+    return tasks;
+  }
+
+  getFilteredSortedTasks() {
+    let tasks = this.getAllTasks();
+    // No search for now, but could add if needed
+    tasks = [...tasks];
+    tasks.sort((a, b) => {
+      for (const sort of this.sortKeys) {
+        let v1 = a[sort.key] || '';
+        let v2 = b[sort.key] || '';
+        if (v1 < v2) return sort.asc ? -1 : 1;
+        if (v1 > v2) return sort.asc ? 1 : -1;
+      }
+      return 0;
+    });
+    return tasks;
+  }
+
+  sortBy(key: string, event?: MouseEvent) {
+    if (event && event.shiftKey) {
+      const idx = this.sortKeys.findIndex(s => s.key === key);
+      if (idx > -1) {
+        this.sortKeys[idx].asc = !this.sortKeys[idx].asc;
+      } else {
+        this.sortKeys.push({ key, asc: true });
+      }
+    } else {
+      if (this.sortKeys.length === 1 && this.sortKeys[0].key === key) {
+        this.sortKeys[0].asc = !this.sortKeys[0].asc;
+      } else {
+        this.sortKeys = [{ key, asc: true }];
+      }
+    }
+  }
+
+  toggleColumn(col: any) {
+    col.visible = !col.visible;
+  }
+
+  toggleRowSelection(id: number) {
+    if (this.selectedRows.has(id)) {
+      this.selectedRows.delete(id);
+    } else {
+      this.selectedRows.add(id);
+    }
+  }
+
+  selectAllOnPage() {
+    this.getFilteredSortedTasks().forEach(task => this.selectedRows.add(task.id));
+  }
+
+  clearSelection() {
+    this.selectedRows.clear();
+  }
+
+  downloadCSV(selectedOnly = false) {
+    const visibleCols = this.kanbanColumns.filter(c => c.visible);
+    const headers = visibleCols.map(c => c.label);
+    const tasks = this.getFilteredSortedTasks();
+    const rows = (selectedOnly ? tasks.filter(t => this.selectedRows.has(t.id)) : tasks)
+      .map(task => visibleCols.map(c => '"' + (task[c.key] || '').replace(/"/g, '""') + '"'));
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'kanban-tasks.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  copySelectedToClipboard() {
+    const visibleCols = this.kanbanColumns.filter(c => c.visible);
+    const headers = visibleCols.map(c => c.label);
+    const tasks = this.getFilteredSortedTasks();
+    const rows = tasks.filter(t => this.selectedRows.has(t.id))
+      .map(task => visibleCols.map(c => task[c.key]));
+    const text = [headers.join('\t'), ...rows.map(r => r.join('\t'))].join('\n');
+    navigator.clipboard.writeText(text);
+  }
+
   constructor() {
     this.loadFromStorage();
   }

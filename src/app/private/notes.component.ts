@@ -27,12 +27,127 @@ export class NotesComponent {
   }
   notes: Note[] = [];
   search = '';
-  sortColumn: keyof Note = 'created';
-  sortAsc = false;
+  sortKeys: { key: keyof Note, asc: boolean }[] = [{ key: 'created', asc: false }];
   editingNote: Note | null = null;
   showModal = false;
   modalTitle = '';
   modalContent = '';
+  columns: { key: keyof Note, label: string, visible: boolean }[] = [
+    { key: 'title', label: 'Title', visible: true },
+    { key: 'content', label: 'Content', visible: true },
+    { key: 'created', label: 'Created', visible: true }
+  ];
+  selectedRows: Set<number> = new Set();
+
+  downloadCSV(selectedOnly = false) {
+    const visibleCols = this.columns.filter(c => c.visible);
+    const headers = visibleCols.map(c => c.label);
+    const notes = this.getFilteredSortedNotes();
+    const rows = (selectedOnly ? notes.filter(n => this.selectedRows.has(n.id)) : notes)
+      .map(n => visibleCols.map(c => {
+        if (c.key === 'title' || c.key === 'content') return '"' + (n[c.key] as string || '').replace(/"/g, '""') + '"';
+        return n[c.key];
+      }));
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'notes.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  copySelectedToClipboard() {
+    const visibleCols = this.columns.filter(c => c.visible);
+    const headers = visibleCols.map(c => c.label);
+    const notes = this.getFilteredSortedNotes();
+    const rows = notes.filter(n => this.selectedRows.has(n.id))
+      .map(n => visibleCols.map(c => n[c.key]));
+    const text = [headers.join('\t'), ...rows.map(r => r.join('\t'))].join('\n');
+    navigator.clipboard.writeText(text);
+  }
+
+  toggleColumn(col: { key: keyof Note, label: string, visible: boolean }) {
+    col.visible = !col.visible;
+  }
+
+  toggleRowSelection(id: number) {
+    if (this.selectedRows.has(id)) {
+      this.selectedRows.delete(id);
+    } else {
+      this.selectedRows.add(id);
+    }
+  }
+
+  selectAllOnPage() {
+    this.getFilteredSortedNotes().forEach(n => this.selectedRows.add(n.id));
+  }
+
+  clearSelection() {
+    this.selectedRows.clear();
+  }
+
+  sortBy(key: keyof Note, event?: MouseEvent) {
+    if (event && event.shiftKey) {
+      const idx = this.sortKeys.findIndex(s => s.key === key);
+      if (idx > -1) {
+        this.sortKeys[idx].asc = !this.sortKeys[idx].asc;
+      } else {
+        this.sortKeys.push({ key, asc: true });
+      }
+    } else {
+      if (this.sortKeys.length === 1 && this.sortKeys[0].key === key) {
+        this.sortKeys[0].asc = !this.sortKeys[0].asc;
+      } else {
+        this.sortKeys = [{ key, asc: true }];
+      }
+    }
+    this.sortNotes();
+  }
+
+  sortNotes() {
+    this.notes.sort((a, b) => {
+      for (const sort of this.sortKeys) {
+        let v1 = a[sort.key];
+        let v2 = b[sort.key];
+        if (typeof v1 === 'string' && typeof v2 === 'string') {
+          v1 = v1.toLowerCase();
+          v2 = v2.toLowerCase();
+        }
+        if (v1 < v2) return sort.asc ? -1 : 1;
+        if (v1 > v2) return sort.asc ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  getFilteredSortedNotes() {
+    let filtered = this.notes;
+    if (this.search.trim()) {
+      const s = this.search.toLowerCase();
+      filtered = filtered.filter(n =>
+        n.title.toLowerCase().includes(s) ||
+        n.content.toLowerCase().includes(s) ||
+        n.created.toLowerCase().includes(s)
+      );
+    }
+    filtered = [...filtered];
+    filtered.sort((a, b) => {
+      for (const sort of this.sortKeys) {
+        let v1 = a[sort.key];
+        let v2 = b[sort.key];
+        if (typeof v1 === 'string' && typeof v2 === 'string') {
+          v1 = v1.toLowerCase();
+          v2 = v2.toLowerCase();
+        }
+        if (v1 < v2) return sort.asc ? -1 : 1;
+        if (v1 > v2) return sort.asc ? 1 : -1;
+      }
+      return 0;
+    });
+    return filtered;
+  }
 
   constructor() {
     this.loadNotes();
@@ -96,37 +211,4 @@ export class NotesComponent {
     this.saveNotes();
   }
 
-  sortBy(col: keyof Note) {
-    if (this.sortColumn === col) {
-      this.sortAsc = !this.sortAsc;
-    } else {
-      this.sortColumn = col;
-      this.sortAsc = true;
-    }
-    this.sortNotes();
-  }
-
-  sortNotes() {
-    this.notes.sort((a, b) => {
-      let v1 = a[this.sortColumn];
-      let v2 = b[this.sortColumn];
-      if (typeof v1 === 'string' && typeof v2 === 'string') {
-        v1 = v1.toLowerCase();
-        v2 = v2.toLowerCase();
-      }
-      if (v1 < v2) return this.sortAsc ? -1 : 1;
-      if (v1 > v2) return this.sortAsc ? 1 : -1;
-      return 0;
-    });
-  }
-
-  get filteredNotes() {
-    if (!this.search.trim()) return this.notes;
-    const s = this.search.toLowerCase();
-    return this.notes.filter(n =>
-      n.title.toLowerCase().includes(s) ||
-      n.content.toLowerCase().includes(s) ||
-      n.created.toLowerCase().includes(s)
-    );
-  }
 }
