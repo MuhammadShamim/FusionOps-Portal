@@ -12,9 +12,10 @@ import { AuthService } from '../services/auth.service';
   imports: [CommonModule, FormsModule, PrivateLayoutComponent]
 })
 export class SettingsComponent {
-  auth$ = this.authService.auth$;
-
-  constructor(public authService: AuthService) {}
+  auth$;
+  constructor(public authService: AuthService) {
+    this.auth$ = this.authService.auth$;
+  }
 
   areAllStorageSelected(): boolean {
     const items = this.getFilteredSortedStorage();
@@ -49,10 +50,7 @@ export class SettingsComponent {
     this.loadFusionopsStorage();
   }
 
-  onSignOut() {
-    this.isAuthenticated = false;
-    window.location.href = '/';
-  }
+  // removed duplicate onSignOut and isAuthenticated reference
 
   loadSecrets() {
     const encrypted = localStorage.getItem('fusionops_secrets');

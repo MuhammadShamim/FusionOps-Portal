@@ -84,12 +84,12 @@ export class PagerDutyEventsComponent implements OnInit {
       return;
     }
     this.pagerDuty.getEvents(token).subscribe({
-      next: (res) => {
+      next: (res: any) => {
         this.events = res.incidents || [];
         this.applyFilters();
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = 'Failed to load PagerDuty events.';
         this.loading = false;
       }
@@ -212,5 +212,4 @@ export class PagerDutyEventsComponent implements OnInit {
     const text = [headers.join('\t'), ...rows.map(r => r.join('\t'))].join('\n');
     navigator.clipboard.writeText(text);
   }
-}
 }
