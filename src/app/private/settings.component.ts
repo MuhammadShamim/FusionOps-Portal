@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { PrivateLayoutComponent } from '../shared/private-layout.component';
 
 @Component({
-@Component({
   selector: 'app-settings',
   standalone: true,
   templateUrl: './settings.component.html',
