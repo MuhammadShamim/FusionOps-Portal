@@ -15,7 +15,8 @@ function createWindow() {
     title: 'FusionOps Portal'
   });
 
-  win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  // Load the Angular app from the correct output directory
+  win.loadFile(path.join(__dirname, 'dist', 'fusionops-portal', 'index.html'));
 
   // Open external links in default browser
   win.webContents.setWindowOpenHandler(({ url }) => {
