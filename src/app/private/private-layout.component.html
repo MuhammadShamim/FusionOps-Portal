@@ -44,6 +44,11 @@
           </a>
         </li>
         <li *ngIf="isAuthenticated">
+          <a routerLink="/customer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
+            <i class="fas fa-user"></i> Customer
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
           <a href="#" (click)="$event.preventDefault(); signOut.emit()" class="nav-link fusionops-nav-link">
             <i class="fas fa-sign-out-alt"></i> Sign Out
           </a>
