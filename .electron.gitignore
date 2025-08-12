@@ -1,0 +1,5 @@
+// Add this to your .gitignore to avoid committing Electron build artifacts
+/dist_electron/
+/build/
+*.log
+*.tsbuildinfo

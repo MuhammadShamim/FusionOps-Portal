@@ -1,0 +1,20 @@
+# Electron Builder configuration for FusionOps Portal Desktop
+appId: com.fusionops.portal.desktop
+productName: FusionOps Portal
+files:
+  - dist/**/*
+  - main.js
+  - preload.js
+extraResources: []
+directories:
+  buildResources: build
+  output: dist_electron
+win:
+  target:
+    - nsis
+mac:
+  target:
+    - dmg
+linux:
+  target:
+    - AppImage

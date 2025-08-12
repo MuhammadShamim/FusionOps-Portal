@@ -124,6 +124,34 @@ ng build --configuration production
 Deploy the contents of the dist/ folder to your preferred hosting service.
 
 
+## 🖥️ Desktop App (Electron)
+
+FusionOps Portal can run as a cross-platform desktop app using Electron. This wraps the Angular build in a secure desktop shell with native window controls.
+
+### How to Run as Desktop App
+
+1. Install dependencies:
+   ```shell
+   npm install
+   npm install --save-dev electron electron-builder
+   ```
+2. Build Angular app:
+   ```shell
+   ng build --base-href ./
+   ```
+3. Start Electron:
+   ```shell
+   npx electron .
+   ```
+4. To package for Windows/macOS/Linux:
+   ```shell
+   npx electron-builder
+   ```
+
+- Electron config: `main.js`, `preload.js`, `electron-builder.yml`
+- Desktop build output: `dist_electron/`
+
+
 ## 📬 Contact & Support
 For issues, feature requests, or contributions, please open a GitHub issue or contact the Integration Ops team.
 
