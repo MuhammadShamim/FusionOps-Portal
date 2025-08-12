@@ -29,4 +29,9 @@ export const routes = [
     component: PagerDutyEventsComponent,
     data: { private: true }
   },
+  {
+    path: 'customer',
+    loadComponent: () => import('./private/customer.component').then(m => m.CustomerComponent),
+    title: 'Customer Lookup'
+  },
 ];

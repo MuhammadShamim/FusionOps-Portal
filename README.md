@@ -15,6 +15,7 @@ rtal
 - 📦 MuleSoft iPaaS integration
 - 🚨 PagerDuty incident tracking with secure token storage, events page, and proxy support
 - 🛠️ GitHub repo and PR management
+- 👥 Customer lookup with live scrape from speedship.com
 - 📅 Release and change management tools
 - 👋 Welcome, Sign-in, and Sign-up pages with sticky header/footer
 - 👤 Profile and Settings pages (with secrets, storage, and PagerDuty tabs)
