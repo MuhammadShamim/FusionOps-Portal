@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PrivateLayoutComponent } from './private-layout.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'fusionops-customer',
   standalone: true,
   imports: [CommonModule, FormsModule, PrivateLayoutComponent],
   template: `
-    <fusionops-private-layout>
+    <fusionops-private-layout [isAuthenticated]="isAuthenticated">
       <div class="card card-body mt-4">
         <h2>Customer Lookup</h2>
         <form (ngSubmit)="fetchCustomerInfo()" class="mb-3 d-flex flex-row gap-2">
@@ -39,8 +40,13 @@ export class CustomerComponent {
   loading = false;
   error = '';
   infoHtml = '';
+  isAuthenticated = false;
 
-  constructor(private http: HttpClient) {}
+  private auth = inject(AuthService);
+
+  constructor(private http: HttpClient) {
+    this.isAuthenticated = this.auth.isAuthenticated;
+  }
 
   fetchCustomerInfo() {
     this.error = '';
