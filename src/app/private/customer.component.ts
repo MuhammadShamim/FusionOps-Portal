@@ -23,13 +23,13 @@ export class CustomerComponent {
     this.infoHtml = '';
     if (!this.customerNumber) return;
     this.loading = true;
-    const url = `https://www.speedship.com/customers/ss.wwex.customer.${this.customerNumber}/info`;
+    const url = `/api/speedship/customers/ss.wwex.customer.${this.customerNumber}/info`;
     this.http.get(url, { responseType: 'text' }).subscribe({
-      next: html => {
+      next: (html: string) => {
         this.infoHtml = html;
         this.loading = false;
       },
-      error: err => {
+      error: (err: any) => {
         this.error = 'Failed to fetch customer info.';
         this.loading = false;
       }

@@ -11,5 +11,14 @@
     "changeOrigin": true,
     "pathRewrite": { "^/pagerduty": "" },
     "logLevel": "debug"
+  },
+  "/api/speedship/*": {
+    "target": "https://www.speedship.com/",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/speedship": ""
+    }
   }
 }
