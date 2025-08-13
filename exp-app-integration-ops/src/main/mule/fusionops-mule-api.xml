@@ -22,21 +22,21 @@
         
         <choice doc:name="Route Request">
             <when expression="#[vars.requestPath == '/']">
-                <file:read path="static/index.html" doc:name="Read Index"/>
-                <set-payload value="#[payload]" mediaType="text/html"/>
+                <file:read path="static/browser/index.html" doc:name="Read Index"/>
+                <set-payload value="#[output text/html --- payload]"/>
             </when>
             <when expression="#[vars.requestPath matches '.*\.(js|css|json|ico|png|jpg|jpeg|gif|woff|woff2)$']">
                 <try>
-                    <file:read path='#["static$(vars.requestPath)"]'/>
+                    <file:read path='#["static/browser$(vars.requestPath)"]'/>
                     <choice>
                         <when expression="#[vars.requestPath endsWith '.js']">
-                            <set-payload value="#[payload]" mediaType="application/javascript"/>
+                            <set-payload value="#[output application/javascript --- payload]"/>
                         </when>
                         <when expression="#[vars.requestPath endsWith '.css']">
-                            <set-payload value="#[payload]" mediaType="text/css"/>
+                            <set-payload value="#[output text/css --- payload]"/>
                         </when>
                         <when expression="#[vars.requestPath endsWith '.json']">
-                            <set-payload value="#[payload]" mediaType="application/json"/>
+                            <set-payload value="#[output application/json --- payload]"/>
                         </when>
                         <otherwise>
                             <set-payload value="#[payload]"/>
@@ -44,15 +44,15 @@
                     </choice>
                     <error-handler>
                         <on-error-continue>
-                            <file:read path="static/index.html"/>
-                            <set-payload value="#[payload]" mediaType="text/html"/>
+                            <file:read path="static/browser/index.html"/>
+                            <set-payload value="#[output text/html --- payload]"/>
                         </on-error-continue>
                     </error-handler>
                 </try>
             </when>
             <otherwise>
-                <file:read path="static/index.html"/>
-                <set-payload value="#[payload]" mediaType="text/html"/>
+                <file:read path="static/browser/index.html"/>
+                <set-payload value="#[output text/html --- payload]"/>
             </otherwise>
         </choice>
     </flow>
@@ -85,7 +85,6 @@
                 <set-payload value="#['']"/>
             </when>
             <otherwise>
-                <!-- Sample API Response -->
                 <set-payload value='#[output application/json --- {
                     "status": "success",
                     "message": "API is running"
