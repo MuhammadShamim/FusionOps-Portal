@@ -1,13 +1,12 @@
-# 🧩 FusionOps Portal `0.0.8`
+# 🧩 Integration Ops Portal `0.0.8`
 
-**FusionOps Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
+**Integration Ops Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
 
 ## Latest Screenshot
-<!-- ![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4.png?raw=)
-rtal
-![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4%20signin.png?raw=)
-![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4%20dashboard.png?raw=)
-![v0.0.4](https://github.com/MuhammadShamim/FusionOps-Portal/blob/main/screenshots/v0.0.4%20notes.png?raw=) -->
+<!-- ![v0.0.4](https://github.com/MuhammadShamim/Integration-Ops-Portal/blob/main/screenshots/v0.0.4.png?raw=)
+![v0.0.4](https://github.com/MuhammadShamim/Integration-Ops-Portal/blob/main/screenshots/v0.0.4%20signin.png?raw=)
+![v0.0.4](https://github.com/MuhammadShamim/Integration-Ops-Portal/blob/main/screenshots/v0.0.4%20dashboard.png?raw=)
+![v0.0.4](https://github.com/MuhammadShamim/Integration-Ops-Portal/blob/main/screenshots/v0.0.4%20notes.png?raw=) -->
 
 ## 🚀 Features
 
@@ -34,7 +33,7 @@ rtal
 ## 🛠️ Tech Stack
 
 - **Frontend Framework:** Angular 20+
-- **UI Library:** Bootstrap 5, Sneat/FusionOps theme
+- **UI Library:** Bootstrap 5, Integration Ops theme
 - **Authentication:** Auth0 with Microsoft SSO
 - **Routing:** Angular Standalone Router
 - **State Management:** RxJS
@@ -59,8 +58,8 @@ rtal
 ### Installation
 
 ```bash
-git clone https://github.com/your-org/fusionops-portal.git
-cd fusionops-portal
+git clone https://github.com/your-org/integration-ops-portal.git
+cd integration-ops-portal
 npm install
 ```
 

@@ -1,7 +1,7 @@
 <div class="private-layout">
   <header class="private-header">
     <div class="header-content">
-      <div class="app-title">FusionOps Portal</div>
+  <div class="app-title">Integration Ops Portal</div>
       <div class="header-actions">
         <button class="btn btn-sm btn-outline-secondary" type="button" title="Toggle dark mode" (click)="toggleDarkMode()">
           <i class="fas" [ngClass]="{'fa-moon': !isDarkMode, 'fa-sun': isDarkMode}"></i>
@@ -11,40 +11,40 @@
     </div>
   </header>
   <div class="app-body">
-    <nav class="sidebar fusionops-sidebar">
+  <nav class="sidebar integrationops-sidebar">
       <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="isAuthenticated">
-          <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
+          <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link integrationops-nav-link">
             <i class="fas fa-tachometer-alt"></i> Dashboard
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/notes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
+          <a routerLink="/notes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link integrationops-nav-link">
             <i class="fas fa-sticky-note"></i> Notes
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/kanban" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
+          <a routerLink="/kanban" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link integrationops-nav-link">
             <i class="fas fa-columns"></i> Kanban
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/carrier-profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
+          <a routerLink="/carrier-profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link integrationops-nav-link">
             <i class="fas fa-truck"></i> Carrier Profile
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
+          <a routerLink="/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link integrationops-nav-link">
             <i class="fas fa-cog"></i> Settings
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a routerLink="/pagerduty-events" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fusionops-nav-link">
+          <a routerLink="/pagerduty-events" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link integrationops-nav-link">
             <i class="fas fa-bell"></i> PagerDuty
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a href="#" (click)="$event.preventDefault(); signOut.emit()" class="nav-link fusionops-nav-link">
+          <a href="#" (click)="$event.preventDefault(); signOut.emit()" class="nav-link integrationops-nav-link">
             <i class="fas fa-sign-out-alt"></i> Sign Out
           </a>
         </li>
@@ -55,6 +55,6 @@
     </main>
   </div>
   <footer class="private-footer">
-    &copy; {{year}} FusionOps. All rights reserved.
+  &copy; {{year}} Integration Ops. All rights reserved.
   </footer>
 </div>
