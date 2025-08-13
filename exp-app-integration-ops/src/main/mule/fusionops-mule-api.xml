@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file"
+      xmlns:http="http://www.mulesoft.org/schema/mule/http" 
+      xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+      xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+                          http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+                          http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+                          http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+
+    <!-- HTTP Listener Configuration -->
+    <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config">
+        <http:listener-connection host="0.0.0.0" port="8081"/>
+    </http:listener-config>
+    
+    <!-- Static Content Flow - Serves Angular App -->
+    <flow name="serveStaticContent">
+        <http:listener config-ref="HTTP_Listener_config" path="/*" doc:name="Serve Static Content"/>
+        <set-variable variableName="requestPath" value="#[attributes.requestPath default '/']" doc:name="Set Request Path"/>
+        
+        <choice doc:name="Route Request">
+            <when expression="#[vars.requestPath == '/']">
+                <file:read path="static/index.html" doc:name="Read Index"/>
+                <set-payload value="#[payload]" mediaType="text/html"/>
+            </when>
+            <when expression="#[vars.requestPath matches '.*\.(js|css|json|ico|png|jpg|jpeg|gif|woff|woff2)$']">
+                <try>
+                    <file:read path='#["static$(vars.requestPath)"]'/>
+                    <choice>
+                        <when expression="#[vars.requestPath endsWith '.js']">
+                            <set-payload value="#[payload]" mediaType="application/javascript"/>
+                        </when>
+                        <when expression="#[vars.requestPath endsWith '.css']">
+                            <set-payload value="#[payload]" mediaType="text/css"/>
+                        </when>
+                        <when expression="#[vars.requestPath endsWith '.json']">
+                            <set-payload value="#[payload]" mediaType="application/json"/>
+                        </when>
+                        <otherwise>
+                            <set-payload value="#[payload]"/>
+                        </otherwise>
+                    </choice>
+                    <error-handler>
+                        <on-error-continue>
+                            <file:read path="static/index.html"/>
+                            <set-payload value="#[payload]" mediaType="text/html"/>
+                        </on-error-continue>
+                    </error-handler>
+                </try>
+            </when>
+            <otherwise>
+                <file:read path="static/index.html"/>
+                <set-payload value="#[payload]" mediaType="text/html"/>
+            </otherwise>
+        </choice>
+    </flow>
+    
+    <!-- API Flow -->
+    <flow name="apiFlow">
+        <http:listener config-ref="HTTP_Listener_config" path="/api/*" doc:name="API Endpoints">
+            <http:response>
+                <http:headers>
+                    #[{
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                    }]
+                </http:headers>
+            </http:response>
+            <http:error-response>
+                <http:headers>
+                    #[{
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                    }]
+                </http:headers>
+            </http:error-response>
+        </http:listener>
+        
+        <choice>
+            <when expression="#[attributes.method == 'OPTIONS']">
+                <set-payload value="#['']"/>
+            </when>
+            <otherwise>
+                <!-- Sample API Response -->
+                <set-payload value='#[output application/json --- {
+                    "status": "success",
+                    "message": "API is running"
+                }]'/>
+            </otherwise>
+        </choice>
+    </flow>
+
+</mule>

@@ -1,0 +1,13 @@
+{
+  "minMuleVersion": "4.4.0",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {}
+  },
+  "configs": [
+    "fusionops-mule-api.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "fusionops-mule-api"
+}
