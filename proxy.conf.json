@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "AP_PROXY_URL",
+    "target": "http://localhost:8081",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
