@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { PublicLayoutComponent } from './public-layout.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,16 +12,17 @@ import { PublicLayoutComponent } from './public-layout.component';
   imports: [FormsModule, PublicLayoutComponent]
 })
 export class SigninComponent {
-  router = inject(Router);
-  auth = inject(AuthService);
+  username: string = '';
+  password: string = '';
 
-  email = 'a@a.com';
-  password = 'b';
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
-  onSubmit(event: Event) {
-    event.preventDefault();
-    // You can add real auth logic here if needed
-    this.auth.signIn();
-    this.router.navigate(['/dashboard']);
+  onSubmit() {
+    if (this.auth.signIn(this.username, this.password)) {
+      this.router.navigate(['/app/dashboard']);
+    }
   }
 }

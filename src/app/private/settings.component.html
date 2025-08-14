@@ -1,5 +1,5 @@
-<fusionops-private-layout [isAuthenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
-  <div class="container-fluid px-0">
+<integrationops-private-layout [isAuthenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+  <div class="container-fluid py-5 px-3 px-md-5">
     <h2 class="mb-4">Settings</h2>
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item">
@@ -43,68 +43,72 @@
         </form>
       </div>
       <div class="tab-pane" [class.active]="activeTab === 'storage'">
-        <h5>FusionOps Storage</h5>
-        <div class="row mb-2">
-          <div class="col-md-4 mb-2">
-            <div class="dropdown">
-              <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
-                Columns
-              </button>
-              <ul class="dropdown-menu">
-                <li *ngFor="let col of columns">
-                  <label class="dropdown-item">
-                    <input type="checkbox" [(ngModel)]="col.visible" (change)="toggleColumn(col)"> {{col.label}}
-                  </label>
-                </li>
-              </ul>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5>IntegrationOps Storage</h5>
+            <div class="row mb-2">
+              <div class="col-md-4 mb-2">
+                <div class="dropdown">
+                  <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                    Columns
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li *ngFor="let col of columns">
+                      <label class="dropdown-item">
+                        <input type="checkbox" [(ngModel)]="col.visible" (change)="toggleColumn(col)"> {{col.label}}
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-8 text-end mb-2">
+                <button class="btn btn-outline-primary me-2" (click)="downloadStorageCSV(selectedRows.size > 0)"><i class="fas fa-download me-2"></i>Download as CSV</button>
+                <button class="btn btn-outline-secondary me-2" [disabled]="selectedRows.size === 0" (click)="copySelectedToClipboard()"><i class="fas fa-copy me-2"></i>Copy Selected</button>
+                <button class="btn btn-outline-secondary" [disabled]="selectedRows.size === 0" (click)="clearSelection()"><i class="fas fa-times me-2"></i>Clear Selection</button>
+              </div>
             </div>
-          </div>
-          <div class="col-md-8 text-end mb-2">
-            <button class="btn btn-outline-primary me-2" (click)="downloadStorageCSV(selectedRows.size > 0)"><i class="fas fa-download me-2"></i>Download as CSV</button>
-            <button class="btn btn-outline-secondary me-2" [disabled]="selectedRows.size === 0" (click)="copySelectedToClipboard()"><i class="fas fa-copy me-2"></i>Copy Selected</button>
-            <button class="btn btn-outline-secondary" [disabled]="selectedRows.size === 0" (click)="clearSelection()"><i class="fas fa-times me-2"></i>Clear Selection</button>
-          </div>
-        </div>
-        <div class="table-responsive mt-3">
-          <table class="table table-hover table-bordered align-middle notes-table">
-            <thead class="table-light">
-              <tr>
-                <th>
-                  <input type="checkbox" [checked]="areAllStorageSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
-                </th>
-                <ng-container *ngFor="let col of columns">
-                  <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" style="cursor:pointer">
-                    {{col.label}} <i class="fas fa-sort"></i>
-                  </th>
-                </ng-container>
-                <th style="width: 5%">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of getFilteredSortedStorage()">
-                <td>
-                  <input type="checkbox" [checked]="selectedRows.has(item.key)" (change)="toggleRowSelection(item.key)">
-                </td>
-                <ng-container *ngFor="let col of columns">
-                  <td *ngIf="col.visible">
-                    <ng-container [ngSwitch]="col.key">
-                      <span *ngSwitchCase="'value'"><pre class="mb-0 text-break">{{item.value}}</pre></span>
-                      <span *ngSwitchDefault>{{ item[col.key] }}</span>
+            <div class="table-responsive mt-3">
+              <table class="table table-hover table-bordered align-middle notes-table">
+                <thead class="table-light">
+                  <tr>
+                    <th>
+                      <input type="checkbox" [checked]="areAllStorageSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
+                    </th>
+                    <ng-container *ngFor="let col of columns">
+                      <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" style="cursor:pointer">
+                        {{col.label}} <i class="fas fa-sort"></i>
+                      </th>
                     </ng-container>
-                  </td>
-                </ng-container>
-                <td>
-                  <button class="btn btn-sm btn-danger" (click)="deleteKey(item.key)"><i class="fas fa-trash"></i></button>
-                </td>
-              </tr>
-            <tr *ngIf="getFilteredSortedStorage().length === 0">
-              <td [attr.colspan]="getVisibleStorageColspan()" class="text-center text-muted">No storage items found.</td>
-            </tr>
-            </tbody>
-          </table>
+                    <th style="width: 5%">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of getFilteredSortedStorage()">
+                    <td>
+                      <input type="checkbox" [checked]="selectedRows.has(item.key)" (change)="toggleRowSelection(item.key)">
+                    </td>
+                    <ng-container *ngFor="let col of columns">
+                      <td *ngIf="col.visible">
+                        <ng-container [ngSwitch]="col.key">
+                          <span *ngSwitchCase="'value'"><pre class="mb-0 text-break">{{item.value}}</pre></span>
+                          <span *ngSwitchDefault>{{ item[col.key] }}</span>
+                        </ng-container>
+                      </td>
+                    </ng-container>
+                    <td>
+                      <button class="btn btn-sm btn-danger" (click)="deleteKey(item.key)"><i class="fas fa-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="getFilteredSortedStorage().length === 0">
+                    <td [attr.colspan]="getVisibleStorageColspan()" class="text-center text-muted">No storage items found.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="getFilteredSortedStorage().length === 0" class="text-muted">No IntegrationOps storage found.</div>
+          </div>
         </div>
-        <div *ngIf="getFilteredSortedStorage().length === 0" class="text-muted">No FusionOps storage found.</div>
       </div>
     </div>
   </div>
-</fusionops-private-layout>
+</integrationops-private-layout>

@@ -12,7 +12,7 @@ export class CarrierProfileService {
     const baseUrl = this.env.get('API_BASE_URL');
     let apiId = '';
     let secret = '';
-    const encrypted = localStorage.getItem('fusionops_secrets');
+    const encrypted = localStorage.getItem('integrationops_secrets');
     if (encrypted) {
       try {
         const decrypted = atob(encrypted);
@@ -54,5 +54,18 @@ export class CarrierProfileService {
         return of({ error: { status, message } });
       })
     );
+  }
+
+  getSecrets(): string | null {
+    const encrypted = localStorage.getItem('integrationops_secrets');
+    if (encrypted) {
+      try {
+        const decrypted = atob(encrypted);
+        return decrypted;
+      } catch {
+        return null;
+      }
+    }
+    return null;
   }
 }

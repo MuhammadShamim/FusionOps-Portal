@@ -168,13 +168,13 @@ export class NotesComponent {
 
 
   loadNotes() {
-    const data = localStorage.getItem('fusionops_notes');
+    const data = localStorage.getItem('integrationops_notes');
     this.notes = data ? JSON.parse(data) : [];
     this.sortNotes();
   }
 
   saveNotes() {
-    localStorage.setItem('fusionops_notes', JSON.stringify(this.notes));
+    localStorage.setItem('integrationops_notes', JSON.stringify(this.notes));
     this.sortNotes();
   }
 

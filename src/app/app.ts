@@ -1,45 +1,20 @@
-import { Component, inject, OnInit, OnDestroy, NgZone } from '@angular/core';
-import { RouterModule, RouterOutlet, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterModule, RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet]
 })
-export class App implements OnInit, OnDestroy {
-  isAuthenticated = false;
-  private authSub?: Subscription;
-  constructor(
-    private router: Router,
-    private auth: AuthService,
-    private zone: NgZone
-  ) {}
+export class AppComponent {
+  constructor(private auth: AuthService) {}
 
-  ngOnInit() {
-    this.authSub = this.auth.auth$.subscribe((val: boolean) => {
-      this.isAuthenticated = val;
-    });
-  }
-
-  ngOnDestroy() {
-    this.authSub?.unsubscribe();
-  }
-
-  onSignIn() {
-    this.auth.signIn();
-    this.router.navigate(['/dashboard']).then(() => {
-      this.zone.run(() => {
-        this.isAuthenticated = true;
-      });
-    });
-  }
-
-  onSignOut() {
-    this.auth.signOut();
-    this.router.navigate(['/']);
+  // Handle authentication status
+  get isAuthenticated(): boolean {
+    return this.auth.isAuthenticated;
   }
 }

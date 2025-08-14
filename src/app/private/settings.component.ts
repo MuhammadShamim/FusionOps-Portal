@@ -56,7 +56,7 @@ export class SettingsComponent {
   // removed duplicate onSignOut and isAuthenticated reference
 
   loadSecrets() {
-    const encrypted = localStorage.getItem('fusionops_secrets');
+    const encrypted = localStorage.getItem('integrationops_secrets');
     if (encrypted) {
       try {
         const decrypted = atob(encrypted);
@@ -69,7 +69,7 @@ export class SettingsComponent {
   }
 
   savePagerDutyToken() {
-    const encrypted = localStorage.getItem('fusionops_secrets');
+    const encrypted = localStorage.getItem('integrationops_secrets');
     let data = { apiId: '', secret: '', pagerDutyToken: this.pagerDutyToken };
     if (encrypted) {
       try {
@@ -78,7 +78,7 @@ export class SettingsComponent {
       } catch {}
     }
     const newEncrypted = btoa(JSON.stringify(data));
-    localStorage.setItem('fusionops_secrets', newEncrypted);
+    localStorage.setItem('integrationops_secrets', newEncrypted);
     this.pagerDutySaved = true;
     setTimeout(() => (this.pagerDutySaved = false), 2000);
   }
@@ -87,7 +87,7 @@ export class SettingsComponent {
     this.fusionopsStorage = [];
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i)!;
-      if (key.startsWith('fusionops_')) {
+      if (key.startsWith('integrationops_')) {
         const value = localStorage.getItem(key) ?? '';
         this.fusionopsStorage.push({ key, value });
       }
@@ -105,7 +105,7 @@ export class SettingsComponent {
   saveSecrets() {
     const data = { apiId: this.apiId, secret: this.secret, pagerDutyToken: this.pagerDutyToken };
     const encrypted = btoa(JSON.stringify(data));
-    localStorage.setItem('fusionops_secrets', encrypted);
+    localStorage.setItem('integrationops_secrets', encrypted);
     this.saved = true;
     setTimeout(() => (this.saved = false), 2000);
     this.loadFusionopsStorage();
@@ -197,7 +197,7 @@ export class SettingsComponent {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'fusionops-storage.csv';
+    a.download = 'integrationops-storage.csv';
     a.click();
     window.URL.revokeObjectURL(url);
   }

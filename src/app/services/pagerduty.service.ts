@@ -11,7 +11,7 @@ export class PagerDutyService {
       'Authorization': `Token token=${token}`,
       'Accept': 'application/vnd.pagerduty+json;version=2'
     });
-    // Example: fetch incidents (events) from PagerDuty
+    
     return this.http.get('/pagerduty/incidents', { headers });
   }
 }
