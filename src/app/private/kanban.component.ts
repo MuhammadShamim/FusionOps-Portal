@@ -157,8 +157,6 @@ export class KanbanComponent {
     navigator.clipboard.writeText(text);
   }
 
-  // ...existing code...
-
   openAddModal() {
     this.editingTask = null;
     this.editingColIdx = null;
@@ -238,11 +236,11 @@ export class KanbanComponent {
   }
 
   saveToStorage() {
-    localStorage.setItem('fusionops_kanban', JSON.stringify(this.columns));
+    localStorage.setItem('integrationops_kanban', JSON.stringify(this.columns));
   }
 
   loadFromStorage() {
-    const data = localStorage.getItem('fusionops_kanban');
+    const data = localStorage.getItem('integrationops_kanban');
     if (data) {
       try {
         const parsed = JSON.parse(data);

@@ -1,10 +1,10 @@
-<fusionops-private-layout [isAuthenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
+<integrationops-private-layout [isAuthenticated]="authService.isAuthenticated" (signOut)="onSignOut()">
   <button header-actions class="btn btn-gradient-primary px-4 py-2 rounded-pill" (click)="showModal = true">
     <i class="fas fa-plus me-2"></i>Create Note
   </button>
   <div class="row mb-4">
     <div class="col-12">
-      <div class="fusionops-card fusionops-form p-4 mb-0 shadow-sm">
+      <div class="integrationops-card integrationops-form p-4 mb-0 shadow-sm">
         <div class="row g-3 align-items-end">
           <div class="col-md-6">
             <input type="text" class="form-control" placeholder="Search notes..." [(ngModel)]="search" name="search">
@@ -36,20 +36,20 @@
           <button class="btn btn-outline-secondary" [disabled]="selectedRows.size === 0" (click)="clearSelection()"><i class="fas fa-times me-2"></i>Clear Selection</button>
         </div>
       </div>
-      <div class="fusionops-card p-0 shadow-sm">
+      <div class="integrationops-card p-0 shadow-sm">
         <div class="table-responsive">
-          <table class="table fusionops-table align-middle mb-0">
+          <table class="table integrationops-table align-middle mb-0">
             <thead>
               <tr>
                 <th>
                   <input type="checkbox" [checked]="areAllNotesSelected()" (change)="$event.target.checked ? selectAllOnPage() : clearSelection()">
                 </th>
                 <ng-container *ngFor="let col of columns">
-                  <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" class="fusionops-th" style="cursor:pointer">
+                  <th *ngIf="col.visible" (click)="sortBy(col.key, $event)" class="integrationops-th" style="cursor:pointer">
                     {{col.label}} <i class="fas fa-sort"></i>
                   </th>
                 </ng-container>
-                <th class="fusionops-th">Actions</th>
+                <th class="integrationops-th">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -107,4 +107,4 @@
       </div>
     </div>
   </div>
-</fusionops-private-layout>
+</integrationops-private-layout>

@@ -1,3 +1,62 @@
+/* IntegrationOps reusable styles for cards, forms, and tables */
+.integrationops-notes-bg {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.integrationops-card {
+  background: var(--color-card);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.integrationops-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.integrationops-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background: var(--color-card);
+  color: var(--color-text);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.integrationops-table th, .integrationops-table td {
+  padding: 0.75rem;
+  border-color: var(--color-border);
+  vertical-align: middle;
+}
+
+.integrationops-table thead th {
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.integrationops-table tbody tr:hover {
+  background: var(--color-table-row-hover);
+}
+
+.integrationops-th {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 /* FusionOps reusable styles for cards, forms, and tables */
 .fusionops-notes-bg {
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -5,145 +64,8 @@
 }
 
 .fusionops-card {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
-  margin-bottom: 2rem;
-  border-radius: 0;
-}
-
-.fusionops-form {
-  background: #f8fafc;
-  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
-  border-radius: 0;
-}
-
-.fusionops-table {
-  background: #fff;
-  color: #23272b;
-  border-radius: 0;
-  overflow: hidden;
-}
-.fusionops-table th, .fusionops-table td {
-  border-color: #e5e7eb;
-  vertical-align: middle;
-}
-.fusionops-table thead th {
-  background: #f8fafc;
-  color: #6366f1;
-  font-weight: 600;
-  cursor: pointer;
-  border-bottom: 2px solid #e5e7eb;
-}
-.fusionops-table tbody tr:hover {
-  background: #f3f4f6;
-}
-.fusionops-th {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-.btn-gradient-primary {
-  background: var(--color-primary);
-  color: #fff;
-  border: none;
-  transition: background 0.2s;
-}
-.btn-gradient-primary:hover {
-  background: var(--color-primary-dark);
-  color: #fff;
-}
-.btn-outline-primary {
-  border-color: #6366f1;
-  color: #6366f1;
-  border-radius: 0;
-}
-.btn-outline-primary:hover {
-  background: #6366f1;
-  color: #fff;
-}
-.btn-outline-danger {
-  border-color: #ef4444;
-  color: #ef4444;
-  border-radius: 0;
-}
-.btn-outline-danger:hover {
-  background: #ef4444;
-  color: #fff;
-}
-.btn-success {
-  background: #10b981;
-  border: none;
-  border-radius: 0;
-}
-.btn-success:hover {
-  background: #059669;
-}
-.btn-secondary {
-  background: #64748b;
-  border: none;
-  border-radius: 0;
-}
-.btn-secondary:hover {
-  background: #334155;
-}
-/* You can add global styles to this file, and also import other style files */
-
-
-/* --- Sneat-inspired global admin dashboard styles --- */
-
-:root {
-  --color-bg: #f8fafc;
-  --color-bg-dark: #181a20;
-  --color-card: #fff;
-  --color-card-dark: #23272b;
-  --color-primary: #6366f1;
-  --color-primary-dark: #3b82f6;
-  --color-accent: var(--color-primary-dark); /* Remove purple, use dark blue */
-  --color-sidebar: #007dfa;
-  --color-sidebar-dark: #23272b;
-  --color-sidebar-link: #adb5bd;
-  --color-sidebar-link-active: #fff;
-  --color-border: #e5e7eb;
-  --color-border-dark: #23272b;
-  --color-text: #23272b;
-  --color-text-dark: #f3f4f6;
-  --color-success: #10b981;
-  --color-danger: #ef4444;
-  --color-secondary: #64748b;
-  --color-secondary-dark: #334155;
-  --color-table-row-hover: #f3f4f6;
-  --color-table-row-hover-dark: #23272b;
-  --color-sidebar-border: #88b2dd;
-  --color-sidebar-border-dark: #23272b;
-  --color-footer-bg: #f1f5f9;
-  --color-footer-bg-dark: #23272b;
-  --transition: background 0.2s, color 0.2s;
-}
-body.dark-mode {
-  --color-bg: var(--color-bg-dark);
-  --color-card: var(--color-card-dark);
-  --color-sidebar: var(--color-sidebar-dark);
-  --color-border: var(--color-border-dark);
-  --color-text: var(--color-text-dark);
-  --color-table-row-hover: var(--color-table-row-hover-dark);
-  --color-sidebar-link: #b0b8c1;
-  --color-sidebar-link-active: #fff;
-  --color-sidebar-border: var(--color-sidebar-border-dark);
-  --color-footer-bg: var(--color-footer-bg-dark);
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  transition: var(--transition);
-}
-
-.fusionops-card {
   background: var(--color-card);
-  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  box-shadow: var(--shadow-md);
   margin-bottom: 2rem;
   border-radius: 12px;
   transition: var(--transition);
@@ -151,7 +73,7 @@ html, body {
 
 .fusionops-form {
   background: var(--color-bg);
-  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  box-shadow: var(--shadow-md);
   border-radius: 12px;
   transition: var(--transition);
 }
@@ -186,7 +108,7 @@ html, body {
   background: var(--color-primary);
   color: #fff;
   border: none;
-  transition: background 0.2s;
+  transition: var(--transition);
 }
 .btn-gradient-primary:hover {
   background: var(--color-primary-dark);
@@ -196,6 +118,7 @@ html, body {
   border-color: var(--color-primary);
   color: var(--color-primary);
   border-radius: 8px;
+  transition: var(--transition);
 }
 .btn-outline-primary:hover {
   background: var(--color-primary);
@@ -205,6 +128,7 @@ html, body {
   border-color: var(--color-danger);
   color: var(--color-danger);
   border-radius: 8px;
+  transition: var(--transition);
 }
 .btn-outline-danger:hover {
   background: var(--color-danger);
@@ -214,6 +138,7 @@ html, body {
   background: var(--color-success);
   border: none;
   border-radius: 8px;
+  transition: var(--transition);
 }
 .btn-success:hover {
   background: #059669;
@@ -222,9 +147,64 @@ html, body {
   background: var(--color-secondary);
   border: none;
   border-radius: 8px;
+  transition: var(--transition);
 }
 .btn-secondary:hover {
   background: var(--color-secondary-dark);
+}
+/* You can add global styles to this file, and also import other style files */
+
+
+/* --- Sneat-inspired global admin dashboard styles --- */
+
+:root {
+  --color-bg: #f8fafc;
+  --color-bg-dark: #181a20;
+  --color-card: #fff;
+  --color-card-dark: #23272b;
+  --color-primary: #6366f1;
+  --color-primary-dark: #3b82f6;
+  --color-accent: var(--color-primary-dark); /* Remove purple, use dark blue */
+  --color-sidebar: #007dfa;
+  --color-sidebar-dark: #23272b;
+  --color-sidebar-link: #adb5bd;
+  --color-sidebar-link-active: #fff;
+  --color-border: #e5e7eb;
+  --color-border-dark: #23272b;
+  --color-text: #23272b;
+  --color-text-dark: #f3f4f6;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-secondary: #64748b;
+  --color-secondary-dark: #334155;
+  --color-table-row-hover: #f3f4f6;
+  --color-table-row-hover-dark: #23272b;
+  --color-sidebar-border: #88b2dd;
+  --color-sidebar-border-dark: #23272b;
+  --color-footer-bg: #f1f5f9;
+  --color-footer-bg-dark: #23272b;
+  --transition: background 0.2s, color 0.2s;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 2px 8px rgba(79,140,255,0.10);
+}
+body.dark-mode {
+  --color-bg: var(--color-bg-dark);
+  --color-card: var(--color-card-dark);
+  --color-sidebar: var(--color-sidebar-dark);
+  --color-border: var(--color-border-dark);
+  --color-text: var(--color-text-dark);
+  --color-table-row-hover: var(--color-table-row-hover-dark);
+  --color-sidebar-border: var(--color-sidebar-border-dark);
+  --color-footer-bg: var(--color-footer-bg-dark);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  transition: var(--transition);
 }
 
 /* Layout and sidebar */
@@ -250,8 +230,7 @@ html, body {
   top: 0;
   left: 0;
   z-index: 1020;
-  box-shadow: 2px 0 8px rgba(205, 212, 226, 0.08);
-  border-radius: 0 0px 0px 0;
+  box-shadow: var(--shadow-md);
   padding-top: 1rem;
   transition: var(--transition);
 }
@@ -266,7 +245,7 @@ html, body {
 .sidebar .nav-link.active, .sidebar .nav-link:hover {
   background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
   color: var(--color-sidebar-link-active) !important;
-  box-shadow: 0 2px 8px rgba(79,140,255,0.12);
+  box-shadow: var(--shadow-md);
 }
 .sidebar .nav-link i {
   font-size: 1.2rem;
@@ -279,14 +258,13 @@ html, body {
   min-width: 0;
   overflow-y: auto;
   border-left: 1px solid var(--color-border);
-  border-radius: 0px 0 0 0;
   color: var(--color-text);
   transition: var(--transition);
 }
 .card-section {
   background: var(--color-card);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(79,140,255,0.10);
+  box-shadow: var(--shadow-md);
   padding: 2rem;
   margin-bottom: 2rem;
   transition: var(--transition);
@@ -323,10 +301,8 @@ html, body {
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--color-sidebar-border);
-    border-radius: 0 0 16px 16px;
   }
   .main-content {
     border-left: none;
-    border-radius: 0;
   }
 }

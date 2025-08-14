@@ -1,4 +1,4 @@
-# 🧩 Integration Ops Portal `0.0.8`
+# 🧩 Integration Ops Portal `0.0.9`
 
 **Integration Ops Portal** is a modular Angular application designed to streamline integration operations. It provides a unified interface for managing tasks related to MuleSoft iPaaS, PagerDuty incidents, GitHub repositories, and release/change management workflows. Built with the latest Angular and Bootstrap UI, it offers a clean, responsive, and secure experience.
 
@@ -10,7 +10,7 @@
 
 ## 🚀 Features
 
-- 🔐 Auth0 Microsoft SSO authentication
+- 🔐 Auth0 Microsoft SSO authentication with route protection and redirect handling
 - 📦 MuleSoft iPaaS integration
 - 🚨 PagerDuty incident tracking with secure token storage, events page, and proxy support
 - 🛠️ GitHub repo and PR management
@@ -21,14 +21,24 @@
 - 📊 Dashboard with operational insights
 - 📝 Notes app with modal-based create/edit, advanced table features (multi-sort, column toggling, row selection, CSV export, copy-to-clipboard)
 - 🗂️ Kanban board with drag-and-drop, localStorage, Board/Data tabs, and modal-based editing
-- 🧩 Sneat-inspired, modern UI with global and modular SCSS, no purple accents, only blue theme
-- 🖥️ Public/private layout system (sticky header/footer, responsive sidebar, full-width public pages)
-- 🌗 Dark/light mode toggle (global, sticky, and themeable)
+- 🧩 Modern UI with global and modular CSS, optimized for performance
+- 🖥️ Public/private layout system with lazy loading and code splitting
+- 🌗 Dark/light mode toggle with persistent preferences
 - 🔄 Universal search and navigation in header
-- ♻️ Codebase cleanup: no redundant layouts, unified navigation, maintainable structure, reusable CSS utilities
-- 🛡️ Environment-based config for all API services
-- 🧹 All public/private pages use new layouts and global styles, no per-component flex/box hacks
+- 🚀 Optimized bundle size with lazy loading and tree shaking
+- 🛡️ Environment-based configuration with production optimizations
+- 🔒 Enhanced type safety with strict TypeScript checks
 
+## 🎯 Latest Optimizations
+
+- **Lazy Loading**: Implemented route-level code splitting for public and private modules
+- **Bundle Optimization**: Reduced initial bundle size to ~127KB gzipped
+- **Type Safety**: Enhanced TypeScript configuration with strict type checking
+- **Build Performance**: Optimized production builds with proper tree shaking
+- **Route Protection**: Improved auth guards with proper redirect handling
+- **Style Optimization**: Consolidated and optimized CSS with proper scoping
+- **Environment Config**: Enhanced production/development environment separation
+- **Code Quality**: Implemented stricter type checking and removed unused code
 
 ## 🛠️ Tech Stack
 
@@ -40,13 +50,13 @@
 - **API Integration:** RESTful services (MuleSoft, PagerDuty, GitHub)
 - **Icons & Styling:** FontAwesome, SCSS, modular and global styles
 
-
 ## 🧑‍💻 Development Setup & Structure
 
 ### Key Folders
-- `src/app/shared/` — Shared layouts, sidebar, and reusable UI
-- `src/app/public/` — Public pages (welcome, features, team, contact, etc.)
-- `src/app/private/` — Private/secure pages (dashboard, notes, kanban, carrier profile, etc.)
+- `src/app/public/` — Public pages with lazy loading
+- `src/app/private/` — Private/secure pages with lazy loading and auth protection
+- `src/environments/` — Environment-specific configurations
+- `src/app/services/` — Shared services with enhanced type safety
 
 ### Prerequisites
 
@@ -85,6 +95,8 @@ export const environment = {
 
 ```shell
 ng serve
+or 
+ng serve --proxy-config proxy.conf.json
 ```
 App will be available at http://localhost:4200.
 
@@ -102,9 +114,22 @@ ng test
 ng e2e
 ```
 
-
 Uses Protractor or Cypress (based on your setup).
 
+### Build & Deployment
+
+For production builds with optimizations:
+
+```bash
+ng build --configuration production
+```
+
+Key optimization features:
+- Tree shaking for unused code elimination
+- Route-level code splitting
+- CSS optimization and minification
+- Environment-specific configurations
+- Strict type checking
 
 ## ♻️ Refactoring & Modernization Highlights
 
@@ -115,13 +140,6 @@ Uses Protractor or Cypress (based on your setup).
 - Public and private layouts use sticky header/footer and fluid, scrollable body
 - Kanban board supports editing tasks and persistent state
 - All public/private pages use the new layouts and global styles
-
-```shell
-ng build --configuration production
-```
-
-Deploy the contents of the dist/ folder to your preferred hosting service.
-
 
 ## 📬 Contact & Support
 For issues, feature requests, or contributions, please open a GitHub issue or contact the Integration Ops team.

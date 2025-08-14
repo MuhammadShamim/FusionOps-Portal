@@ -4,7 +4,7 @@ import { PublicLayoutComponent } from './public-layout.component';
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
-  styleUrls: [],
+  styleUrls: ['./team.component.css'],
   standalone: true,
   imports: [PublicLayoutComponent]
 })

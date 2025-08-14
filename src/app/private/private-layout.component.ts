@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'fusionops-private-layout',
+  selector: 'integrationops-private-layout',
   standalone: true,
   templateUrl: './private-layout.component.html',
   styleUrls: ['./private-layout.component.css'],

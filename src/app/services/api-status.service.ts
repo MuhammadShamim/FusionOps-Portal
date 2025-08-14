@@ -12,7 +12,7 @@ export class ApiStatusService {
     const baseUrl = this.env.get('API_BASE_URL');
     let apiId = '';
     let secret = '';
-    const encrypted = localStorage.getItem('fusionops_secrets');
+    const encrypted = localStorage.getItem('integrationops_secrets');
     if (encrypted) {
       try {
         const decrypted = atob(encrypted);

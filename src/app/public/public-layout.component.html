@@ -3,12 +3,10 @@
     <div class="public-header-content">
       <div class="public-logo">
         <i class="fas fa-cubes me-2 text-primary"></i>
-  <span class="fw-bold">Integration Ops</span>
+        <span class="fw-bold">Integration Ops</span>
       </div>
       <nav class="public-nav">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Home</a>
-        <a routerLink="/features" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Features</a>
-        <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Contact</a>
         <a routerLink="/signin" class="btn btn-outline-primary rounded-pill px-4 ms-2">Sign In</a>
       </nav>
     </div>
@@ -17,6 +15,6 @@
     <ng-content></ng-content>
   </main>
   <footer class="public-footer">
-  &copy; {{year}} Integration Ops. All rights reserved.
+    &copy; {{year}} Integration Ops. All rights reserved.
   </footer>
 </div>

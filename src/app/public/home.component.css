@@ -1,11 +1,12 @@
 :host {
+  display: block;
+  width: 100%;
   align-items: center;
   justify-content: center;
   min-height: 70vh;
-  width: 100%;
 }
 
-.cover-container {
+.home-container {
   max-width: 42em;
   width: 100%;
   min-height: 70vh;
@@ -36,6 +37,21 @@ h1 {
   max-width: 900px;
   scroll-margin-top: 2rem;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.full-width-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.welcome-section {
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.features-section {
+  padding-top: 2rem;
 }
 
 .feature-list li {
@@ -69,4 +85,14 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.3);
   color: white;
+}
+
+@media (max-width: 768px) {
+  .full-width-content {
+    padding: 2rem 1rem;
+  }
+  
+  .welcome-section {
+    padding: 1rem 0;
+  }
 }

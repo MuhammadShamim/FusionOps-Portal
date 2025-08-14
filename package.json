@@ -1,5 +1,5 @@
 {
-  "name": "fusion-ops-portal",
+  "name": "integration-ops-portal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

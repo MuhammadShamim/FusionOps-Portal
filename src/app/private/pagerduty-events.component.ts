@@ -76,7 +76,7 @@ export class PagerDutyEventsComponent implements OnInit {
   loadEvents() {
     this.loading = true;
     this.error = '';
-    const encrypted = localStorage.getItem('fusionops_secrets');
+    const encrypted = localStorage.getItem('integrationops_secrets');
     let token = '';
     if (encrypted) {
       try {
@@ -92,13 +92,17 @@ export class PagerDutyEventsComponent implements OnInit {
     }
     this.pagerDuty.getEvents(token).subscribe({
       next: (res: any) => {
-        this.events = res.incidents || [];
+        // Filter incidents to only include Ipaas-24x7 and iPaas services
+        this.events = (res.incidents || []).filter((incident: { service?: { summary?: string } }) => {
+          const serviceName = incident.service?.summary?.toLowerCase() || '';
+          return serviceName === 'Ipaas-24x7' || serviceName === 'Ipaas';
+        });
         this.applyFilters();
         this.loading = false;
       },
-      error: (err: any) => {
-        this.error = 'Failed to load PagerDuty events.';
+      error: (_err: any) => {
         this.loading = false;
+        this.error = 'Failed to load PagerDuty events';
       }
     });
   }
