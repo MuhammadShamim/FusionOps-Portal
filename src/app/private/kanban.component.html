@@ -11,6 +11,11 @@
 
     <div [ngSwitch]="activeTab">
       <div *ngSwitchCase="'board'">
+        <div class="d-flex justify-content-end mb-3">
+          <button class="btn btn-primary" (click)="openAddModal()">
+            <i class="fas fa-plus me-2"></i>Create Task
+          </button>
+        </div>
         <div class="row kanban-board g-3">
           <div class="col-md-3" *ngFor="let col of columns; let colIdx = index">
             <div class="integrationops-card h-100">
